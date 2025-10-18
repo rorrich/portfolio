@@ -167,6 +167,11 @@ body[data-theme="blue"] .header__color-changer:hover {
     width: 100px;
 }
 
+.menu-item--wide{
+    width: auto;
+    min-width: fit-content;
+}
+
 .menu-item:hover {
     font-variation-settings: 'wght' 600;
 }
@@ -344,6 +349,10 @@ body[data-theme="blue"] .header__color-changer:hover {
     padding: 40px 0;
 }
 
+.about__container {
+    position: relative;
+}
+
 .about__text {
     width: 445px;
     margin-left: auto;
@@ -351,6 +360,15 @@ body[data-theme="blue"] .header__color-changer:hover {
     line-height: 26px;
     font-weight: 300;
     margin-bottom: 24px;
+}
+
+.contacts {
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 /* Skills Animation */

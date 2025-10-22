@@ -86,16 +86,16 @@ body[data-theme="blue"] .header {
 }
 
 .logo-picture {
-    width: 59px;
-    height: 50px;
+    width: 56px;
+    height: 47px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo-picture svg {
-    width: 66px;
-    height: 56px;
+    width: 56px;
+    height: 47px;
     fill: currentColor;
 }
 
@@ -394,8 +394,8 @@ body[data-theme="blue"] .header__color-changer:hover {
 }
 
 .skills-track.aa { transform: rotate(2deg); }
-.skills-track.aa .skills-track__inner { animation: moveLeftRight 38.4s linear infinite; }
-.skills-track.bb .skills-track__inner { animation: moveRightLeft 38.4s linear infinite; }
+.skills-track.aa .skills-track__inner { animation: moveLeftRight 50s linear infinite; }
+.skills-track.bb .skills-track__inner { animation: moveRightLeft 50s linear infinite; }
 
 @keyframes moveLeftRight {
     0% {
@@ -422,18 +422,16 @@ body[data-theme="blue"] .header__color-changer:hover {
 }
 
 .skill-tag {
-    border: 1px solid #000000;
     border-radius: 100px;
     padding: 8px 24px;
     white-space: nowrap;
-    transition: border-color 0.5s;
     font-size: 20px;
     line-height: 26px;
     letter-spacing: 0;
     text-transform: lowercase;
-    background: #000000 !important;
-    background-color: #000000 !important;
-    color: #f5f1f0;
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #F5F1F0;
     font-family: 'Onest', sans-serif;
     font-weight: 400;
 }
@@ -448,7 +446,7 @@ body[data-theme="blue"] .header__color-changer:hover {
 .skill-arrow img {
     width: 20px;
     height: 20px;
-    filter: invert(1);
+    filter: brightness(0) saturate(100%) invert(95%) sepia(4%) saturate(1017%) hue-rotate(315deg) brightness(98%) contrast(96%);
 }
 
 body[data-theme="dark"] .skills-track {
@@ -456,14 +454,13 @@ body[data-theme="dark"] .skills-track {
 }
 
 body[data-theme="dark"] .skill-tag {
-    border-color: #141313;
     color: #141313;
-    background: #EADBDB !important;
-    background-color: #EADBDB !important;
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
 body[data-theme="dark"] .skill-arrow img {
-    filter: invert(0);
+    filter: brightness(0) saturate(100%) invert(8%) sepia(6%) saturate(1034%) hue-rotate(315deg) brightness(95%) contrast(89%);
 }
 
 body[data-theme="green"] .skills-track {
@@ -471,14 +468,13 @@ body[data-theme="green"] .skills-track {
 }
 
 body[data-theme="green"] .skill-tag {
-    border-color: #22351B;
     color: #22351B;
-    background: #F7CDDB !important;
-    background-color: #F7CDDB !important;
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
 body[data-theme="green"] .skill-arrow img {
-    filter: invert(0);
+    filter: brightness(0) saturate(100%) invert(15%) sepia(25%) saturate(1000%) hue-rotate(90deg) brightness(90%) contrast(85%);
 }
 
 body[data-theme="soft"] .skills-track {
@@ -486,14 +482,13 @@ body[data-theme="soft"] .skills-track {
 }
 
 body[data-theme="soft"] .skill-tag {
-    border-color: #9BB6D2;
     color: #9BB6D2;
-    background: #FFFFFF !important;
-    background-color: #FFFFFF !important;
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
 body[data-theme="soft"] .skill-arrow img {
-    filter: invert(0);
+    filter: brightness(0) saturate(100%) invert(60%) sepia(15%) saturate(500%) hue-rotate(200deg) brightness(95%) contrast(90%);
 }
 
 body[data-theme="blue"] .skills-track {
@@ -501,14 +496,13 @@ body[data-theme="blue"] .skills-track {
 }
 
 body[data-theme="blue"] .skill-tag {
-    border-color: #131844;
     color: #131844;
-    background: #E2281E !important;
-    background-color: #E2281E !important;
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
 body[data-theme="blue"] .skill-arrow img {
-    filter: invert(0);
+    filter: brightness(0) saturate(100%) invert(8%) sepia(25%) saturate(1000%) hue-rotate(240deg) brightness(90%) contrast(85%);
 }
 
 /* Works Section */
@@ -580,6 +574,9 @@ body[data-theme="blue"] .skill-arrow img {
 .work-card.medium {
     width: 755px;
     align-self: flex-end;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .work-card.small {
@@ -715,52 +712,14 @@ body[data-theme="blue"] .skill-arrow img {
 }
 
 .work-card__picture {
-    background-color: #b9b9b9;
+    /* фон убран, изображение покрывает контейнер */
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
-/* Анимированный фон для первой работы */
 .work-card.large .work-card__picture {
     height: 720px;
-    position: relative;
-    background-color: #000;
-    overflow: hidden;
-}
-
-.work-card.large .work-card__picture::before {
-    content: none;
-}
-
-.work-card.large .work-card__picture .background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    opacity: 0.7;
-}
-
-.work-card.large .work-card__picture .center-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 750px;
-    max-width: 90%;
-    height: auto;
-    max-height: 560px;
-    object-fit: contain;
-    transition: transform 0.5s ease;
-    z-index: 2;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.work-card.large:hover .work-card__picture .center-image {
-    transform: translate(-50%, -50%) scale(1.1);
 }
 
 .work-card.medium .work-card__picture {
@@ -771,6 +730,26 @@ body[data-theme="blue"] .skill-arrow img {
     height: 750px;
 }
 
+/* Изображение для medium/small карточек: обложка и лёгкий зум при наведении */
+.work-card__picture img.zoom-cover,
+.work-card__picture picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+.work-card.small:hover .work-card__picture img.zoom-cover,
+.work-card.medium:hover .work-card__picture img.zoom-cover,
+.work-card.large:hover .work-card__picture img.zoom-cover,
+.work-card.small:hover .work-card__picture picture,
+.work-card.medium:hover .work-card__picture picture,
+.work-card.large:hover .work-card__picture picture {
+    transform: scale(1.06);
+}
+
 .work-card__description {
     padding: 12px 2px;
 }
@@ -778,31 +757,30 @@ body[data-theme="blue"] .skill-arrow img {
 .work-card__details {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-left: 2px;
 }
 
 .work-card__type {
-    color: #8F8F8F;
+    color: #8F8F8F; /* standard theme */
     font-size: 16px;
     letter-spacing: 0.32px;
-    transition: color 0.5s;
     font-weight: 350;
 }
 
 body[data-theme="dark"] .work-card__type {
-    color: #C8BDBD;
+    color: #AEA8A8; /* black theme */
 }
 
 body[data-theme="green"] .work-card__type {
-    color: #F7E4EA;
+    color: #D5B9C3; /* green theme */
 }
 
 body[data-theme="soft"] .work-card__type {
-    color: #FFFFFF;
+    color: #EAF0F6; /* soft theme */
 }
 
 body[data-theme="blue"] .work-card__type {
-    color: #3E5483;
+    color: #C9584D; /* blue theme */
 }
 
 .work-card__year {
@@ -839,7 +817,6 @@ body[data-theme="blue"] .work-card__type {
     height: 1px;
     background-color: #CBCBD0;
     margin: 40px -40px;
-    transition: background-color 0.5s;
     width: 100vw;
 }
 
@@ -906,6 +883,55 @@ body[data-theme="blue"] .footer__line hr {
 }
 
 /* Медиа запросы для адаптивности */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 24px;
+    }
+    
+    .works__grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 20px;
+    }
+    
+    .work-card.large {
+        grid-column: span 8;
+        width: 100%;
+    }
+    
+    .work-card.medium {
+        grid-column: span 4;
+        width: 100%;
+        justify-self: end;
+    }
+    
+    .work-card.small {
+        grid-column: span 4;
+        width: 100%;
+        justify-self: start;
+    }
+    
+    .title h1, .title-action {
+        font-size: clamp(60px, 8vw, 120px);
+        line-height: 1.2;
+    }
+    
+    .works__title h2 {
+        font-size: clamp(60px, 8vw, 120px);
+        line-height: 1.2;
+    }
+    
+    .hero__content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .picture-container {
+        align-self: center;
+        margin-top: 0;
+    }
+}
+
 @media (max-width: 1600px) {
     .works__grid {
         grid-template-columns: 1fr 1fr;

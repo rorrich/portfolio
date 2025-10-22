@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             stickerBg: 'transparent'
         },
         { name: 'green', background: '#22351B', text: '#F7CDDB', outline: '#445E3B', secondary: '#F7E4EA', stickerBg: 'transparent' },
-        { name: 'soft', background: '#9BB6D2', text: '#FFFFFF', outline: '#C0D6E3', secondary: '#FFFFFF', stickerBg: 'transparent' }
+        { name: 'soft', background: '#9BB6D2', text: '#FFFFFF', outline: '#C0D6E3', secondary: '#EAF0F6', stickerBg: 'transparent' }
     ];
     let currentColorIndex = 0;
     
@@ -97,22 +97,19 @@ document.addEventListener('DOMContentLoaded', function() {
             footerLine.style.backgroundColor = newColor.outline;
         }
         
-        // Меняем цвет текста для работ
+        // Убираем inline стили для work-card__type, чтобы CSS работал
         const workTypes = document.querySelectorAll('.work-card__type');
         workTypes.forEach(type => {
-            type.style.color = newColor.secondary;
+            type.style.color = '';
         });
         
-        // Обновляем цвета стикеров (skill-tag)
+        // Обновляем цвета стикеров (skill-tag) - убираем перезапись стилей, CSS уже настроен
         const skillTags = document.querySelectorAll('.skill-tag');
         skillTags.forEach(tag => {
-            tag.style.backgroundColor = newColor.stickerBg;
-            if (newColor.name === 'dark') {
-                tag.style.color = newColor.text; // светлый текст для темной темы
-            } else {
-                tag.style.color = newColor.text; // темный текст для светлых тем
-            }
-            tag.style.borderColor = newColor.outline;
+            // Убираем все inline стили, чтобы CSS работал корректно
+            tag.style.backgroundColor = '';
+            tag.style.color = '';
+            tag.style.borderColor = '';
         });
     });
     

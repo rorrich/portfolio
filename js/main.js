@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             background: '#131844', 
             text: '#E2281E', 
             outline: '#273A62', 
-            secondary: '#3E5483', 
+            secondary: '#A44C4B', 
             stickerBg: 'transparent'
         },
         { name: 'green', background: '#22351B', text: '#F7CDDB', outline: '#445E3B', secondary: '#F7E4EA', stickerBg: 'transparent' },
@@ -111,6 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
             tag.style.color = '';
             tag.style.borderColor = '';
         });
+        
+        // Обновляем цвет header__burger
+        const headerBurger = document.querySelector('.header__burger');
+        if (headerBurger) {
+            headerBurger.style.color = '';
+        }
     });
     
     // Анимация элемента при наведении на пункты меню

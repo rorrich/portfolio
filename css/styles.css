@@ -14,6 +14,7 @@ body {
     font-weight: 350;
 }
 
+
 body[data-theme="dark"] {
     background-color: #141313;
     color: #EADBDB;
@@ -51,31 +52,36 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     z-index: 1000;
     background-color: transparent;
+    border-bottom: 1px solid #CBCBD0; /* цвет для дефолтной темы */
 }
 
+
 body[data-theme="dark"] .header {
-    /* background color removed */
+    border-bottom-color: #3B3535; /* outline цвет для dark темы */
 }
 
 body[data-theme="green"] .header {
-    /* background color removed */
+    border-bottom-color: #445E3B; /* outline цвет для green темы */
 }
 
 body[data-theme="soft"] .header {
-    /* background color removed */
+    border-bottom-color: #C0D6E3; /* outline цвет для soft темы */
 }
 
 body[data-theme="blue"] .header {
-    /* background color removed */
+    border-bottom-color: #273A62; /* outline цвет для blue темы */
 }
 
 .header__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 24px; /* отступы */
+    width: 100%; /* на всю ширину */
+    box-sizing: border-box;
 }
 
 .header__logo {
@@ -155,6 +161,10 @@ body[data-theme="blue"] .header__color-changer:hover {
     gap: 4px;
 }
 
+.header__burger {
+    display: none; /* скрыт по умолчанию */
+}
+
 .menu-item {
     display: flex;
     align-items: center;
@@ -165,6 +175,11 @@ body[data-theme="blue"] .header__color-changer:hover {
     height: 22px;
     font-weight: 350;
     width: 100px;
+}
+
+/* Толщина шрифта для [3] в меню */
+.menu-item span:last-child {
+    font-weight: 400;
 }
 
 .menu-item--wide{
@@ -245,6 +260,7 @@ body[data-theme="blue"] .header__color-changer:hover {
     display: flex;
     align-items: center;
     gap: 20px;
+    height: 124px; /* фиксированная высота для предотвращения дергания */
 }
 
 .circle {
@@ -374,15 +390,20 @@ body[data-theme="blue"] .header__color-changer:hover {
 /* Skills Animation */
 .skills-animation {
     padding: 40px 0;
-    overflow: hidden;
+}
+
+.skills-animation .container {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .skills-track {
     position: relative;
-    width: 102%;
+    width: 100%;
     overflow: hidden;
     background-color: #000000; /* solid stripe */
     margin-bottom: 20px; /* gap between aa and bb */
+    transform-origin: left center; /* масштабирование от левого края */
 }
 
 .skills-track__inner {
@@ -393,7 +414,35 @@ body[data-theme="blue"] .header__color-changer:hover {
     padding: 12px 0;
 }
 
-.skills-track.aa { transform: rotate(2deg); }
+.skills-track.aa { 
+    transform: rotate(2deg);
+    left: -1%;
+    margin-bottom: 60px; /* больше отступ для PC версии */
+}
+
+.skills-track.aa {
+    box-shadow: 20px 0 0 0 #000000; /* тень справа того же цвета */
+}
+
+/* Динамический box-shadow для разных тем */
+body[data-theme="dark"] .skills-track.aa {
+    box-shadow: 20px 0 0 0 #EADBDB;
+}
+
+body[data-theme="green"] .skills-track.aa {
+    box-shadow: 20px 0 0 0 #F7CDDB;
+}
+
+body[data-theme="soft"] .skills-track.aa {
+    box-shadow: 20px 0 0 0 #FFFFFF;
+}
+
+body[data-theme="blue"] .skills-track.aa {
+    box-shadow: 20px 0 0 0 #E2281E;
+}
+.skills-track.bb {
+    top: 20px;
+}
 .skills-track.aa .skills-track__inner { animation: moveLeftRight 50s linear infinite; }
 .skills-track.bb .skills-track__inner { animation: moveRightLeft 50s linear infinite; }
 
@@ -719,22 +768,22 @@ body[data-theme="blue"] .skill-arrow img {
 }
 
 .work-card.large .work-card__picture {
-    height: 720px;
+    height: auto;
 }
 
 .work-card.medium .work-card__picture {
-    height: 500px;
+    height: auto;
 }
 
 .work-card.small .work-card__picture {
-    height: 750px;
+    height: auto;
 }
 
 /* Изображение для medium/small карточек: обложка и лёгкий зум при наведении */
 .work-card__picture img.zoom-cover,
 .work-card__picture picture {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
     transform: scale(1);
@@ -855,8 +904,10 @@ body[data-theme="blue"] .footer__line hr {
 
 .footer__info {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 20px;
 }
 
 .footer__description {
@@ -868,10 +919,15 @@ body[data-theme="blue"] .footer__line hr {
 }
 
 .footer__contacts {
-    text-align: right;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
+}
+
+.footer__contacts .menu-item {
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .footer__copyright {
@@ -884,6 +940,11 @@ body[data-theme="blue"] .footer__line hr {
 
 /* Медиа запросы для адаптивности */
 @media (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
     .container {
         padding: 0 24px;
     }
@@ -895,40 +956,454 @@ body[data-theme="blue"] .footer__line hr {
     }
     
     .work-card.large {
-        grid-column: span 8;
-        width: 100%;
+        grid-column: span 5; /* 5 колонок из 8 */
+        width: 613px; /* hug размер */
+        justify-self: start; /* прибито слева */
     }
     
     .work-card.medium {
-        grid-column: span 4;
-        width: 100%;
-        justify-self: end;
+        grid-column: span 4; /* 4 колонки из 8 */
+        width: 478px; /* hug размер */
+        justify-self: end; /* прибито справа */
     }
     
     .work-card.small {
-        grid-column: span 4;
-        width: 100%;
-        justify-self: start;
+        grid-column: span 4; /* 4 колонки из 8 */
+        width: 478px; /* hug размер */
+        justify-self: start; /* прибито слева */
     }
     
+    /* Адаптивные шрифты для планшета */
     .title h1, .title-action {
-        font-size: clamp(60px, 8vw, 120px);
-        line-height: 1.2;
+        font-size: 100px !important;
+        line-height: 124px !important;
     }
     
+    /* h2(tab) - заголовки работ такой же как title - 100/124 */
     .works__title h2 {
-        font-size: clamp(60px, 8vw, 120px);
-        line-height: 1.2;
+        font-size: 100px !important;
+        line-height: 124px !important;
+    }
+    
+    /* l1 - шрифты в шапке */
+    .header__menu .menu-item span,
+    .header__color-changer {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    
+    /* header__content для планшета */
+    .header__content {
+        padding: 0 24px;
+        width: 100%;
+    }
+    
+    /* Логотип - размер 44px в ширину с сохранением пропорций */
+    .logo-picture {
+        width: 44px;
+        height: 37px;
+    }
+    
+    .logo-picture svg {
+        width: 44px;
+        height: 37px;
+    }
+    
+    /* h4(tab) - заголовки карточек работ */
+    .work-card.large .work-card__title,
+    .work-card.medium .work-card__title,
+    .work-card.small .work-card__title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    
+    /* b2 - основной текст */
+    .about__text {
+        font-size: 16px;
+        line-height: 22px;
+        width: 353px; /* 3 колонки сетки */
+        margin-left: auto;
+    }
+    
+    /* l2 - короткие описания и контакты */
+    .works__title-short-desc,
+    .short-description,
+    .contacts .menu-item span {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    
+    /* l1 - текст в skill-tag */
+    .skill-tag {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 8px 12px; /* padding по бокам 12px */
+    }
+    
+    /* Стрелки в skills - размер 12x12 */
+    .skill-arrow img {
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* Gap для skills-track__inner */
+    .skills-track__inner {
+        gap: 20px;
+    }
+    
+    /* Work-card адаптив - убираем hover эффект полностью */
+    .work-card:hover .work-card__picture img.zoom-cover,
+    .work-card:hover .work-card__picture picture,
+    .work-card.medium:hover .work-card__picture img.zoom-cover,
+    .work-card.medium:hover .work-card__picture picture {
+        transform: scale(1) !important;
+    }
+    
+    /* Убираем hover для work-card__type на планшете */
+    .work-card:hover .work-card__type,
+    .work-card.medium:hover .work-card__type {
+        transform: none !important;
+    }
+    
+    /* Полностью отключаем hover для всех work-card на планшете */
+    .work-card:hover {
+        transform: none !important;
+    }
+    
+        /* Размеры шрифтов для work-card */
+        .work-card__details {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        
+        .work-card__title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+        
+        .work-card__description {
+            padding-top: 8px;
+        }
+        
+        /* work-card__type и work-card__year - 14/20 */
+        .work-card__type,
+        .work-card__year {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    
+    /* Work-card привязаны к сетке 8 колонок */
+    
+    /* Размеры изображений для work-card - адаптивные */
+    .work-card__picture {
+        width: 100%;
+        height: auto;
+    }
+    
+    .work-card__picture img,
+    .work-card__picture picture {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    /* Hero секция - элементы идут друг за другом без отступов */
+    .title-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+    
+    .title {
+        margin-bottom: 0;
+    }
+    
+    .short-description {
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+    
+    /* Стрелка в title-frame - размер 32x32 */
+    .element svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .element {
+        width: 32px;
+        height: 32px;
+    }
+    
+    /* Отступ между текстом и стрелкой в title-frame */
+    .title-frame {
+        gap: 10px;
+    }
+    
+    /* Circle - ширина hug */
+    .circle {
+        height: auto;
+        padding-bottom: 0;
+        width: fit-content; /* hug content */
+    }
+    
+    /* Кот - размер 229x137, прибит к правому нижнему краю */
+    .picture-container {
+        width: 229px;
+        height: 137px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-top: 0;
+    }
+    
+    .cat01 {
+        width: 229px;
+        height: 137px;
+        margin-top: 0;
     }
     
     .hero__content {
-        flex-direction: column;
-        gap: 40px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0;
+        position: relative; /* для абсолютного позиционирования кота */
     }
     
+    /* Курсор в typed-text - толщина 4px */
+    .cursor {
+        width: 4px; /* толщина 4px */
+        height: 118px; /* высота остается на 30% короче */
+    }
+    
+    /* Header padding для планшета */
+    .header {
+        padding: 16px 0;
+    }
+    
+    /* Hero padding сверху 0 */
+    .hero {
+        padding-top: 0;
+        padding-bottom: 40px;
+    }
+    
+    /* Works__title высота hug */
+    .works__title {
+        height: fit-content;
+    }
+    
+    /* Шрифт для "работы" 100/124 */
+    .works__title h2 {
+        font-size: 100px;
+        line-height: 124px;
+    }
+    
+    /* Padding и margin для short-desc */
+    .works__title-short-desc.left {
+        padding-bottom: 24px;
+        margin-right: 8px;
+    }
+    
+    .works__title-short-desc.right {
+        padding-bottom: 24px;
+        margin-left: 8px;
+    }
+    
+    /* Контакты - обычный текст с подчеркиванием, прибиты к левому низу */
+    .contacts {
+        position: absolute;
+        left: 24px; /* отступ от левого края контейнера */
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .contacts .menu-item {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+    
+    .contacts .menu-item .element-anim {
+        display: none; /* убираем стрелки на планшете */
+    }
+    
+    /* About контейнер становится relative для позиционирования contacts */
+    .about__container {
+        position: relative;
+    }
+    
+        /* Футер - весь текст l1 и размер кота 229px */
+        .footer__text {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        
+        /* footer__description - 14/20 */
+        .footer__description {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        
+        /* footer__contacts - как в about contacts */
+        .footer__contacts {
+            font-size: 14px;
+            line-height: 20px;
+            text-align: left;
+            align-items: flex-start;
+        }
+        
+        .footer__contacts .menu-item {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            justify-content: flex-start;
+            text-align: left;
+        }
+        
+        .footer__contacts .menu-item .element-anim {
+            display: none; /* убираем стрелки на планшете */
+        }
+    
+    .cat-fishing {
+        width: 229px;
+        height: 185px; /* правильные пропорции из Фигмы */
+        bottom: -58px; /* фиксированная позиция снизу */
+        right: 0;
+    }
+    
+    .cat-fishing img {
+        width: 229px;
+        height: 185px;
+    }
+    
+    /* Footer__line margin снизу */
+    .footer__line {
+        margin-bottom: 60px;
+    }
+    
+    /* Исправляем обрезание полоски на планшете */
+    .footer__line hr {
+        margin: 40px calc(-50vw + 50%); /* выходим за границы контейнера */
+        width: 100vw; /* полная ширина экрана */
+    }
+}
+
+/* Tablet Portrait - 768px */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* header__content для планшета 768px */
+    .header__content {
+        padding: 0 20px;
+        width: 100%;
+    }
+    
+    .works__grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+    }
+    
+    .work-card.large {
+        grid-column: span 6; /* 6 колонок из 6 */
+        width: 603px; /* hug размер */
+        justify-self: start; /* прибито слева */
+    }
+    
+    .work-card.medium {
+        grid-column: span 3; /* 3 колонки из 6 */
+        width: 479px; /* hug размер */
+        justify-self: end; /* прибито справа */
+    }
+    
+    .work-card.small {
+        grid-column: span 3; /* 3 колонки из 6 */
+        width: 479px; /* hug размер */
+        justify-self: start; /* прибито слева */
+    }
+    
+    /* title-text шрифт 80/100 */
+    .title h1, .title-action {
+        font-size: 80px !important;
+        line-height: 100px !important;
+    }
+    
+    /* works__title "работы" такой же как title - 80/100 */
+    .works__title h2 {
+        font-size: 80px !important;
+        line-height: 100px !important;
+    }
+    
+    /* works__title-short-desc padding */
+    .works__title-short-desc.left {
+        padding-bottom: 16px;
+    }
+    
+    .works__title-short-desc.right {
+        padding-bottom: 16px;
+    }
+    
+    /* стрелка в element - 28x28 */
+    .element svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .element {
+        width: 28px;
+        height: 28px;
+    }
+    
+    /* cat01 - ширина 152 с сохранением пропорций */
     .picture-container {
-        align-self: center;
+        width: 152px;
+        height: 91px; /* пропорции 229:137 */
+        position: absolute;
+        bottom: 0;
+        right: 0;
         margin-top: 0;
+    }
+    
+    .cat01 {
+        width: 152px;
+        height: 91px;
+        margin-top: 0;
+    }
+    
+    /* footer__description и footer__contacts для планшета */
+    .footer__description {
+        flex: 1;
+        margin-right: 20px;
+    }
+    
+    .footer__contacts {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        text-align: left;
+        align-items: flex-start;
+    }
+    
+    /* cat03 в футере - ширина 152 с сохранением пропорций */
+    .cat-fishing {
+        width: 152px;
+        height: 123px; /* пропорции 229:185 */
+        bottom: -38px; /* изменена позиция */
+        right: 0;
+    }
+    
+    .cat-fishing img {
+        width: 152px;
+        height: 123px;
     }
 }
 
@@ -981,28 +1456,378 @@ body[data-theme="blue"] .footer__line hr {
     }
 }
 
-@media (max-width: 768px) {
+
+/* Mobile - 360px */
+@media (max-width: 360px) {
+    /* Общие правила для предотвращения выхода за границы */
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .container {
+        padding: 0 12px;
+        max-width: 100%; /* не выходим за границы экрана */
+        width: 100%;
+    }
+    
+    /* header на всю ширину без выхода за границы */
+    .header {
+        left: 0;
+        right: 0;
+    }
+    
+    .header__content {
+        padding: 0 12px !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    
     .works__grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
     
+    /* Шапка - логотип hug */
+    .header__logo {
+        width: fit-content; /* hug */
+        height: fit-content; /* hug */
+        flex-shrink: 0; /* не сжимается */
+        z-index: 1; /* поверх центрального элемента */
+    }
+    
+    .logo-picture {
+        width: 44px;
+        height: 37px;
+    }
+    
+    .logo-picture svg {
+        width: 44px;
+        height: 37px;
+    }
+    
+    /* header layout для мобилки */
+    .header__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* распределяем элементы */
+        width: 100% !important; /* на всю ширину */
+        max-width: 100% !important; /* не выходим за границы */
+        position: relative; /* для позиционирования центрального элемента */
+        box-sizing: border-box;
+    }
+    
+    /* header__color-changer - шрифт 12/16, по центру */
+    .header__color-changer {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        padding: 4px 8px !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        white-space: nowrap !important;
+        max-width: calc(100% - 100px) !important; /* оставляем место для логотипа и бургера */
+        box-sizing: border-box !important;
+        width: auto !important;
+        height: auto !important;
+        border: none !important;
+        border-radius: 0 !important;
+    }
+    
+    /* Принудительно ограничиваем ширину всех элементов header */
+    .header__logo,
+    .header__burger {
+        max-width: 50px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Бургер меню вместо header__menu */
+    .header__menu {
+        display: none;
+    }
+    
+    .header__burger {
+        display: block;
+        width: 44px;
+        height: 44px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #000000; /* цвет как у logo-picture для обычной темы */
+        flex-shrink: 0; /* не сжимается */
+        z-index: 1; /* поверх центрального элемента */
+    }
+    
+    .header__burger img {
+        width: 44px;
+        height: 44px;
+        filter: brightness(0) saturate(100%) invert(0%); /* черный цвет по умолчанию */
+    }
+    
+    /* title шрифт 48/60 */
     .title h1, .title-action {
-        font-size: 60px;
-        line-height: 80px;
+        font-size: 48px !important;
+        line-height: 60px !important;
     }
     
+    /* стрелка element 16x16 */
+    .element svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .element {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Убираем котика */
+    .picture-container {
+        display: none;
+    }
+    
+    /* about - описание на всю ширину */
+    .about__text {
+        width: 100%;
+        margin-left: 0;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    
+    /* contacts снизу */
+    .contacts {
+        position: static;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    /* works__title - только "работы" */
     .works__title h2 {
-        font-size: 60px;
-        line-height: 80px;
+        font-size: 48px !important;
+        line-height: 60px !important;
     }
     
+    .works__title-short-desc {
+        display: none;
+    }
+    
+    /* work-cards - автолейаут друг за другом */
+    .work-card.large,
+    .work-card.medium,
+    .work-card.small {
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* Размеры изображений для work-card на мобилке */
+    .work-card__picture {
+        width: 100%; /* на всю ширину без дополнительных отступов */
+        height: auto !important; /* hug - под размер картинки, переопределяем фиксированные высоты */
+        margin: 0 -12px; /* выходим за отступы контейнера */
+    }
+    
+    .work-card.large .work-card__picture,
+    .work-card.medium .work-card__picture,
+    .work-card.small .work-card__picture {
+        height: auto !important; /* убираем фиксированные высоты */
+    }
+    
+    .work-card__picture img,
+    .work-card__picture picture {
+        width: 100%;
+        height: auto; /* hug - под размер картинки */
+        object-fit: cover;
+    }
+    
+    /* title-frame высота 60px */
+    .title-frame {
+        height: 60px;
+    }
+    
+    /* курсор в title-frame - тоньше в 2 раза и короче на 30% */
+    .cursor {
+        width: 2px; /* тоньше в 2 раза (было 4px) */
+        height: 42px; /* короче на 30% (60px - 30% = 42px) */
+    }
+    
+    /* work-card__content hug и корректное отображение картинок */
+    .work-card__content {
+        height: auto; /* hug - под содержимое */
+        overflow: hidden; /* картинки не выходят за контейнер */
+    }
+    
+    .work-card__content .work-card__picture {
+        width: 100%;
+        height: auto;
+        margin: 0; /* убираем отрицательные отступы */
+    }
+    
+    .work-card__content .work-card__picture img,
+    .work-card__content .work-card__picture picture {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    
+    /* отступ от картинки до описания 4px */
+    .work-card__description {
+        margin-top: 4px;
+        padding-top: 0;
+    }
+    
+    /* Шрифты для work-card */
+    .work-card__type,
+    .work-card__year {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    
+    .work-card__title {
+        font-size: 20px;
+        line-height: 26px;
+    }
+    
+    /* Убираем котика в футере */
+    .cat-fishing {
+        display: none;
+    }
+    
+    /* hero padding снизу 0 */
+    .hero {
+        padding-bottom: 0;
+    }
+    
+    /* skills-animation padding 24 сверху и снизу */
+    .skills-animation {
+        padding: 24px 0;
+        width: 100%;
+    }
+    
+    /* skills-track контейнеры */
+    .skills-track {
+        overflow: visible !important; /* не обрезаем анимацию */
+        width: 100% !important; /* на всю ширину */
+        margin-bottom: 20px; /* сохраняем отступ */
+    }
+    
+    /* skills-track.aa ширина 100% */
+    .skills-track.aa {
+        width: 100% !important;
+    }
+    
+    .skills-track__inner {
+        width: max-content; /* ширина по содержимому */
+        min-width: 200%; /* минимум в 2 раза больше ширины экрана для анимации */
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        gap: 10px; /* расстояние между элементами в 2 раза меньше */
+    }
+    
+    /* ускоряем анимацию skills */
+    .skills-track.aa .skills-track__inner,
+    .skills-track.bb .skills-track__inner {
+        animation-duration: 20s; /* ускоряем с 50s до 20s */
+    }
+    
+    /* works padding 24 сверху и снизу */
+    .works {
+        padding: 24px 0;
+    }
+    
+    /* works__title margin 24 снизу */
+    .works__title {
+        margin-bottom: 24px;
+    }
+    
+    /* work-card__title шрифт 20/26 */
+    .work-card__title {
+        font-size: 20px !important;
+        line-height: 26px !important;
+    }
+    
+    /* skills-track aa margin снизу 0 */
+    .skills-track.aa {
+        margin-bottom: 0;
+    }
+    
+    /* footer padding 24 сверху и снизу */
+    .footer {
+        padding: 24px 0;
+        height: auto; /* убираем фиксированную высоту */
+    }
+    
+    /* footer__line стили */
+    .footer__line {
+        margin-bottom: 24px;
+    }
+    
+    .footer__line hr {
+        margin-top: 0px;
+    }
+    
+    /* footer автолейаут - вертикально */
     .footer__info {
         flex-direction: column;
         gap: 20px;
     }
     
+    .footer__description {
+        font-size: 12px;
+        line-height: 16px;
+        width: 100%; /* на весь экран */
+        max-width: none !important;
+        order: 2; /* описание внизу */
+    }
+    
     .footer__contacts {
+        order: 1; /* контакты сверху */
+        align-self: flex-start; /* прибить слева */
+    }
+    
+    /* menu-item--wide с telegram прибить слева */
+    .footer__contacts .menu-item--wide {
+        justify-content: flex-start;
         text-align: left;
+    }
+    
+    /* Переопределяем другие элементы для мобилки */
+    .about__text {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .picture-container {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .cat01 {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .cat-fishing {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .cat-fishing img {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    /* Убираем фиксированные размеры для skills */
+    .skills-track__inner {
+        width: 100%;
+        overflow-x: auto;
     }
 }
 
@@ -1014,6 +1839,48 @@ body[data-theme="blue"] .footer__line hr {
     --outline-color: #000000;
     --secondary-color: #000000;
     --sticker-bg: transparent;
+}
+
+/* header__burger цвета для всех тем */
+.header__burger {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .header__burger {
+    color: #EADBDB;
+}
+
+body[data-theme="blue"] .header__burger {
+    color: #D13C2D;
+}
+
+body[data-theme="green"] .header__burger {
+    color: #F3EAC2;
+}
+
+body[data-theme="soft"] .header__burger {
+    color: #FFFFFF;
+}
+
+/* CSS фильтры для header__burger img для всех тем */
+body[data-theme="light"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(0%); /* черный */
+}
+
+body[data-theme="dark"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(92%) sepia(8%) saturate(1017%) hue-rotate(315deg) brightness(95%) contrast(89%); /* #EADBDB */
+}
+
+body[data-theme="blue"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(95%) saturate(2000%) hue-rotate(350deg) brightness(90%) contrast(120%); /* #D13C2D */
+}
+
+body[data-theme="green"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(95%) sepia(8%) saturate(1017%) hue-rotate(315deg) brightness(95%) contrast(89%); /* #F3EAC2 */
+}
+
+body[data-theme="soft"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(100%); /* белый */
 }
 
 /* Темная тема */

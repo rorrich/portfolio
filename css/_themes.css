@@ -1,0 +1,49 @@
+/* Темы */
+
+/* Светлая тема (Default) */
+/* Переменные уже определены в :root и body[data-theme] в начале файла */
+
+/* header__burger цвета */
+.header__burger {
+    color: var(--text-color);
+}
+
+/* CSS фильтры для header__burger img */
+body[data-theme="light"] .header__burger img,
+body:not([data-theme]) .header__burger img {
+    filter: brightness(0) saturate(100%) invert(0%); /* черный */
+}
+
+body[data-theme="dark"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(92%) sepia(8%) saturate(1017%) hue-rotate(315deg) brightness(95%) contrast(89%);
+}
+
+body[data-theme="blue"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(95%) saturate(2000%) hue-rotate(350deg) brightness(90%) contrast(120%);
+}
+
+body[data-theme="green"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(95%) sepia(8%) saturate(1017%) hue-rotate(315deg) brightness(95%) contrast(89%);
+}
+
+body[data-theme="soft"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* Сбросы и общие стили */
+.header__theme-toggle {
+    display: none;
+}
+
+/* Обновляем Header border */
+.header {
+    border-bottom: 1px solid var(--outline-color);
+}
+
+/* Удаляем старые специфичные стили границ хедера, так как теперь есть переменная */
+body[data-theme="dark"] .header,
+body[data-theme="green"] .header,
+body[data-theme="soft"] .header,
+body[data-theme="blue"] .header {
+    border-bottom-color: var(--outline-color);
+} 

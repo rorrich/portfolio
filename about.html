@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>who я - Портфолио</title>
+    <link rel="stylesheet" href="css/styles.css?v=37">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+            <div class="header__logo">
+                <a href="index.html" class="logo-picture">
+                    <svg width="56" height="47" aria-hidden="true" focusable="false">
+                        <use href="images/sprite.svg#icon-logo"/>
+                    </svg>
+                </a>
+            </div>
+            <button type="button" class="header__color-changer" aria-label="Сменить цветовую тему">какой ты сегодня</button>
+            <button type="button" class="header__burger" aria-expanded="false" aria-controls="menu-overlay">
+                <img src="images/burger.svg" alt="Меню" class="burger-icon">
+                <img src="images/burger-close.svg" alt="Закрыть" class="burger-close-icon">
+            </button>
+            <nav class="header__menu">
+                <a href="about.html" class="menu-item menu-item--active">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>who я</span>
+                </a>
+                <a href="works.html" class="menu-item">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>работы</span>
+                    <span class="menu-item__number">[3]</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="about-me">
+        <!-- Секция с заголовком "who я" и SVG -->
+        <section class="about-me__hero">
+            <div class="container">
+                <div class="about-me__hero-content">
+                    <h1 class="about-me__title">who я</h1>
+                    <div class="about-me__cat">
+                        <img src="images/cat_huh.svg" alt="Кот" width="215" height="280">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция с текстом обо мне -->
+        <section class="about-me__text">
+            <div class="container">
+                <div class="about-me__text-content">
+                    <p>Меня зовут Алина. Мне 24. Дизайном я занимаюсь с 2023 года но учусь и развиваюсь до сих пор. Для меня развитие — это не только про карьеру, но и про жизнь в целом. Сейчас я создаю дизайны сайтов и приложений. Мне интересно не просто рисовать красивые интерфейсы, а делать их удобными и продуманными.</p>
+                    <p>Кроме интерфейсов, мне любопытны смежные области: логотипы, графика, айдентика, иллюстрации. Сейчас я изучаю их и постепенно добавляю в свой арсенал. В планах — освоить front-end  и 3D-моделирование. А в свободное время играю в компьютерные игры и рисую.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция с информацией и картинкой -->
+        <section class="about-me__info">
+            <div class="container">
+                <div class="about-me__info-content">
+                    <div class="about-me__info-blocks">
+                        <div class="about-me__info-block">
+                            <div class="about-me__info-label">
+                                <div class="element-anim">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                        <use href="images/sprite.svg#icon-arrow-up"/>
+                                    </svg>
+                                </div>
+                                <span>настоящее время</span>
+                            </div>
+                            <p class="about-me__info-text">занимаюсь дизайном на фрилансе</p>
+                        </div>
+                        <div class="about-me__info-block">
+                            <p class="about-me__info-date">01.06.23–24.12.23</p>
+                            <p class="about-me__info-text">закончила курсы на UX/UI дизайнера от онлайн-школы TeachMeSkills</p>
+                        </div>
+                    </div>
+                    <div class="about-me__image-block">
+                        <div class="about-me__image-label">
+                            <div class="element-anim">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                    <use href="images/sprite.svg#icon-arrow-up"/>
+                                </svg>
+                            </div>
+                            <span>а это я</span>
+                        </div>
+                        <div class="about-me__image-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__line">
+                <hr>
+                <div class="cat-fishing">
+                    <img src="images/cat_03.svg" alt="Кот рыбачит" width="307" height="248">
+                </div>
+            </div>
+            <div class="footer__info">
+                <p class="footer__description">
+                    сайт создан для отслеживания собственного прогресса и будет обновляться по мере роста навыков
+                </p>
+                <div class="footer__contacts">
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>telegram</span>
+                    </div>
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>shirono.kaji@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Мобильное меню -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-overlay__content">
+            <div class="menu-overlay__sections">
+                <a href="about.html" class="menu-overlay__link">who я</a>
+                <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
+            </div>
+            
+            <div class="menu-overlay__contacts">
+                <a href="#" class="menu-overlay__contact">telegram</a>
+                <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js?v=8"></script>
+</body>
+</html>
+

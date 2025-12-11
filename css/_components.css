@@ -1,0 +1,812 @@
+/* Header */
+.header {
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2005; /* Выше мобильного меню (2000) и бургера (2001) */
+    background-color: transparent;
+    border-bottom: 1px solid var(--outline-color);
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px; /* отступы */
+    width: 100%; /* на всю ширину */
+    box-sizing: border-box;
+}
+
+.header__logo {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-picture {
+    width: 56px;
+    height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-picture svg {
+    width: 56px;
+    height: 47px;
+    fill: currentColor;
+}
+
+.header__color-changer {
+    /* Сброс дефолтных стилей кнопки */
+    background: none;
+    border: 1px solid var(--outline-color);
+    border-radius: 6.25em; /* было 100px */
+    width: 10.625em; /* было 170px */
+    height: 1.875em; /* было 30px */
+    font-size: var(--body-s-size);
+    font-family: inherit; /* Наследуем шрифт от body */
+    letter-spacing: 0.32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0; /* Сброс margin для кнопки */
+    color: inherit; /* Наследуем цвет текста */
+    outline: none; /* Убираем дефолтный outline */
+}
+
+.header__color-changer:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    font-size: 0.9375em; /* 15px */
+    border-color: transparent;
+    width: 10.625em;
+    height: 1.875em;
+}
+
+.header__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.header__burger {
+    display: none; /* скрыт по умолчанию */
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: font-variation-settings 0.4s ease;
+    height: 22px;
+    font-weight: 350;
+    width: 100px;
+    font-size: var(--label-s-size);
+}
+
+/* Толщина шрифта для [3] в меню */
+.menu-item span:last-child {
+    font-weight: 400;
+}
+
+.menu-item--wide{
+    width: auto;
+    min-width: fit-content;
+}
+
+.menu-item:hover {
+    font-variation-settings: 'wght' 600;
+}
+
+.element-anim {
+    width: 12px;
+    height: 9px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateX(-8px);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-top: 1px;
+}
+
+.element-anim svg {
+    width: 12px;
+    height: 9px;
+    fill: currentColor;
+}
+
+.menu-item:hover .element-anim,
+.element-anim.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-item__number {
+    font-size: var(--body-s-size);
+    font-weight: 450;
+}
+
+.menu-item:hover .menu-item__number {
+    font-variation-settings: 'wght' 600;
+}
+
+.menu-item--active .element-anim {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+/* Hero Section */
+.hero {
+    /* Высота секции - весь экран минус шапка */
+    min-height: calc(100vh - 96px);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 40px; /* Уменьшил нижний отступ до 40px */
+    margin-top: 96px;
+    box-sizing: border-box;
+}
+
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.hero__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Предотвращаем растягивание колонок по высоте */
+    position: relative;
+    /* Наследуем размер для em */
+    font-size: var(--heading-h2-size);
+}
+
+.hero__title-group {
+    flex: 1;
+}
+
+.hero__title {
+    width: fit-content; /* hug content */
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.hero__title h1 {
+    font-size: 1em;
+    font-weight: 350;
+    line-height: var(--heading-h2-line-height);
+    width: fit-content; /* hug content */
+}
+
+.hero__typing-wrapper {
+    display: flex;
+    align-items: center; /* Центрируем стрелку и текст по вертикали */
+    gap: 0.125em; /* Отступы между элементами */
+    height: auto; /* Высота определяется контентом */
+}
+
+.hero__arrow-wrapper {
+    width: auto;
+    height: auto; /* Убираем фиксированную высоту */
+    display: flex;
+    align-items: center; /* Центрируем стрелку внутри контейнера */
+    padding-bottom: 0; /* Убираем позиционирование через padding */
+}
+
+.hero__arrow {
+    width: 0.375em; /* 60px / 160px = 0.375em */
+    height: 0.375em; /* 60px / 160px = 0.375em */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit; /* Наследуем размер от hero__content */
+}
+
+.hero__arrow svg {
+    width: 100%;
+    height: 100%;
+    color: var(--text-color);
+}
+
+.hero__typing {
+    font-size: 1em;
+    font-weight: 350;
+    line-height: var(--heading-h2-line-height);
+    display: flex;
+    align-items: center;
+    min-height: var(--heading-h2-line-height); /* Предотвращаем прыжки при удалении текста */
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    width: clamp(2px, 0.5px + 0.38vw, 8px); /* Плавная ширина курсора */
+    background-color: currentColor;
+    margin-left: 2px;
+    height: 0.8em; /* Относительно размера шрифта */
+    vertical-align: middle;
+}
+
+.cursor.no-blink {
+    animation: none;
+    opacity: 1;
+}
+
+@keyframes blink {
+    0%, 80% {
+        opacity: 1;
+    }
+    40%, 60% {
+        opacity: 0;
+    }
+}
+
+.short-description {
+    font-size: var(--body-s-size);
+    letter-spacing: 0.32px;
+    line-height: 22px;
+    font-weight: 350;
+    height: 211px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 48px;
+    width: fit-content;
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    right: 0;
+}
+
+/* picture-container удален */
+
+.hero__cat {
+    width: 21vw; /* Сжимается быстрее, чем текст */
+    max-width: 2.5em; /* Ограничение для больших экранов (как раньше) */
+    height: auto;
+    margin-top: 0.125em; /* 20px */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 0;
+    font-size: inherit; /* Наследуем размер от hero__content */
+}
+
+.hero__cat img {
+    width: 100%;
+    height: auto; /* Высота авто, чтобы сохранить пропорции */
+    object-fit: cover;
+}
+
+/* Hero Bottom Block (Description + Links) */
+.hero__bottom {
+    margin-top: auto; /* Прижимаем к низу */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    flex-direction: row-reverse; /* Описание справа, контакты слева */
+}
+
+.hero__description {
+    width: 445px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.about__text {
+    font-size: var(--body-m-size);
+    line-height: 1.3;
+    font-weight: 300;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Skills Animation */
+.skills-animation {
+    padding: 40px 0;
+    overflow: hidden; /* Скрываем вылезающие за пределы экрана полосы */
+}
+
+.skills-animation .container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.skills-track {
+    position: relative;
+    width: 110vw; /* Шире экрана, чтобы скрыть края при повороте */
+    left: -5vw; /* Центрируем относительно экрана */
+    overflow: hidden;
+    background-color: var(--text-color); /* solid stripe */
+    margin-bottom: 20px; /* gap between aa and bb */
+    transform-origin: center center; /* вращаем от центра */
+}
+
+.skills-track__inner {
+    display: inline-flex;
+    align-items: center;
+    /* Адаптивный отступ: 16px -> 32px */
+    gap: clamp(16px, 12.3px + 1.03vw, 32px);
+    white-space: nowrap;
+    padding: 12px 0;
+}
+
+.skills-track.aa { 
+    transform: rotate(2deg);
+    margin-bottom: 60px; /* больше отступ для PC версии */
+}
+
+.skills-track.bb {
+    top: 20px;
+}
+.skills-track.aa .skills-track__inner { animation: moveLeftRight 50s linear infinite; }
+.skills-track.bb .skills-track__inner { animation: moveRightLeft 50s linear infinite; }
+
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveRightLeft {
+    0% {
+        transform: translateX(-50%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.skill-tag {
+    border-radius: 100px;
+    padding: 8px 24px;
+    white-space: nowrap;
+    font-size: var(--body-m-size);
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: lowercase;
+    background: transparent;
+    background-color: transparent;
+    color: var(--background-color);
+    font-family: 'Onest', sans-serif;
+    font-weight: 400;
+}
+
+.skill-arrow {
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-arrow svg {
+    /* Адаптивный размер: 12px -> 20px */
+    width: clamp(12px, 10.15px + 0.51vw, 20px);
+    height: clamp(12px, 10.15px + 0.51vw, 20px);
+    color: var(--background-color);
+}
+
+.skills-track {
+    background-color: var(--text-color);
+}
+
+/* Works Section */
+.works {
+    /* Адаптивный padding: от 20px (на 360px) до 60px (на 1920px) */
+    padding-top: clamp(20px, 10.7px + 2.56vw, 60px);
+    padding-bottom: clamp(20px, 10.7px + 2.56vw, 60px);
+}
+
+.works__title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 60px;
+    position: relative;
+    height: 212px;
+}
+
+.works__title h2 {
+    font-size: var(--heading-h2-size);
+    font-weight: 350;
+    line-height: var(--heading-h2-line-height);
+    position: relative;
+    z-index: 1;
+    width: auto;
+    text-align: center;
+}
+
+.works__title-short-desc {
+    font-size: var(--body-s-size);
+    letter-spacing: 0.32px;
+    line-height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 44px;
+    width: 130px;
+    position: relative;
+    z-index: 2;
+    font-weight: 350;
+}
+
+.works__title-short-desc.left {
+    text-align: right;
+    margin-right: 12px;
+    margin-left: 40px;
+}
+
+.works__title-short-desc.right {
+    text-align: left;
+    margin-left: 12px;
+    margin-right: 40px;
+}
+
+.works__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.work-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.work-card.large {
+    width: 910px;
+    align-self: flex-start;
+}
+
+.work-card.medium {
+    width: 755px;
+    align-self: flex-end;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.work-card.small {
+    width: 600px;
+    align-self: flex-start;
+}
+
+.work-card__hover-effect {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.work-card:hover .work-card__hover-effect {
+    opacity: 1;
+}
+
+.corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+}
+
+.corner-1 {
+    top: 0;
+    left: 0;
+}
+
+.corner-1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 16px;
+    background-color: currentColor;
+}
+
+.corner-1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 1px;
+    background-color: currentColor;
+}
+
+.corner-2 {
+    top: 0;
+    right: 0;
+}
+
+.corner-2::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 16px;
+    background-color: currentColor;
+}
+
+.corner-2::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+    height: 1px;
+    background-color: currentColor;
+}
+
+.corner-3 {
+    bottom: 0;
+    left: 0;
+}
+
+.corner-3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    height: 16px;
+    background-color: currentColor;
+}
+
+.corner-3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 16px;
+    height: 1px;
+    background-color: currentColor;
+}
+
+.corner-4 {
+    bottom: 0;
+    right: 0;
+}
+
+.corner-4::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    height: 16px;
+    background-color: currentColor;
+}
+
+.corner-4::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 16px;
+    height: 1px;
+    background-color: currentColor;
+}
+
+.work-card__content {
+    position: relative;
+    z-index: 2;
+}
+
+.work-card__picture {
+    /* фон убран, изображение покрывает контейнер */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.work-card.large .work-card__picture {
+    height: auto;
+}
+
+.work-card.medium .work-card__picture {
+    height: auto;
+}
+
+.work-card.small .work-card__picture {
+    height: auto;
+}
+
+/* Изображение для medium/small карточек: обложка и лёгкий зум при наведении */
+.work-card__picture img.zoom-cover,
+.work-card__picture picture {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+.work-card.small:hover .work-card__picture img.zoom-cover,
+.work-card.medium:hover .work-card__picture img.zoom-cover,
+.work-card.large:hover .work-card__picture img.zoom-cover,
+.work-card.small:hover .work-card__picture picture,
+.work-card.medium:hover .work-card__picture picture,
+.work-card.large:hover .work-card__picture picture {
+    transform: scale(1.06);
+}
+
+.work-card__description {
+    padding: 12px 2px;
+}
+
+.work-card__details {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2px;
+}
+
+.work-card__type {
+    color: var(--secondary-text-color); /* Используем переменную темы */
+    font-size: var(--body-s-size);
+    letter-spacing: 0.32px;
+    font-weight: 350;
+}
+
+.work-card__year {
+    font-size: var(--body-s-size);
+    letter-spacing: 0.32px;
+    font-weight: 350;
+}
+
+.work-card.large .work-card__title,
+.work-card.medium .work-card__title,
+.work-card.small .work-card__title {
+    font-size: var(--heading-h4-size);
+    font-weight: 350;
+    line-height: var(--heading-h4-line-height);
+}
+
+/* Footer */
+.footer {
+    padding: 40px 0;
+    height: auto; /* Высота по содержимому */
+}
+
+.footer .container {
+    height: auto; /* Контейнер обнимает содержимое */
+}
+
+.footer__line {
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Кот справа */
+    align-items: flex-end; /* Выравниваем по нижнему краю */
+    margin-bottom: 0;
+    margin-top: -66px; /* Компенсируем сдвиг кота вниз на 66px */
+    /* Высота: высота кота - 66px (кот уменьшается пропорционально) */
+    min-height: calc(clamp(200px, 16vw, 307px) * 0.807 - 66px); /* 0.807 = 248/307 (пропорция высоты к ширине) */
+}
+
+.footer__line hr {
+    border: none;
+    height: 1px;
+    background-color: var(--outline-color);
+    margin: 0;
+    width: 100vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0; /* Линия внизу контейнера */
+    z-index: 0;
+}
+
+.cat-fishing {
+    /* Адаптивные размеры: уменьшается при уменьшении экрана, но начальное значение неизменно */
+    width: clamp(200px, 16vw, 307px); /* От 200px до 307px (на больших экранах) */
+    height: auto; /* Сохраняем пропорции */
+    aspect-ratio: 307 / 248; /* Пропорции оригинала (307:248) */
+    flex-shrink: 0; /* Не сжимается */
+    background: transparent; /* Убираем возможный белый фон */
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1; /* Кот поверх линии */
+    transform: translateY(66px); /* Опускаем кота на 66px ниже линии */
+    pointer-events: none; /* Не блокирует клики по элементам под ним */
+}
+
+.cat-fishing img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.footer__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 40px; /* Верхний отступ */
+}
+
+.footer__description {
+    max-width: 445px;
+    font-size: var(--body-s-size);
+    letter-spacing: 0.32px;
+    line-height: 22px;
+    font-weight: 350;
+}
+
+.footer__contacts {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer__contacts .menu-item {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* Стрелки в подвале скрыты по умолчанию и появляются при hover */
+.footer__contacts .menu-item .element-anim {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Переопределяем общее правило для footer - более высокая специфичность */
+.footer__contacts .menu-item:hover .element-anim,
+.footer__contacts .menu-item .element-anim.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.footer__copyright {
+    font-size: var(--body-s-size);
+    letter-spacing: 0.32px;
+    line-height: 22px;
+    margin-top: 8px;
+    font-weight: 350;
+}
+
+/* Скрываем мобильное меню на десктопе */
+.menu-overlay {
+    display: none;

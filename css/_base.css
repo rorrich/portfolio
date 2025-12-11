@@ -1,0 +1,28 @@
+/* Reset и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Onest', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--body-s-size);
+    line-height: 1.5;
+    font-weight: 350;
+}
+
+.container {
+    max-width: 1920px; /* Было 1840px. Увеличиваем до 1920px, чтобы padding 40px "съедал" место внутри, оставляя 1840px для контента */
+    margin: 0 auto;
+    padding: 0 40px; /* Внутренний отступ всегда 40px */
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+

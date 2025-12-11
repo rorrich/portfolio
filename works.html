@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио — Работы</title>
+    <link rel="stylesheet" href="css/styles.css?v=37">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="index.html" class="logo-picture">
+                        <svg width="56" height="47" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-logo"/>
+                        </svg>
+                    </a>
+                </div>
+            <button type="button" class="header__color-changer" aria-label="Сменить цветовую тему">какой ты сегодня</button>
+            <button type="button" class="header__burger" aria-expanded="false" aria-controls="menu-overlay">
+                <img src="images/burger.svg" alt="Меню" class="burger-icon">
+                <img src="images/burger-close.svg" alt="Закрыть" class="burger-close-icon">
+            </button>
+            <nav class="header__menu">
+                <a href="about.html" class="menu-item">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>who я</span>
+                </a>
+                <a href="works.html" class="menu-item menu-item--active">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>работы</span>
+                    <span class="menu-item__number">[3]</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="works-page-content">
+        <!-- Hero + Tabs Section -->
+        <section class="works-hero">
+            <div class="container">
+                <div class="works-hero__content">
+                    <div class="works-hero__top">
+                        <div class="works-hero__title-box">
+                            <h1 class="works-hero__title">работы</h1>
+                            <span class="works-hero__count">[3]</span>
+                        </div>
+                        <div class="works-hero__image">
+                            <img src="images/cat_working.svg" alt="Cat working">
+                        </div>
+                    </div>
+                    
+                    <div class="works-hero__tabs">
+                        <div class="works-tabs__buttons">
+                            <button class="works-tab active" data-filter="all"><span>Все</span></button>
+                            <button class="works-tab" data-filter="sites"><span>Сайты</span></button>
+                            <button class="works-tab" data-filter="apps"><span>Приложения</span></button>
+                        </div>
+                        <div class="works-tabs__checkbox">
+                            <div class="custom-checkbox">
+                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.42666 0.350586L4.99502 6.80472L0.99502 2.80472C0.73491 2.54449 0.315076 2.54268 -0.00497556 2.86234C-0.325373 3.18199 -0.325373 3.60199 -0.00497556 3.86234L4.99502 8.86234L10.6249 1.23441C10.8633 0.953857 10.8248 0.519789 10.5653 0.281335C10.2848 0.0417938 9.86334 0.0763245 9.42666 0.350586Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <span>заплатили</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works List -->
+        <section class="works-list">
+            <div class="container">
+                
+                <!-- Item 1: Doctor Coffee -->
+                <div class="works-item" data-category="sites" data-paid="true">
+                    <div class="works-item__image-container">
+                        <picture>
+                            <source type="image/webp" srcset="images/picture_d.coffee.webp">
+                            <img src="images/picture_d.coffee.webp" alt="Doctor Coffee">
+                        </picture>
+                    </div>
+                    <div class="works-item__info">
+                        <div class="works-item__header">
+                            <h2 class="works-item__title">Doctor Coffee</h2>
+                            <p class="works-item__subtitle">редизайн сайт по ремонту кофемашин</p>
+                        </div>
+                        <div class="works-item__details">
+                            <div class="works-item__meta-group">
+                                <div class="works-item__meta">
+                                    <span class="meta-label">год</span>
+                                    <span class="meta-value">2025</span>
+                                </div>
+                                <div class="works-item__meta">
+                                    <span class="meta-label">индустрия</span>
+                                    <span class="meta-value">сфера услуг</span>
+                                </div>
+                            </div>
+                            <div class="works-item__link">
+                            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                    <use href="images/sprite.svg#icon-arrow-link"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Roast -->
+                <div class="works-item" data-category="sites" data-paid="true">
+                    <div class="works-item__image-container">
+                        <picture>
+                            <source type="image/webp" srcset="images/picture_roast.webp">
+                            <img src="images/picture_roast.webp" alt="Roast">
+                        </picture>
+                    </div>
+                    <div class="works-item__info">
+                        <div class="works-item__header">
+                            <h2 class="works-item__title">Roast</h2>
+                            <p class="works-item__subtitle">оптовый сайт по продаже кофе, чая и кофейных акссусаров</p>
+                        </div>
+                        <div class="works-item__details">
+                            <div class="works-item__meta-group">
+                                <div class="works-item__meta">
+                                    <span class="meta-label">год</span>
+                                    <span class="meta-value">2025</span>
+                                </div>
+                                <div class="works-item__meta">
+                                    <span class="meta-label">индустрия</span>
+                                    <span class="meta-value">интернет-магазин</span>
+                                </div>
+                            </div>
+                            <div class="works-item__link">
+                            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                    <use href="images/sprite.svg#icon-arrow-link"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Cleanner -->
+                <div class="works-item" data-category="apps" data-paid="false">
+                    <div class="works-item__image-container">
+                        <picture>
+                            <source type="image/webp" srcset="images/picture_cleanner2.webp">
+                            <img src="images/picture_cleanner2.webp" alt="Cleanner">
+                        </picture>
+                    </div>
+                    <div class="works-item__info">
+                        <div class="works-item__header">
+                            <h2 class="works-item__title">Cleanner</h2>
+                            <p class="works-item__subtitle">мобильное приложения для робота пылесоса</p>
+                        </div>
+                        <div class="works-item__details">
+                            <div class="works-item__meta-group">
+                                <div class="works-item__meta">
+                                    <span class="meta-label">год</span>
+                                    <span class="meta-value">2024</span>
+                                </div>
+                                <div class="works-item__meta">
+                                    <span class="meta-label">индустрия</span>
+                                    <span class="meta-value">cмарт-техника</span>
+                                </div>
+                            </div>
+                            <div class="works-item__link">
+                            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                    <use href="images/sprite.svg#icon-arrow-link"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__line">
+                <hr>
+                <div class="cat-fishing">
+                    <img src="images/cat_03.svg" alt="Кот рыбачит" width="307" height="248">
+                </div>
+            </div>
+            <div class="footer__info">
+                <p class="footer__description">
+                    сайт создан для отслеживания собственного прогресса и будет обновляться по мере роста навыков
+                </p>
+                <div class="footer__contacts">
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>telegram</span>
+                    </div>
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>shirono.kaji@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Мобильное меню -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-overlay__content">
+            <div class="menu-overlay__sections">
+                <a href="about.html" class="menu-overlay__link">who я</a>
+                <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
+            </div>
+            
+            <div class="menu-overlay__contacts">
+                <a href="#" class="menu-overlay__contact">telegram</a>
+                <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js?v=8"></script>
+</body>
+</html>

@@ -17,110 +17,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }, fadeInOptions);
     
     fadeInElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        element.classList.add('fade-in-ready');
         fadeInObserver.observe(element);
     });
     
-    // Добавляем стиль для класса fade-in, который будет применяться при появлении элемента
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .fade-in {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
-    
     // Смена цветовой схемы при клике на кнопку "какой ты сегодня"
     const colorChanger = document.querySelector('.header__color-changer');
-    const colors = [
-        { 
-            name: 'light', 
-            background: '#F5F1F0', // bg color из Figma
-            text: '#000000', // main color из Figma
-            outline: '#CBCBD0', // outline из Figma
-            secondary: '#8F8F8F', // secondary из Figma
-            stickerBg: 'transparent' // sticker_color из Figma - убрали заливку
-        },
-        { 
-            name: 'dark', 
-            background: '#141313', // bg color из Figma
-            text: '#EADBDB', // main color из Figma
-            outline: '#3B3535', // outline из Figma
-            secondary: '#C8BDBD', // secondary из Figma
-            stickerBg: 'transparent' // sticker_color из Figma - убрали заливку
-        },
-        { 
-            name: 'blue', 
-            background: '#131844', 
-            text: '#E2281E', 
-            outline: '#273A62', 
-            secondary: '#A44C4B', 
-            stickerBg: 'transparent'
-        },
-        { name: 'green', background: '#22351B', text: '#F7CDDB', outline: '#445E3B', secondary: '#F7E4EA', stickerBg: 'transparent' },
-        { name: 'soft', background: '#9BB6D2', text: '#FFFFFF', outline: '#C0D6E3', secondary: '#EAF0F6', stickerBg: 'transparent' }
-    ];
-    let currentColorIndex = 0;
+    const themes = ['light', 'dark', 'blue', 'green', 'soft'];
+    let currentThemeIndex = 0;
+    
+    // Определяем начальную тему из data-theme или используем 'light'
+    const initialTheme = document.body.getAttribute('data-theme') || 'light';
+    currentThemeIndex = themes.indexOf(initialTheme) >= 0 ? themes.indexOf(initialTheme) : 0;
     
     colorChanger.addEventListener('click', function() {
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-        const newColor = colors[currentColorIndex];
+        // Отключаем анимации на время смены темы
+        document.body.classList.add('no-transition');
+
+        // Переключаем на следующую тему
+        currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+        const newTheme = themes[currentThemeIndex];
         
-        // Применяем цвета мгновенно без анимации
-        
-        // Удаляем все атрибуты theme
-        document.body.removeAttribute('data-theme');
-        
-        // Если это темная тема, добавляем атрибут
-        if (newColor.name === 'dark') {
-            document.body.setAttribute('data-theme', 'dark');
+        // Устанавливаем тему через data-theme атрибут
+        // CSS переменные автоматически применятся через селекторы body[data-theme="..."]
+        if (newTheme === 'light') {
+            document.body.removeAttribute('data-theme');
         } else {
-            document.body.setAttribute('data-theme', newColor.name);
+            document.body.setAttribute('data-theme', newTheme);
         }
-        
-        // Устанавливаем стили без анимации
-        document.body.style.backgroundColor = newColor.background;
-        document.body.style.color = newColor.text;
-        
-        // Меняем цвет рамок у skill-tag и других элементов
-        const borderElements = document.querySelectorAll('.skill-tag, .header__color-changer');
-        borderElements.forEach(el => {
-            el.style.borderColor = newColor.outline;
+
+        // Включаем анимации обратно после небольшой задержки
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove('no-transition');
+            });
         });
-        
-        // Меняем цвет линии в футере
-        const footerLine = document.querySelector('.footer__line hr');
-        if (footerLine) {
-            footerLine.style.backgroundColor = newColor.outline;
-        }
-        
-        // Убираем inline стили для work-card__type, чтобы CSS работал
-        const workTypes = document.querySelectorAll('.work-card__type');
-        workTypes.forEach(type => {
-            type.style.color = '';
-        });
-        
-        // Обновляем цвета стикеров (skill-tag) - убираем перезапись стилей, CSS уже настроен
-        const skillTags = document.querySelectorAll('.skill-tag');
-        skillTags.forEach(tag => {
-            // Убираем все inline стили, чтобы CSS работал корректно
-            tag.style.backgroundColor = '';
-            tag.style.color = '';
-            tag.style.borderColor = '';
-        });
-        
-        // Обновляем цвет header__burger
-        const headerBurger = document.querySelector('.header__burger');
-        if (headerBurger) {
-            headerBurger.style.color = '';
-        }
     });
     
     // Анимация элемента при наведении на пункты меню
     const menuItems = document.querySelectorAll('.menu-item');
+    
+    // При загрузке страницы проверяем, находится ли курсор над элементами
+    // и синхронизируем состояние без анимации
+    menuItems.forEach(item => {
+        const elementAnim = item.querySelector('.element-anim');
+        
+        // Проверяем hover состояние при загрузке
+        if (item.matches(':hover')) {
+            // Временно отключаем transition для синхронизации состояния без анимации
+            elementAnim.classList.add('no-transition-temp', 'active');
+            
+            // Включаем transition обратно после небольшой задержки
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    elementAnim.classList.remove('no-transition-temp');
+                });
+            });
+        }
+    });
     
     menuItems.forEach(item => {
         const elementAnim = item.querySelector('.element-anim');
@@ -140,13 +94,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const innerBB = document.querySelector('.skills-track.bb .skills-track__inner');
         
         if (innerAA && innerBB) {
-            // Клонируем всё содержимое внутреннего контейнера для бесшовной анимации
-            const contentAA = innerAA.innerHTML;
-            const contentBB = innerBB.innerHTML;
+            // Клонируем все дочерние элементы для бесшовной анимации
+            const childrenAA = Array.from(innerAA.children);
+            const childrenBB = Array.from(innerBB.children);
             
-            // Добавляем дубликат содержимого для бесконечной прокрутки
-            innerAA.innerHTML = contentAA + contentAA;
-            innerBB.innerHTML = contentBB + contentBB;
+            // Клонируем каждый дочерний элемент и добавляем его
+            childrenAA.forEach(child => {
+                const clone = child.cloneNode(true);
+                innerAA.appendChild(clone);
+            });
+            
+            childrenBB.forEach(child => {
+                const clone = child.cloneNode(true);
+                innerBB.appendChild(clone);
+            });
         }
     };
     
@@ -158,10 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
     workCards.forEach(card => {
         card.addEventListener('click', function() {
             // Здесь будет код для открытия детальной страницы работы
-            // В текущей реализации просто добавим анимацию нажатия
-            card.style.transform = 'scale(0.98)';
+            // В текущей реализации просто добавим анимацию нажатия через класс
+            card.classList.add('is-pressed');
             setTimeout(() => {
-                card.style.transform = 'scale(1)';
+                card.classList.remove('is-pressed');
             }, 150);
         });
     });
@@ -191,63 +152,189 @@ document.addEventListener('DOMContentLoaded', function() {
     // Анимация печатающегося текста
     const textElement = document.getElementById('typed-text');
     const cursorElement = document.querySelector('.cursor');
-    const words = ['сайты', 'мобилки'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 150; // скорость печати в мс
-    let blinkTimeout = null;
     
-    function type() {
-        // Курсор не должен мигать во время печати и стирания
-        cursorElement.classList.add('no-blink');
+    if (textElement && cursorElement) {
+        const words = ['сайты', 'мобилки'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 150; // скорость печати в мс
+        let blinkTimeout = null;
         
-        const currentWord = words[wordIndex];
-        
-        if (isDeleting) {
-            // Стираем текст
-            textElement.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 48; // увеличил скорость стирания еще на 40%
-        } else {
-            // Печатаем текст
-            textElement.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 105; // увеличил скорость набора на 30%
-        }
-        
-        // Если слово полностью напечатано
-        if (!isDeleting && charIndex === currentWord.length) {
-            isDeleting = false;
+        function type() {
+            // Курсор не должен мигать во время печати и стирания
+            cursorElement.classList.add('no-blink');
             
-            // Очищаем предыдущий таймаут, если он существует
-            if (blinkTimeout) {
-                clearTimeout(blinkTimeout);
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                // Стираем текст
+                textElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 48; // увеличил скорость стирания еще на 40%
+            } else {
+                // Печатаем текст
+                textElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 105; // увеличил скорость набора на 30%
             }
             
-            // Через 0.5 секунды включаем мигание курсора
-            blinkTimeout = setTimeout(() => {
-                cursorElement.classList.remove('no-blink');
+            // Если слово полностью напечатано
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = false;
                 
-                // Через 3 секунды начинаем стирать и выключаем мигание
-                setTimeout(() => {
-                    isDeleting = true;
-                    type();
-                }, 3000);
-            }, 500);
+                // Очищаем предыдущий таймаут, если он существует
+                if (blinkTimeout) {
+                    clearTimeout(blinkTimeout);
+                }
+                
+                // Через 0.5 секунды включаем мигание курсора
+                blinkTimeout = setTimeout(() => {
+                    cursorElement.classList.remove('no-blink');
+                    
+                    // Через 3 секунды начинаем стирать и выключаем мигание
+                    setTimeout(() => {
+                        isDeleting = true;
+                        type();
+                    }, 3000);
+                }, 500);
+                
+                return; // Выходим из функции, чтобы не запускать следующий вызов type()
+            }
             
-            return; // Выходим из функции, чтобы не запускать следующий вызов type()
+            // Если слово полностью стерто
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length; // переключаемся на следующее слово
+            }
+            
+            setTimeout(type, typingSpeed);
         }
         
-        // Если слово полностью стерто
-        if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length; // переключаемся на следующее слово
-        }
+        // Запускаем анимацию
+        type();
+    }
+
+    // Мобильное меню
+    const burger = document.querySelector('.header__burger');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    
+    if (burger && menuOverlay) {
+        // Инициализируем доступность
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-controls', menuOverlay.id || 'menu-overlay');
+
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation(); // Предотвращаем любые конфликты с кликами
+            
+            // Используем toggle для классов
+            const isActive = this.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+
+            // Синхронизируем aria-expanded
+            this.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            
+            // Блокируем/разблокируем скролл страницы через класс
+            if (isActive) {
+                document.body.classList.add('menu-open');
+            } else {
+                document.body.classList.remove('menu-open');
+            }
+        });
         
-        setTimeout(type, typingSpeed);
+        // Закрытие меню при клике на ссылку
+        const menuLinks = document.querySelectorAll('.menu-overlay__link, .menu-overlay__contact');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                burger.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    } else {
+        console.error('Mobile menu elements not found in DOM');
+    }
+
+    // Логика фильтрации на странице Works
+    const worksTabs = document.querySelectorAll('.works-tab');
+    const checkboxWrapper = document.querySelector('.works-tabs__checkbox');
+    const customCheckbox = document.querySelector('.custom-checkbox');
+    const worksItems = document.querySelectorAll('.works-item');
+
+    function filterWorks() {
+        // Находим активную категорию
+        const activeTab = document.querySelector('.works-tab.active');
+        const filterCategory = activeTab ? activeTab.getAttribute('data-filter') : 'all';
+        
+        // Проверяем состояние чекбокса
+        const isPaidOnly = customCheckbox && customCheckbox.classList.contains('checked');
+
+        worksItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            const itemPaid = item.getAttribute('data-paid') === 'true';
+
+            let isVisible = true;
+
+            // Фильтр по категории
+            if (filterCategory !== 'all' && itemCategory !== filterCategory) {
+                isVisible = false;
+            }
+
+            // Фильтр по чекбоксу (если включен, показываем только paid=true)
+            if (isPaidOnly && !itemPaid) {
+                isVisible = false;
+            }
+
+            // Применяем видимость через классы
+            if (isVisible) {
+                item.classList.remove('is-hidden');
+                item.classList.add('is-visible');
+            } else {
+                item.classList.remove('is-visible');
+                item.classList.add('is-hidden');
+            }
+            
+            // Убираем класс последнего элемента у всех (сброс)
+            item.classList.remove('last-visible');
+        });
+        
+        // Находим последний видимый элемент и убираем у него бордер
+        const visibleItems = Array.from(worksItems).filter(item => item.classList.contains('is-visible'));
+        if (visibleItems.length > 0) {
+            visibleItems[visibleItems.length - 1].classList.add('last-visible');
+        }
+    }
+
+    // Инициализируем начальное состояние элементов фильтрации
+    if (worksItems.length > 0) {
+        worksItems.forEach(item => {
+            // По умолчанию все элементы видимы
+            item.classList.add('is-visible');
+            item.classList.remove('is-hidden');
+        });
     }
     
-    // Запускаем анимацию
-    type();
+    // Запускаем фильтрацию при загрузке, чтобы убрать бордер у последнего элемента
+    filterWorks();
+
+    if (worksTabs.length > 0) {
+        worksTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Убираем active у всех
+                worksTabs.forEach(t => t.classList.remove('active'));
+                // Добавляем active текущему
+                this.classList.add('active');
+                // Запускаем фильтрацию
+                filterWorks();
+            });
+        });
+    }
+
+    if (checkboxWrapper && customCheckbox) {
+        checkboxWrapper.addEventListener('click', function() {
+            customCheckbox.classList.toggle('checked');
+            // Запускаем фильтрацию
+            filterWorks();
+        });
+    }
 }); 

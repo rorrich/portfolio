@@ -1,0 +1,81 @@
+/* Класс для отключения анимаций при смене темы */
+/* Utility классы для управления состояниями через JS */
+/* Повышаем специфичность для переопределения всех transition */
+body.no-transition,
+body.no-transition *,
+body.no-transition *::before,
+body.no-transition *::after {
+    transition: none;
+}
+
+/* ============================================
+   Utility классы для JS управления состояниями
+   ============================================ */
+
+/* Fade-in анимация для элементов при скролле */
+.fade-in-ready {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Повышаем специфичность для переопределения fade-in-ready */
+.fade-in-ready.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Состояние нажатия для карточек работ */
+.work-card.is-pressed {
+    transform: scale(0.98);
+    transition: transform 0.15s ease;
+}
+
+/* Блокировка скролла при открытом меню */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Состояния для фильтрации работ - повышаем специфичность */
+.works-list .works-item.is-hidden {
+    display: none;
+}
+
+.works-list .works-item.is-visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Временное отключение transition для синхронизации состояния */
+/* Повышаем специфичность для переопределения transition */
+.menu-item .element-anim.no-transition-temp,
+.footer__contacts .menu-item .element-anim.no-transition-temp {
+    transition: none;
+}
+/* Works List (New Layout) */
+.works-list {
+    padding: 40px 0;
+}
+
+.works-item {
+    display: flex;
+    gap: clamp(12px, 0.83vw + 3.96px, 20px); /* Плавно от 12px до 20px */
+    padding: clamp(24px, 1.67vw + 7.92px, 40px) 0; /* Плавно от 24px до 40px */
+    border-bottom: 1px solid var(--outline-color);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.works-item:last-child {
+    border-bottom: 1px solid var(--outline-color);
+}
+
+/* Повышаем специфичность для переопределения :last-child */
+.works-list .works-item.last-visible {
+    border-bottom: none;
+}
+
+.works-page-content {
+    width: 100%;
+    overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+}

@@ -1,0 +1,60 @@
+/* Tokens:
+   - Цвета: var(--background-color), var(--text-color), var(--secondary-text-color), var(--outline-color)
+   - Заголовки H1: var(--heading-h1-size), var(--heading-h1-line-height) - works-hero__title, about-me__title
+   - Заголовки H2: var(--heading-h2-size), var(--heading-h2-line-height) - hero__title-group, works__title
+   - Заголовки H3: var(--heading-h3-size), var(--heading-h3-line-height) - works-item__title
+   - Заголовки H4: var(--heading-h4-size), var(--heading-h4-line-height) - work-card__title
+   - Типографика Body M: var(--body-m-size) - основной текст описаний
+   - Типографика Body S: var(--body-s-size) - мелкий текст, метки, детали (без hover)
+   - Типографика Label S: var(--label-s-size) - метки в шапке/подвале (с hover эффектом)
+   Добавляйте новые темы, переопределяя эти переменные, без ввода новых ключей. */
+:root {
+    --background-color: #F5F1F0;
+    --text-color: #000000;
+    --secondary-text-color: #8F8F8F;
+    --outline-color: #CBCBD0;
+    --heading-h1-size: clamp(60px, 16.6vw, 320px);
+    --heading-h1-line-height: 1.2;
+    --heading-h2-size: clamp(48px, 15.5px + 9.03vw, 160px);
+    --heading-h2-line-height: clamp(60px, 16.2px + 12.17vw, 211.65px);
+    --heading-h3-size: clamp(40px, 3.125vw + 1.25px, 60px);
+    --heading-h3-line-height: 1;
+    --heading-h4-size: clamp(32px, 1.25vw + 27.875px, 40px);
+    --heading-h4-line-height: 1.275;
+    --body-m-size: clamp(18px, 15.96px + 0.21vw, 20px);
+    --body-s-size: clamp(14px, 0.21vw + 13.96px, 16px);
+    --label-s-size: clamp(14px, 0.21vw + 13.96px, 16px);
+}
+
+/* Темная тема */
+body[data-theme="dark"] {
+    --background-color: #141313;
+    --text-color: #EADBDB;
+    --secondary-text-color: #B5A8A8;
+    --outline-color: #3B3535;
+}
+
+/* Зеленая тема */
+body[data-theme="green"] {
+    --background-color: #22351B;
+    --text-color: #F7CDDB;
+    --secondary-text-color: #D5B9C3;
+    --outline-color: #445E3B;
+}
+
+/* Мягкая тема */
+body[data-theme="soft"] {
+    --background-color: #9BB6D2;
+    --text-color: #FFFFFF;
+    --secondary-text-color: #EAF0F6;
+    --outline-color: #C0D6E3;
+}
+
+/* Синяя тема */
+body[data-theme="blue"] {
+    --background-color: #131844;
+    --text-color: #E2281E;
+    --secondary-text-color: #C9584D;
+    --outline-color: #273A62;
+}
+

@@ -337,4 +337,60 @@ document.addEventListener('DOMContentLoaded', function() {
             filterWorks();
         });
     }
+
+    // Обработчик клика на первый works-item.is-visible (страница works.html)
+    const firstVisibleWorksItem = document.querySelector('.works-item.is-visible');
+    if (firstVisibleWorksItem) {
+        firstVisibleWorksItem.addEventListener('click', function(e) {
+            // Проверяем, что клик не по ссылке внутри
+            if (!e.target.closest('a')) {
+                window.location.href = 'dr_coffee.html';
+            }
+        });
+    }
+
+    // Обработчик клика на первый work-card__content (главная страница)
+    const firstWorkCardContent = document.querySelector('.work-card__content');
+    if (firstWorkCardContent) {
+        firstWorkCardContent.addEventListener('click', function(e) {
+            // Проверяем, что клик не по ссылке внутри
+            if (!e.target.closest('a')) {
+                window.location.href = 'dr_coffee.html';
+            }
+        });
+    }
+
+    // Обработчик клика на work-card__picture в 3-й карточке (Cleanner) на главной странице
+    const allWorkCards = document.querySelectorAll('.work-card');
+    if (allWorkCards.length >= 3) {
+        const thirdWorkCard = allWorkCards[2]; // 3-я карточка (индекс 2)
+        const thirdWorkCardPicture = thirdWorkCard.querySelector('.work-card__picture');
+        if (thirdWorkCardPicture) {
+            thirdWorkCardPicture.addEventListener('click', function(e) {
+                // Проверяем, что клик не по ссылке внутри
+                if (!e.target.closest('a')) {
+                    window.location.href = 'cleanner.html';
+                }
+            });
+        }
+    }
+
+    // Обработчик клика на последний works-item.is-visible.last-visible (Cleanner) на странице работ
+    // Используем делегирование событий, так как классы добавляются динамически
+    const worksListContainer = document.querySelector('.works-list');
+    if (worksListContainer) {
+        worksListContainer.addEventListener('click', function(e) {
+            const clickedItem = e.target.closest('.works-item.is-visible.last-visible');
+            if (clickedItem) {
+                // Проверяем, что клик не по ссылке внутри
+                if (!e.target.closest('a')) {
+                    // Проверяем, что это действительно последний видимый элемент (Cleanner)
+                    const allVisibleLast = document.querySelectorAll('.works-item.is-visible.last-visible');
+                    if (allVisibleLast.length > 0 && clickedItem === allVisibleLast[allVisibleLast.length - 1]) {
+                        window.location.href = 'cleanner.html';
+                    }
+                }
+            }
+        });
+    }
 }); 

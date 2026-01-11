@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Coffee - Portfolio</title>
+    <!-- Подключаем шрифт Onest -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Подключаем основные стили для переменных и базовой сетки -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Подключаем уникальные стили для этой страницы -->
+    <link rel="stylesheet" href="css/work-layout.css">
+</head>
+<body class="dr-coffee-page">
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="header__content">
+            <div class="header__logo">
+                <a href="index.html" class="logo-picture">
+                    <svg width="56" height="47" aria-hidden="true" focusable="false">
+                        <use href="images/sprite.svg#icon-logo"/>
+                    </svg>
+                </a>
+            </div>
+            <button type="button" class="header__color-changer" aria-label="Сменить цветовую тему">какой ты сегодня</button>
+            <button type="button" class="header__burger" aria-expanded="false" aria-controls="menu-overlay">
+                <img src="images/burger.svg" alt="Меню" class="burger-icon">
+                <img src="images/burger-close.svg" alt="Закрыть" class="burger-close-icon">
+            </button>
+            <nav class="header__menu">
+                <a href="about.html" class="menu-item">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>who я</span>
+                </a>
+                <a href="works.html" class="menu-item">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>работы</span>
+                    <span class="menu-item__number">[3]</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Мобильное меню (оверлей) -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-overlay__content">
+            <div class="menu-overlay__sections">
+                <a href="index.html" class="menu-overlay__link">главная</a>
+                <a href="about.html" class="menu-overlay__link">who я</a>
+                <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
+            </div>
+            
+            <div class="menu-overlay__contacts">
+                <a href="#" class="menu-overlay__contact">telegram</a>
+                <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Промо блок -->
+        <section class="work-promo project-dr-coffee">
+            <div class="work-promo__content">
+                <div class="work-promo__main-info">
+                    <h3 class="work-promo-title">Doctor Coffee</h3>
+                    <p class="work-promo-subtitle">редизайн сайта по ремонту кофемашин</p>
+                </div>
+                
+                <div class="work-promo__meta">
+                    <div class="meta-item">
+                        <span class="work-meta-label">индустрия</span>
+                        <span class="work-meta-value">сфера услуг</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="work-meta-label">дата</span>
+                        <span class="work-meta-value">январь 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="work-meta-label">сайт</span>
+                        <span class="work-meta-value">в разработке</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 1: Почему редизайн -->
+        <section class="work-section work-theme--light">
+            <div class="work-container">
+                <div class="work-row work-row--small-margin">
+                    <div class="work-row__left">
+                        <h4 class="work-section-title">Почему редизайн?</h4>
+                        <ul class="dc-list work-main-text">
+                            <li>Сайт устарел и требовал обновления.</li>
+                            <li>Непонятная структура: в разделе "услуги" вместо перечня услуг были указаны бренды кофемашин.</li>
+                            <li>Недостаток важной информации. Не было описания этапов ремонта, сроков, гарантий и цен, что усложняло выбор. Не было формы обратной связи. Потенциальные клиенты не могли оставить заявку на ремонт, нужно было звонить в сервис.</li>
+                        </ul>
+                    </div>
+                    <div class="work-row__right"></div>
+                </div>
+
+                <div class="work-grid-2">
+                    <div class="dc-card dc-card--dark">
+                        <img src="images/dr_coffee_research.webp" alt="Процесс исследований" class="work-image">
+                        <span class="dc-card__label">процесс</span>
+                    </div>
+                    <div class="dc-card dc-card--orange">
+                        <img src="images/dr_coffee_structure.webp" alt="Структура сайта" class="work-image">
+                        <span class="dc-card__label">структура</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 2: Подход -->
+        <section class="work-section work-theme--light-gray">
+            <div class="work-container">
+                <div class="work-row">
+                    <div class="work-row__left">
+                        <span class="work-short-desc">подход</span>
+                    </div>
+                    <div class="work-row__right">
+                        <div class="work-main-text">
+                            <p>В компании изначально использовались дружелюбные и смешнявые элементы: шрифт в логотипе, их маскот — доктор с кофейным шприцом. Хотелось сохранить и усилить эту особенность в дизайне.</p>
+                            <p>Элементы делала скругелнными. Шрифт был выбран крупным и дружелюбным, а тексты формулировала так, чтобы поддержать легкость и немного шутливый тон бренда.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dc-image-stack">
+                    <div class="work-image-wrapper">
+                         <img src="images/dr_coffee_coffee_machine.avif" alt="Кофемашина" class="work-image">
+                    </div>
+                    <div class="work-image-wrapper">
+                        <img src="images/dr_coffee_about.avif" alt="О компании" class="work-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 3: Забота -->
+        <section class="work-section work-theme--light">
+            <div class="work-container">
+                <div class="work-row">
+                    <div class="work-row__left">
+                        <span class="work-short-desc">забота</span>
+                    </div>
+                    <div class="work-row__right">
+                        <div class="work-main-text">
+                            <p>Поломка техники всегда вызывает стресс. Человек не обязан разбираться в ремонте, однако возможные затраты хочется понимать и без диагностики. Так цены были сформированы по поломкам, которые понятны каждому. А для тех, кто разбирается, добавлены точные названия поломок.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-grid-2">
+                    <div class="dc-card">
+                         <img src="images/dr_coffee_price1.webp" alt="Цены вариант 1" class="work-image">
+                    </div>
+                    <div class="dc-card">
+                         <img src="images/dr_coffee_price2.webp" alt="Цены вариант 2" class="work-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 4: Проблемка -->
+        <section class="work-section work-theme--light">
+            <div class="work-container">
+                <!-- Блок 5: Проблемка (Оранжевый фон) - внутри блока 4 -->
+                <div class="dc-section-inner project-dr-coffee-orange">
+                    <div class="work-container">
+                        <div class="work-row work-theme--dark">
+                            <div class="work-row__left">
+                                <span class="work-short-desc">проблемка</span>
+                            </div>
+                            <div class="work-row__right">
+                                <div class="work-main-text">
+                                    <p>Сперва я выделяла бренды кофемашин крупными логотипами — это упрощало визуальный поиск, позволяло разместить больше элементов и сохраняло чистый интерфейс.</p>
+                                    <p>Однако для SEO требовалось описание, поэтому пришлось переделать карточки. Все еще считаю решение спорным, так как копипастный текст не несет пользы пользователю, а интерфейс кажется тяжелее. Информацию донесла, спорить не стала — в SEO не разбираюсь.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="work-grid-2">
+                            <div class="dc-before-after">
+                                <span class="dc-before-after__label">было</span>
+                                <img src="images/dr_coffee_repairlist_old.webp" alt="Было" class="work-image">
+                            </div>
+                            <div class="dc-before-after">
+                                <span class="dc-before-after__label">стало</span>
+                                <img src="images/dr_coffee_repairlist_new.webp" alt="Стало" class="work-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 5: Бренды и контакты -->
+        <section class="work-section work-theme--light-gray">
+            <div class="work-container dc-image-stack">
+                <div class="work-image-wrapper">
+                    <img src="images/dr_coffee_brandpage.avif" alt="Бренд Jura" class="work-image">
+                </div>
+                <div class="work-image-wrapper">
+                    <img src="images/dr_coffee_articles.avif" alt="Статьи" class="work-image">
+                </div>
+                <div class="work-image-wrapper">
+                    <img src="images/dr_coffee_contacts.avif" alt="Контакты" class="work-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 6: Мобилка (Темный фон) -->
+        <section class="work-section work-theme--dark project-dr-coffee-mobile-full">
+            <div class="work-container">
+                <div class="work-image-wrapper">
+                    <img src="images/dr_coffee_mobile.avif" alt="Мобильная версия" class="work-image">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Подвал (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__line">
+                <hr>
+                <div class="cat-fishing">
+                    <img src="images/cat_03.svg" alt="Кот рыбачит" width="307" height="248">
+                </div>
+            </div>
+            <div class="footer__info">
+                <div class="footer__contacts">
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>telegram</span>
+                    </div>
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>shirono.kaji@gmail.com</span>
+                    </div>
+                </div>
+                <p class="footer__description">
+                    ©2025 rorrich
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипт для работы меню -->
+    <script src="js/main.js"></script>
+    <!-- Скрипт для динамического изменения цвета шапки -->
+    <script>
+        (function() {
+            const header = document.querySelector('.header');
+            if (!header) return;
+
+            // Секции с светлым фоном (черный текст в шапке)
+            const lightSections = document.querySelectorAll('.work-theme--light, .work-theme--light-gray');
+            
+            function updateHeaderColor() {
+                const headerBottom = header.offsetTop + header.offsetHeight;
+                const scrollY = window.scrollY;
+
+                let isOverLight = false;
+
+                lightSections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollY < sectionBottom && scrollY + headerBottom > sectionTop) {
+                        isOverLight = true;
+                    }
+                });
+
+                if (isOverLight) {
+                    header.classList.add('header--light');
+                } else {
+                    header.classList.remove('header--light');
+                }
+            }
+
+            updateHeaderColor();
+            window.addEventListener('scroll', updateHeaderColor);
+            window.addEventListener('resize', updateHeaderColor);
+        })();
+    </script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 /* Header */
 .header {
-    padding: 20px 0;
+    padding: 1.25rem 0; /* 20px -> 1.25rem */
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2005; /* Выше мобильного меню (2000) и бургера (2001) */
+    z-index: 2005;
     background-color: transparent;
     border-bottom: 1px solid var(--outline-color);
 }
@@ -14,29 +14,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px; /* отступы */
-    width: 100%; /* на всю ширину */
+    padding: 0 24px;
+    width: 100%;
     box-sizing: border-box;
 }
 
 .header__logo {
-    width: 100px;
-    height: 50px;
+    width: 6.25rem; /* 100px -> 6.25rem */
+    height: 3.125rem; /* 50px -> 3.125rem */
     display: flex;
     align-items: center;
 }
 
 .logo-picture {
-    width: 56px;
-    height: 47px;
+    width: 3.5rem; /* 56px -> 3.5rem */
+    height: 2.9375rem; /* 47px -> 2.9375rem */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo-picture svg {
-    width: 56px;
-    height: 47px;
+    width: 100%;
+    height: 100%;
     fill: currentColor;
 }
 
@@ -49,11 +49,11 @@
     height: 1.875em; /* было 30px */
     font-size: var(--body-s-size);
     font-family: inherit; /* Наследуем шрифт от body */
-    letter-spacing: 0.32px;
+    letter-spacing: 0.02em; /* 0.32px / 16px */
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    font-weight: 350;
+    font-weight: var(--label-s-font-weight);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +75,7 @@
 .header__menu {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0.25rem; /* 4px -> 0.25rem */
 }
 
 .header__burger {
@@ -85,13 +85,13 @@
 .menu-item {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 0.25rem; /* 4px -> 0.25rem */
     position: relative;
     cursor: pointer;
     transition: font-variation-settings 0.4s ease;
-    height: 22px;
-    font-weight: 350;
-    width: 100px;
+    height: 1.375rem; /* 22px -> 1.375rem */
+    font-weight: var(--label-s-font-weight);
+    width: 6.25rem; /* 100px -> 6.25rem */
     font-size: var(--label-s-size);
 }
 
@@ -136,7 +136,7 @@
 
 .menu-item__number {
     font-size: var(--body-s-size);
-    font-weight: 450;
+    font-weight: var(--body-s-font-weight);
 }
 
 .menu-item:hover .menu-item__number {
@@ -188,7 +188,7 @@
 
 .hero__title h1 {
     font-size: 1em;
-    font-weight: 350;
+    font-weight: var(--heading-h2-font-weight);
     line-height: var(--heading-h2-line-height);
     width: fit-content; /* hug content */
 }
@@ -226,7 +226,7 @@
 
 .hero__typing {
     font-size: 1em;
-    font-weight: 350;
+    font-weight: var(--heading-h2-font-weight);
     line-height: var(--heading-h2-line-height);
     display: flex;
     align-items: center;
@@ -260,8 +260,8 @@
 .short-description {
     font-size: var(--body-s-size);
     letter-spacing: 0.32px;
-    line-height: 22px;
-    font-weight: 350;
+    line-height: var(--body-s-line-height);
+    font-weight: var(--body-s-font-weight);
     height: 211px;
     display: flex;
     flex-direction: column;
@@ -401,7 +401,7 @@
     background-color: transparent;
     color: var(--background-color);
     font-family: 'Onest', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .skill-arrow {
@@ -440,7 +440,7 @@
 
 .works__title h2 {
     font-size: var(--heading-h2-size);
-    font-weight: 350;
+    font-weight: var(--heading-h2-font-weight);
     line-height: var(--heading-h2-line-height);
     position: relative;
     z-index: 1;
@@ -454,6 +454,7 @@
     line-height: 22px;
     display: flex;
     flex-direction: column;
+    font-weight: 300;
     justify-content: flex-end;
     padding-bottom: 44px;
     width: 130px;
@@ -683,20 +684,20 @@
     color: var(--secondary-text-color); /* Используем переменную темы */
     font-size: var(--body-s-size);
     letter-spacing: 0.32px;
-    font-weight: 350;
+    font-weight: var(--body-s-font-weight);
 }
 
 .work-card__year {
     font-size: var(--body-s-size);
     letter-spacing: 0.32px;
-    font-weight: 350;
+    font-weight: var(--body-s-font-weight);
 }
 
 .work-card.large .work-card__title,
 .work-card.medium .work-card__title,
 .work-card.small .work-card__title {
     font-size: var(--heading-h4-size);
-    font-weight: 350;
+    font-weight: var(--heading-h4-font-weight);
     line-height: var(--heading-h4-line-height);
 }
 
@@ -763,17 +764,21 @@
     align-items: flex-start;
     gap: 20px;
     padding-top: 40px; /* Верхний отступ */
+    width: 100%;
 }
 
 .footer__description {
-    max-width: 445px;
+    flex: 1;
     font-size: var(--body-s-size);
     letter-spacing: 0.32px;
-    line-height: 22px;
-    font-weight: 350;
+    line-height: var(--body-s-line-height);
+    font-weight: var(--body-s-font-weight);
+    text-align: right;
+    align-self: flex-end;
 }
 
 .footer__contacts {
+    flex: 1;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -802,11 +807,12 @@
 .footer__copyright {
     font-size: var(--body-s-size);
     letter-spacing: 0.32px;
-    line-height: 22px;
+    line-height: var(--body-s-line-height);
     margin-top: 8px;
-    font-weight: 350;
+    font-weight: var(--body-s-font-weight);
 }
 
 /* Скрываем мобильное меню на десктопе */
 .menu-overlay {
     display: none;
+}

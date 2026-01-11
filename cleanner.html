@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleanner - Portfolio</title>
+    <!-- Подключаем шрифт Onest -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Подключаем основные стили для переменных и базовой сетки -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Подключаем уникальные стили для этой страницы -->
+    <link rel="stylesheet" href="css/work-layout.css">
+</head>
+<body class="cleanner-page">
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="header__content">
+            <div class="header__logo">
+                <a href="index.html" class="logo-picture">
+                    <svg width="56" height="47" aria-hidden="true" focusable="false">
+                        <use href="images/sprite.svg#icon-logo"/>
+                    </svg>
+                </a>
+            </div>
+            <button type="button" class="header__color-changer" aria-label="Сменить цветовую тему">какой ты сегодня</button>
+            <button type="button" class="header__burger" aria-expanded="false" aria-controls="menu-overlay">
+                <img src="images/burger.svg" alt="Меню" class="burger-icon">
+                <img src="images/burger-close.svg" alt="Закрыть" class="burger-close-icon">
+            </button>
+            <nav class="header__menu">
+                <a href="about.html" class="menu-item">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>who я</span>
+                </a>
+                <a href="works.html" class="menu-item">
+                    <div class="element-anim">
+                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <use href="images/sprite.svg#icon-arrow-right"/>
+                        </svg>
+                    </div>
+                    <span>работы</span>
+                    <span class="menu-item__number">[3]</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Мобильное меню (оверлей) -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-overlay__content">
+            <div class="menu-overlay__sections">
+                <a href="index.html" class="menu-overlay__link">главная</a>
+                <a href="about.html" class="menu-overlay__link">who я</a>
+                <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
+            </div>
+            
+            <div class="menu-overlay__contacts">
+                <a href="#" class="menu-overlay__contact">telegram</a>
+                <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Промо блок -->
+        <section class="work-promo project-cleanner">
+            <div class="work-promo__content">
+                <div class="work-promo__main-info">
+                    <h3 class="work-promo-title">Cleanner</h3>
+                    <p class="work-promo-subtitle">мобильное приложения для робота пылесоса</p>
+                </div>
+                
+                <div class="work-promo__meta">
+                    <div class="meta-item">
+                        <span class="work-meta-label">индустрия</span>
+                        <span class="work-meta-value">смарт-техника</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="work-meta-label">дата</span>
+                        <span class="work-meta-value">декабрь 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="work-meta-label">сайт</span>
+                        <span class="work-meta-value">¯\_(ツ)_/¯</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 1: А зачем оно вообще надо? -->
+        <section class="work-section work-theme--light">
+            <div class="work-container">
+                <div class="work-row work-row--small-margin">
+                    <div class="work-row__left">
+                        <h4 class="work-section-title">А зачем оно вообще надо?</h4>
+                        <div class="work-main-text">
+                            <p>Это учебный проект для изучения платформенного дизайна и принципов Material Design 3. Задачей было спроектировать приложение для управления роботом-пылесосом, следуя гайдлайнам Material Design и паттернам Android.</p>
+                            <p>Почему робот-пылесос? Дома есть робот-пылесос, и я постоянно пользуюсь его приложением. Есть некоторые сценарии, которые работают не совсем удобно. Решила использовать эту боль как основу для проекта — доработать недостающие сценарии и упростить те, что работают неудобно.</p>
+                        </div>
+                    </div>
+                    <div class="work-row__right"></div>
+                </div>
+
+                <div class="work-grid-2">
+                    <div class="work-image-wrapper">
+                        <img src="images/cleanner_mockup.avif" alt="Mockup" class="work-image">
+                    </div>
+                    <div class="work-image-wrapper project-cleanner-btn-bg">
+                        <img src="images/cleanner_mainbtn.avif" alt="Main button" class="work-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 2: Главный экран -->
+        <section class="work-section work-theme--dark">
+            <div class="work-container">
+                <div class="work-row">
+                    <div class="work-row__left">
+                        <span class="work-short-desc">главный экран</span>
+                    </div>
+                    <div class="work-row__right">
+                        <div class="work-main-text">
+                            <p>На главной собрана вся ключевая информация для ежедневного использования. Сразу видно текущий статус робота — готов к работе, заряжается или уже убирает. Показаны критичные индикаторы: заряд батареи и заполненность пылесборника.</p>
+                            <p>Есть диагностика, где показаны каждая из деталей, ее состояние, и предполагаемый срок службы. Также там предоставлено краткое описание и визуально показано, где что находится.</p>
+                            <p>Основной фишкой хотелось сделать озвучку робота при разный сценариях. Хотелось, чтобы пользователь сам мог переназначить фразы и выбрать один из нескольких вариантов голосов. Вообще, не сказать, что это супер нужная фича. Но она добавляет эмоциональную связь с устройством и создает забавные моменты. Люди любят постить смешные видосики в соцсети — мемные фразы робота могут стать виральным контентом и бесплатной рекламой на фоне этих роликов. При этом озвучку можно полностью отключить, если она начинает раздражать.</p>
+                            <p>В отдельном разделе показаны уведомления: когда была закончена уборка, возможные сбои или застревания в процессе, необходимость почистить контейнер или заменить фильтр.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-image-wrapper">
+                    <img src="images/cleanner_screenshots1.avif" alt="Screenshots" class="work-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 3: Робот -->
+        <section class="work-section work-theme--dark">
+            <div class="work-container">
+                <div class="work-image-wrapper">
+                    <img src="images/cleanner_robot.avif" alt="Robot" class="work-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 4: Карта -->
+        <section class="work-section work-theme--dark">
+            <div class="work-container">
+                <div class="work-row">
+                    <div class="work-row__left">
+                        <span class="work-short-desc">карта</span>
+                    </div>
+                    <div class="work-row__right">
+                        <div class="work-main-text">
+                            <p>При первом запуске робот составляет карту квартиры — на это нужно время, поэтому добавлен индикатор прогресса, чтобы пользователь понимал, что процесс идет. После завершения сканирования на экране появляется схема помещения с автоматически определенными комнатами.</p>
+                            <p>Карту можно редактировать под себя. Каждую комнату можно переименовать. Есть возможность добавить "стоп-зоны" — области, куда робот не должен заезжать. Это удобно для мест с проводами, мисками животных или хрупкими предметами на полу. Границы комнат тоже можно менять вручную: добавить новую зону, изменить размеры существующей или удалить лишнюю.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-image-wrapper">
+                    <img src="images/cleanner_screenshots2.avif" alt="Screenshots" class="work-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 5: Финальные изображения -->
+        <section class="work-section work-theme--dark">
+            <div class="work-container">
+                <div class="work-grid-2">
+                    <div class="work-image-wrapper">
+                        <img src="images/cleanner_mockups_phone.avif" alt="Phone mockups" class="work-image">
+                    </div>
+                    <div class="work-image-wrapper">
+                        <img src="images/cleanner_robot2.avif" alt="Robot 2" class="work-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Подвал (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__line">
+                <hr>
+                <div class="cat-fishing">
+                    <img src="images/cat_03.svg" alt="Кот рыбачит" width="307" height="248">
+                </div>
+            </div>
+            <div class="footer__info">
+                <div class="footer__contacts">
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>telegram</span>
+                    </div>
+                    <div class="menu-item menu-item--wide">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>shirono.kaji@gmail.com</span>
+                    </div>
+                </div>
+                <p class="footer__description">
+                    ©2025 rorrich
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипт для работы меню -->
+    <script src="js/main.js"></script>
+    <!-- Скрипт для динамического изменения цвета шапки -->
+    <script>
+        (function() {
+            const header = document.querySelector('.header');
+            if (!header) return;
+
+            // Секции с светлым фоном (черный текст в шапке)
+            const lightSections = document.querySelectorAll('.work-theme--light, .work-theme--light-gray');
+            
+            function updateHeaderColor() {
+                const headerBottom = header.offsetTop + header.offsetHeight;
+                const scrollY = window.scrollY;
+
+                let isOverLight = false;
+
+                lightSections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollY < sectionBottom && scrollY + headerBottom > sectionTop) {
+                        isOverLight = true;
+                    }
+                });
+
+                if (isOverLight) {
+                    header.classList.add('header--light');
+                } else {
+                    header.classList.remove('header--light');
+                }
+            }
+
+            updateHeaderColor();
+            window.addEventListener('scroll', updateHeaderColor);
+            window.addEventListener('resize', updateHeaderColor);
+        })();
+    </script>
+</body>
+</html>

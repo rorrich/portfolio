@@ -11,7 +11,7 @@
     <!-- Подключаем основные стили для переменных и базовой сетки -->
     <link rel="stylesheet" href="css/styles.css">
     <!-- Подключаем уникальные стили для этой страницы -->
-    <link rel="stylesheet" href="css/work-layout.css">
+    <link rel="stylesheet" href="css/case-layout.css">
 </head>
 <body class="cleanner-page">
 
@@ -70,118 +70,91 @@
 
     <main>
         <!-- Промо блок -->
-        <section class="work-promo project-cleanner">
-            <div class="work-promo__content">
-                <div class="work-promo__main-info">
-                    <h3 class="work-promo-title">Cleanner</h3>
-                    <p class="work-promo-subtitle">мобильное приложения для робота пылесоса</p>
+        <section class="case-hero" style="background-image: url('images/cleanner_main.avif');">
+            <div class="case-hero__content">
+                <div class="case-hero__main-info">
+                    <h3 class="case-hero__title">Cleanner</h3>
+                    <p class="case-hero__subtitle">мобильное приложения для робота пылесоса</p>
                 </div>
                 
-                <div class="work-promo__meta">
-                    <div class="meta-item">
-                        <span class="work-meta-label">индустрия</span>
-                        <span class="work-meta-value">смарт-техника</span>
+                <div class="case-hero__meta">
+                    <div class="case-meta-item">
+                        <span class="case-meta__label">индустрия</span>
+                        <span class="case-meta__value">смарт-техника</span>
                     </div>
-                    <div class="meta-item">
-                        <span class="work-meta-label">дата</span>
-                        <span class="work-meta-value">декабрь 2024</span>
+                    <div class="case-meta-item">
+                        <span class="case-meta__label">дата</span>
+                        <span class="case-meta__value">декабрь 2024</span>
                     </div>
-                    <div class="meta-item">
-                        <span class="work-meta-label">сайт</span>
-                        <span class="work-meta-value">¯\_(ツ)_/¯</span>
+                    <div class="case-meta-item">
+                        <span class="case-meta__label">сайт</span>
+                        <span class="case-meta__value">¯\_(ツ)_/¯</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Блок 1: А зачем оно вообще надо? -->
-        <section class="work-section work-theme--light">
-            <div class="work-container">
-                <div class="work-row work-row--small-margin">
-                    <div class="work-row__left">
-                        <h4 class="work-section-title">А зачем оно вообще надо?</h4>
-                        <div class="work-main-text">
-                            <p>Это учебный проект для изучения платформенного дизайна и принципов Material Design 3. Задачей было спроектировать приложение для управления роботом-пылесосом, следуя гайдлайнам Material Design и паттернам Android.</p>
-                            <p>Почему робот-пылесос? Дома есть робот-пылесос, и я постоянно пользуюсь его приложением. Есть некоторые сценарии, которые работают не совсем удобно. Решила использовать эту боль как основу для проекта — доработать недостающие сценарии и упростить те, что работают неудобно.</p>
-                        </div>
+        <section class="case-section">
+            <div class="case-container">
+                <div class="text-stack">
+                    <h4 class="text-stack__head">А зачем оно вообще надо?</h4>
+                    <div class="text-stack__body">
+                        <p>Это учебный проект для изучения платформенного дизайна и принципов Material Design 3. Задачей было спроектировать приложение для управления роботом-пылесосом, следуя гайдлайнам Material Design и паттернам Android.</p>
+                        <p>Почему робот-пылесос? Дома есть робот-пылесос, и я постоянно пользуюсь его приложением. Есть некоторые сценарии, которые работают не совсем удобно. Решила использовать эту боль как основу для проекта — доработать недостающие сценарии и упростить те, что работают неудобно.</p>
                     </div>
-                    <div class="work-row__right"></div>
                 </div>
 
-                <div class="work-grid-2">
-                    <div class="work-image-wrapper">
-                        <img src="images/cleanner_mockup.avif" alt="Mockup" class="work-image">
-                    </div>
-                    <div class="work-image-wrapper project-cleanner-btn-bg">
-                        <img src="images/cleanner_mainbtn.avif" alt="Main button" class="work-image">
-                    </div>
+                <div class="image-grid">
+                    <img src="images/cleanner_mockup.avif" alt="Mockup" class="case-image">
+                    <img src="images/cleanner_mainbtn.avif" alt="Main button" class="case-image" style="background-color: #111114;">
                 </div>
             </div>
         </section>
 
         <!-- Блок 2: Главный экран -->
-        <section class="work-section work-theme--dark">
-            <div class="work-container">
-                <div class="work-row">
-                    <div class="work-row__left">
-                        <span class="work-short-desc">главный экран</span>
-                    </div>
-                    <div class="work-row__right">
-                        <div class="work-main-text">
-                            <p>На главной собрана вся ключевая информация для ежедневного использования. Сразу видно текущий статус робота — готов к работе, заряжается или уже убирает. Показаны критичные индикаторы: заряд батареи и заполненность пылесборника.</p>
-                            <p>Есть диагностика, где показаны каждая из деталей, ее состояние, и предполагаемый срок службы. Также там предоставлено краткое описание и визуально показано, где что находится.</p>
-                            <p>Основной фишкой хотелось сделать озвучку робота при разный сценариях. Хотелось, чтобы пользователь сам мог переназначить фразы и выбрать один из нескольких вариантов голосов. Вообще, не сказать, что это супер нужная фича. Но она добавляет эмоциональную связь с устройством и создает забавные моменты. Люди любят постить смешные видосики в соцсети — мемные фразы робота могут стать виральным контентом и бесплатной рекламой на фоне этих роликов. При этом озвучку можно полностью отключить, если она начинает раздражать.</p>
-                            <p>В отдельном разделе показаны уведомления: когда была закончена уборка, возможные сбои или застревания в процессе, необходимость почистить контейнер или заменить фильтр.</p>
-                        </div>
+        <section class="case-section case-section--dark">
+            <div class="case-container">
+                <div class="text-split">
+                    <p class="text-split__head">главный экран</p>
+                    <div class="text-split__body">
+                        <p>На главной собрана вся ключевая информация для ежедневного использования. Сразу видно текущий статус робота — готов к работе, заряжается или уже убирает. Показаны критичные индикаторы: заряд батареи и заполненность пылесборника.</p>
+                        <p>Есть диагностика, где показаны каждая из деталей, ее состояние, и предполагаемый срок службы. Также там предоставлено краткое описание и визуально показано, где что находится.</p>
+                        <p>Основной фишкой хотелось сделать озвучку робота при разный сценариях. Хотелось, чтобы пользователь сам мог переназначить фразы и выбрать один из нескольких вариантов голосов. Вообще, не сказать, что это супер нужная фича. Но она добавляет эмоциональную связь с устройством и создает забавные моменты. Люди любят постить смешные видосики в соцсети — мемные фразы робота могут стать виральным контентом и бесплатной рекламой на фоне этих роликов. При этом озвучку можно полностью отключить, если она начинает раздражать.</p>
+                        <p>В отдельном разделе показаны уведомления: когда была закончена уборка, возможные сбои или застревания в процессе, необходимость почистить контейнер или заменить фильтр.</p>
                     </div>
                 </div>
 
-                <div class="work-image-wrapper">
-                    <img src="images/cleanner_screenshots1.avif" alt="Screenshots" class="work-image">
-                </div>
+                <img src="images/cleanner_screenshots1.avif" alt="Screenshots" class="case-image">
             </div>
         </section>
 
         <!-- Блок 3: Робот -->
-        <section class="work-section work-theme--dark">
-            <div class="work-container">
-                <div class="work-image-wrapper">
-                    <img src="images/cleanner_robot.avif" alt="Robot" class="work-image">
-                </div>
-            </div>
+        <section class="case-section case-section--dark">
+            <img src="images/cleanner_robot.avif" alt="Robot" class="case-image">
         </section>
 
         <!-- Блок 4: Карта -->
-        <section class="work-section work-theme--dark">
-            <div class="work-container">
-                <div class="work-row">
-                    <div class="work-row__left">
-                        <span class="work-short-desc">карта</span>
-                    </div>
-                    <div class="work-row__right">
-                        <div class="work-main-text">
-                            <p>При первом запуске робот составляет карту квартиры — на это нужно время, поэтому добавлен индикатор прогресса, чтобы пользователь понимал, что процесс идет. После завершения сканирования на экране появляется схема помещения с автоматически определенными комнатами.</p>
-                            <p>Карту можно редактировать под себя. Каждую комнату можно переименовать. Есть возможность добавить "стоп-зоны" — области, куда робот не должен заезжать. Это удобно для мест с проводами, мисками животных или хрупкими предметами на полу. Границы комнат тоже можно менять вручную: добавить новую зону, изменить размеры существующей или удалить лишнюю.</p>
-                        </div>
+        <section class="case-section case-section--dark">
+            <div class="case-container">
+                <div class="text-split">
+                    <p class="text-split__head">карта</p>
+                    <div class="text-split__body">
+                        <p>При первом запуске робот составляет карту квартиры — на это нужно время, поэтому добавлен индикатор прогресса, чтобы пользователь понимал, что процесс идет. После завершения сканирования на экране появляется схема помещения с автоматически определенными комнатами.</p>
+                        <p>Карту можно редактировать под себя. Каждую комнату можно переименовать. Есть возможность добавить "стоп-зоны" — области, куда робот не должен заезжать. Это удобно для мест с проводами, мисками животных или хрупкими предметами на полу. Границы комнат тоже можно менять вручную: добавить новую зону, изменить размеры существующей или удалить лишнюю.</p>
                     </div>
                 </div>
 
-                <div class="work-image-wrapper">
-                    <img src="images/cleanner_screenshots2.avif" alt="Screenshots" class="work-image">
-                </div>
+                <img src="images/cleanner_screenshots2.avif" alt="Screenshots" class="case-image">
             </div>
         </section>
 
         <!-- Блок 5: Финальные изображения -->
-        <section class="work-section work-theme--dark">
-            <div class="work-container">
-                <div class="work-grid-2">
-                    <div class="work-image-wrapper">
-                        <img src="images/cleanner_mockups_phone.avif" alt="Phone mockups" class="work-image">
-                    </div>
-                    <div class="work-image-wrapper">
-                        <img src="images/cleanner_robot2.avif" alt="Robot 2" class="work-image">
-                    </div>
+        <section class="case-section case-section--dark">
+            <div class="case-container">
+                <div class="image-grid">
+                    <img src="images/cleanner_mockups_phone.avif" alt="Phone mockups" class="case-image">
+                    <img src="images/cleanner_robot2.avif" alt="Robot 2" class="case-image">
                 </div>
             </div>
         </section>
@@ -232,7 +205,7 @@
             if (!header) return;
 
             // Секции с светлым фоном (черный текст в шапке)
-            const lightSections = document.querySelectorAll('.work-theme--light, .work-theme--light-gray');
+            const lightSections = document.querySelectorAll('.case-section:not(.case-section--dark)');
             
             function updateHeaderColor() {
                 const headerBottom = header.offsetTop + header.offsetHeight;

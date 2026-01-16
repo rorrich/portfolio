@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Coffee - Portfolio</title>
+    <title>Roast - Portfolio</title>
     <!-- Подключаем шрифт Onest -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <!-- Подключаем уникальные стили для этой страницы -->
     <link rel="stylesheet" href="css/case-layout.css">
 </head>
-<body class="dr-coffee-page">
+<body class="roast-page">
 
     <!-- Шапка -->
     <header class="header">
@@ -70,134 +70,94 @@
 
     <main>
         <!-- Промо блок -->
-        <section class="case-hero" style="background-image: url('images/dr_coffee_main.webp');">
+        <section class="case-hero" style="background-image: url('images/roast_main.avif');">
             <div class="case-hero__content">
                 <div class="case-hero__main-info">
-                    <h3 class="case-hero__title">Doctor Coffee</h3>
-                    <p class="case-hero__subtitle">редизайн сайта по ремонту кофемашин</p>
+                    <h3 class="case-hero__title">Roast</h3>
+                    <p class="case-hero__subtitle">оптовый сайт по продаже кофе, чая и кофейных акссусаров</p>
                 </div>
                 
                 <div class="case-hero__meta">
                     <div class="case-meta-item">
                         <span class="case-meta__label">индустрия</span>
-                        <span class="case-meta__value">сфера услуг</span>
+                        <span class="case-meta__value">интернет-магазин</span>
                     </div>
                     <div class="case-meta-item">
                         <span class="case-meta__label">дата</span>
-                        <span class="case-meta__value">январь 2025</span>
+                        <span class="case-meta__value">август 2025</span>
                     </div>
                     <div class="case-meta-item">
-                        <span class="case-meta__label">сайт</span>
-                        <span class="case-meta__value">в разработке</span>
+                        <span class="case-meta__label">тип</span>
+                        <span class="case-meta__value">сайт</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Блок 1: Почему редизайн -->
+        <!-- Блок 1: Описание и 2 картинки (iPad + Picture) -->
         <section class="case-section">
             <div class="case-container">
                 <div class="text-stack">
-                    <h4 class="text-stack__head">Почему редизайн?</h4>
+                    <h4 class="text-stack__head">Что и зачем?</h4>
                     <div class="text-stack__body">
-                        <ul class="dc-list">
-                            <li>Сайт устарел и требовал обновления.</li>
-                            <li>Непонятная структура: в разделе "услуги" вместо перечня услуг были указаны бренды кофемашин.</li>
-                            <li>Недостаток важной информации. Не было описания этапов ремонта, сроков, гарантий и цен, что усложняло выбор. Не было формы обратной связи. Потенциальные клиенты не могли оставить заявку на ремонт, нужно было звонить в сервис.</li>
-                        </ul>
+                        <p>«Roast.by» — белорусская компания по обжарке кофе, которая с 2010 года развивает культуру свежеобжаренного кофе и работает с частными клиентами и бизнесом по всей стране.</p>
+                        <p>За это время команда успела выстроить собственное производство на современных ростерах и отправить десятки тысяч заказов для кофеен, офисов и розницы. Раньше оптовые поставки строились на звонках и ручной работе менеджеров, но с ростом компании возникла потребность в B2B‑сайте, который возьмёт на себя рутину и будет удобным для всех партнеров.</p>
                     </div>
                 </div>
 
                 <div class="image-grid">
-                    <div class="dc-card dc-card--dark">
-                        <img src="images/dr_coffee_research.webp" alt="Процесс исследований" class="case-image">
-                        <span class="dc-card__label">процесс</span>
-                    </div>
-                    <div class="dc-card dc-card--orange">
-                        <img src="images/dr_coffee_structure.webp" alt="Структура сайта" class="case-image">
-                        <span class="dc-card__label">структура</span>
-                    </div>
+                    <img src="images/roast_mockup_ipad.avif" alt="iPad Mockup" class="case-image">
+                    <img src="images/roast_picture.avif" alt="Picture" class="case-image">
                 </div>
             </div>
         </section>
 
-        <!-- Блок 2: Подход -->
-        <section class="case-section" style="background-color: #F3F4F6;">
+        <!-- Блок 2: Подход и Каталог -->
+        <section class="case-section" style="background-color: #F4F5F6;">
             <div class="case-container">
                 <div class="text-split">
                     <p class="text-split__head">подход</p>
                     <div class="text-split__body">
-                        <p>В компании изначально использовались дружелюбные и смешнявые элементы: шрифт в логотипе, их маскот — доктор с кофейным шприцом. Хотелось сохранить и усилить эту особенность в дизайне.</p>
-                        <p>Элементы делала скругелнными. Шрифт был выбран крупным и дружелюбным, а тексты формулировала так, чтобы поддержать легкость и немного шутливый тон бренда.</p>
+                        <p>Главная задача интерфейса — ускорить сборку заказа. Поэтому я заменила классические карточки на плотный табличный список. Это позволяет добавлять разные фасовки в один клик, пока боковая корзина моментально считает итог. В строке товара — только главное: вкусовые дескрипторы, метки спецпредложений и цены. Навигация упрощена табами и сворачиваемыми блоками. Ну и есть фильтры и сортировка для удобства.</p>
+                        <p>Оглядываясь назад, я бы сделала списки визуально легче, убрав табличные границы, но уже как есть.</p>
                     </div>
                 </div>
             </div>
-
+            
             <div class="image-stack">
-                <img src="images/dr_coffee_coffee_machine.avif" alt="Кофемашина" class="case-image">
-                <img src="images/dr_coffee_about.avif" alt="О компании" class="case-image">
+                <img src="images/roast_pc_catalog.avif" alt="PC Catalog" class="case-image">
+                <img src="images/roast_mobile1.avif" alt="Mobile View 1" class="case-image">
             </div>
         </section>
 
-        <!-- Блок 3: Забота -->
-        <section class="case-section">
+        <!-- Блок 3: Темный блок (Picture 2 + Mockup Mob) -->
+        <section class="case-section case-section--dark" style="background-color: #282828;">
+            <div class="case-container">
+                <div class="image-grid">
+                    <img src="images/roast_picture2.avif" alt="Picture 2" class="case-image">
+                    <img src="images/roast_mockup_mob.avif" alt="Mobile Mockup" class="case-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 4: Проблема и решение + PC Other -->
+        <section class="case-section" style="background-color: #F4F5F6;">
             <div class="case-container">
                 <div class="text-split">
-                    <p class="text-split__head">забота</p>
+                    <p class="text-split__head">проблема и решение</p>
                     <div class="text-split__body">
-                        <p>Поломка техники всегда вызывает стресс. Человек не обязан разбираться в ремонте, однако возможные затраты хочется понимать и без диагностики. Так цены были сформированы по поломкам, которые понятны каждому. А для тех, кто разбирается, добавлены точные названия поломок.</p>
-                    </div>
-                </div>
-
-                <div class="image-grid">
-                    <div class="dc-card">
-                         <img src="images/dr_coffee_price1.webp" alt="Цены вариант 1" class="case-image">
-                    </div>
-                    <div class="dc-card">
-                         <img src="images/dr_coffee_price2.webp" alt="Цены вариант 2" class="case-image">
+                        <p>Раньше обработка заказа была через менеджера, а это долго и муторно. Клиенты не видели остатков на складе и часто заказывали то, чего уже не было в наличии. Плюс была путаница с индивидуальными прайс-листами: менеджеры тратили время на сверку цен, а клиенты ждали счета от бухгалтерии по несколько часов. Личный кабинет решил проблему: теперь вся информация прозрачна и доступна 24/7.</p>
+                        <p>Ну и так как клиенты часто заказывают одни и те же позиции, добавила кнопку с повтором всего заказа.</p>
                     </div>
                 </div>
             </div>
+            
+            <img src="images/roast_pc_other.avif" alt="PC Other" class="case-image">
         </section>
 
-        <!-- Блок 4: Проблемка -->
-        <section class="case-section case-section--dark" style="background-image: url('images/dr_coffee_bg.avif');">
-            <div class="case-container">
-                <div class="text-split">
-                    <p class="text-split__head">проблемка</p>
-                    <div class="text-split__body">
-                        <div class="work-main-text"> <!-- Можно оставить или убрать, если стили наследуются -->
-                            <p>Сперва я выделяла бренды кофемашин крупными логотипами — это упрощало визуальный поиск, позволяло разместить больше элементов и сохраняло чистый интерфейс.</p>
-                            <p>Однако для SEO требовалось описание, поэтому пришлось переделать карточки. Все еще считаю решение спорным, так как копипастный текст не несет пользы пользователю, а интерфейс кажется тяжелее. Информацию донесла, спорить не стала — в SEO не разбираюсь.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="image-grid">
-                    <div class="dc-before-after">
-                        <span class="dc-before-after__label">было</span>
-                        <img src="images/dr_coffee_repairlist_old.webp" alt="Было" class="case-image">
-                    </div>
-                    <div class="dc-before-after">
-                        <span class="dc-before-after__label">стало</span>
-                        <img src="images/dr_coffee_repairlist_new.webp" alt="Стало" class="case-image">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Блок 5: Бренды и контакты -->
-        <section class="case-section" style="background-color: #F3F4F6;">
-            <div class="image-stack">
-                <img src="images/dr_coffee_brandpage.avif" alt="Бренд Jura" class="case-image">
-                <img src="images/dr_coffee_articles.avif" alt="Статьи" class="case-image">
-                <img src="images/dr_coffee_contacts.avif" alt="Контакты" class="case-image">
-            </div>
-        </section>
-
-        <!-- Блок 6: Мобилка (Темный фон) -->
-        <section class="case-section case-section--dark" style="background-color: #141313; background-image: url('images/dr_coffee_bg2.avif');">
-            <img src="images/dr_coffee_mobile.avif" alt="Мобильная версия" class="case-image">
+        <!-- Блок 5: Mobile 2 (Темный фон, Фулскрин) -->
+        <section class="case-section case-section--dark" style="background-color: #282828;">
+            <img src="images/roast_mobile2.avif" alt="Mobile View 2" class="case-image">
         </section>
 
     </main>
@@ -245,7 +205,7 @@
             const header = document.querySelector('.header');
             if (!header) return;
 
-            // Секции с светлым фоном (черный текст в шапке)
+            // Секции с светлым фоном (черный текст в шапке) - теперь это все case-section без модификатора --dark
             const lightSections = document.querySelectorAll('.case-section:not(.case-section--dark)');
             
             function updateHeaderColor() {

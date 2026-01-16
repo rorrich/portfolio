@@ -331,9 +331,13 @@
     gap: 40px;
 }
 
+/* 6.1 Work Card */
 .work-card {
     position: relative;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .work-card.large {
@@ -771,6 +775,9 @@ body.menu-open {
     padding: clamp(24px, 1.67vw + 7.92px, 40px) 0; /* Плавно от 24px до 40px */
     border-bottom: 1px solid var(--outline-color);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .works-item:last-child {

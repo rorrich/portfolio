@@ -42,7 +42,7 @@ body.menu-open {
 }
 
 .works-list .works-item.is-visible {
-    display: flex;
+    display: grid;
     opacity: 1;
     transform: translateY(0);
 }
@@ -55,13 +55,13 @@ body.menu-open {
 }
 /* Works List (New Layout) */
 .works-list {
-    padding: 40px 0;
+    padding: var(--space-l) 0;
 }
 
 .works-item {
     display: flex;
-    gap: clamp(12px, 0.83vw + 3.96px, 20px); /* Плавно от 12px до 20px */
-    padding: clamp(24px, 1.67vw + 7.92px, 40px) 0; /* Плавно от 24px до 40px */
+    gap: var(--space-s); /* Плавно от 12px до 20px -> var(--space-s) */
+    padding: var(--space-l) 0; /* Плавно от 24px до 40px -> var(--space-l) */
     border-bottom: 1px solid var(--outline-color);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }

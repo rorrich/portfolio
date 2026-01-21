@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="header">
-            <div class="header__content">
+            <div class="header__container">
                 <div class="header__logo">
                     <a href="index.html" class="logo-picture">
                         <svg width="56" height="47" aria-hidden="true" focusable="false">
@@ -19,41 +19,39 @@
                         </svg>
                     </a>
                 </div>
-            <button type="button" class="header__color-changer" aria-label="Сменить цветовую тему">какой ты сегодня</button>
-            <button type="button" class="header__burger" aria-expanded="false" aria-controls="menu-overlay">
-                <img src="images/burger.svg" alt="Меню" class="burger-icon">
-                <img src="images/burger-close.svg" alt="Закрыть" class="burger-close-icon">
-            </button>
-            <nav class="header__menu">
-                <a href="about.html" class="menu-item">
-                    <div class="element-anim">
-                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                            <use href="images/sprite.svg#icon-arrow-right"/>
-                        </svg>
-                    </div>
-                    <span>who я</span>
-                </a>
-                <a href="works.html" class="menu-item">
-                    <div class="element-anim">
-                        <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                            <use href="images/sprite.svg#icon-arrow-right"/>
-                        </svg>
-                    </div>
-                    <span>работы</span>
-                    <span class="menu-item__number">[3]</span>
-                </a>
-            </nav>
-        </div>
+                <button type="button" class="header__color-changer" aria-label="Сменить цветовую тему">какой ты сегодня</button>
+                <button type="button" class="header__burger" aria-expanded="false" aria-controls="menu-overlay">
+                    <img src="images/burger.svg" alt="Меню" class="burger-icon">
+                    <img src="images/burger-close.svg" alt="Закрыть" class="burger-close-icon">
+                </button>
+                <nav class="header__menu">
+                    <a href="about.html" class="menu-item">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>who я</span>
+                    </a>
+                    <a href="works.html" class="menu-item">
+                        <div class="element-anim">
+                            <svg width="12" height="9" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <use href="images/sprite.svg#icon-arrow-right"/>
+                            </svg>
+                        </div>
+                        <span>работы</span>
+                        <span class="menu-item__number">[3]</span>
+                    </a>
+                </nav>
+            </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="main-hero">
             <div class="container">
-                <div class="hero__content">
-                    <div class="hero__title-group">
-                        <div class="hero__title">
-                            <h1>просто делаю</h1>
-                        </div>
+                <div class="main-hero__content">
+                    <div class="main-hero__title-group">
+                        <h1>просто делаю</h1>
                         <div class="hero__typing-wrapper">
                             <div class="hero__arrow-wrapper">
                                 <div class="hero__arrow">
@@ -73,14 +71,6 @@
                 </div>
 
                 <div class="hero__bottom">
-                    <div class="hero__description">
-                        <p class="about__text">
-                            Привет! Меня зовут Алина, я UI/UX-дизайнер.
-                        </p>
-                        <p class="about__text">
-                            Занимаюсь дизайном сайтов и приложений, люблю продуманные интерфейсы и внимание к деталям. Этот сайт — мой способ отслеживать рост и делиться своими работами. Верстала сама, рука об руку с нейросетями. Сейчас осваиваю смежные штуки вроде айдентики, иллюстраций и анимаций.
-                        </p>
-                    </div>
                     <div class="contacts">
                         <div class="menu-item">
                             <div class="element-anim">
@@ -99,6 +89,14 @@
                             <span>shirono.kaji@gmail.com</span>
                         </div>
                     </div>
+                    <div class="hero__description">
+                        <p class="about__text fade-in-ready fade-in">
+                            Привет! Меня зовут Алина, я UI/UX-дизайнер.
+                        </p>
+                        <p class="about__text fade-in-ready fade-in">
+                            Занимаюсь дизайном сайтов и приложений, люблю продуманные интерфейсы и внимание к деталям. Этот сайт — мой способ отслеживать рост и делиться своими работами. Верстала сама, рука об руку с нейросетями. Сейчас осваиваю смежные штуки вроде айдентики, иллюстраций и анимаций.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -106,179 +104,127 @@
 
         <section class="skills-animation">
             <div class="container">
-                <div class="skills-track aa">
-                    <div class="skills-track__inner">
-                        <div class="skill-arrow">
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                    <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                <div class="skills-track left">
+                    <div class="marquee-group">
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">UX/UI</div>
-                        <div class="skill-arrow">
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                    <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">CJM</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">User Flows</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Wireframes</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Prototype</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Variables</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Miro</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Figma</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Photoshop</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Illustrator</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Procreate</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Lottie</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">ChatGBT</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Stable Diffusion</div>
+                    </div>
+                    <div class="marquee-group" aria-hidden="true">
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">UX/UI</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">CJM</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">User Flows</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Wireframes</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Prototype</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Variables</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Miro</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Figma</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Photoshop</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Illustrator</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Procreate</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Lottie</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">ChatGBT</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Stable Diffusion</div>
                     </div>
                 </div>
-                <div class="skills-track bb">
-                    <div class="skills-track__inner">
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                <div class="skills-track right">
+                    <div class="marquee-group">
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">UX/UI</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">CJM</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">User Flows</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Wireframes</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Prototype</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Variables</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Miro</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Figma</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Photoshop</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Illustrator</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Procreate</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Lottie</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">ChatGBT</div>
-                        <div class="skill-arrow">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                                <use href="images/sprite.svg#icon-arrow-up"/>
-                            </svg>
-                        </div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Stable Diffusion</div>
+                    </div>
+                    <div class="marquee-group" aria-hidden="true">
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">UX/UI</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">CJM</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">User Flows</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Wireframes</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Prototype</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Variables</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Miro</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Figma</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Photoshop</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Illustrator</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Procreate</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">Lottie</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
+                        <div class="skill-tag">ChatGBT</div>
+                        <div class="skill-arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><use href="images/sprite.svg#icon-arrow-up"/></svg></div>
                         <div class="skill-tag">Stable Diffusion</div>
                     </div>
                 </div>
@@ -415,13 +361,14 @@
 
     <!-- Мобильное меню -->
     <div id="menu-overlay" class="menu-overlay">
-        <div class="menu-overlay__content">
-            <div class="menu-overlay__sections">
+        <div class="wrapper__mobile-menu">
+            <div class="mobile-menu__links">
+                <a href="index.html" class="menu-overlay__link">главная</a>
                 <a href="about.html" class="menu-overlay__link">who я</a>
                 <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
             </div>
             
-            <div class="menu-overlay__contacts">
+            <div class="mobile-menu__contacts">
                 <a href="#" class="menu-overlay__contact">telegram</a>
                 <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
             </div>

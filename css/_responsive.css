@@ -14,11 +14,11 @@
     }
     
     /* Увеличенный шрифт (+20%) и плавное уменьшение (12vw) */
-    .hero {
+    .main-hero {
         --heading-h2-size: clamp(40px, 12vw, 120px);
         --heading-h2-line-height: clamp(50px, 16vw, 160px);
-        padding-top: 24px;
-        padding-bottom: 24px;
+        padding-top: var(--space-m);
+        padding-bottom: var(--space-m);
         min-height: auto; /* Сбрасываем высоту на весь экран */
         height: auto;
     }
@@ -36,11 +36,10 @@
     }
     
     /* Повышаем специфичность для мобильной версии */
-    .header .header__content {
-        padding: 0 24px; /* Фиксированный отступ 24px */
+    .header .header__container {
+        padding: 0 var(--grid-margin);
         width: 100%;
         box-sizing: border-box;
-        justify-content: space-between;
     }
     
     /* Логотип */
@@ -63,9 +62,11 @@
     
     /* Переключатель цветов - по центру, масштаб как на десктопе, но плавно уменьшается (как в карточках) */
     .header__color-changer {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        /* position: absolute; убрано, теперь работает через grid */
+        /* left: 50%; убрано */
+        /* transform: translateX(-50%); убрано */
+        justify-self: center;
+        grid-column: 2;
         /* Плавный размер шрифта: от 12px до 14px (медленное сжатие) */
         --label-s-size: clamp(12px, 10.82px + 0.328vw, 14px);
         /* Размеры подтянутся через em от font-size, заданные в базовом классе */
@@ -134,8 +135,8 @@
     /* Hero Bottom */
     .hero__bottom {
         flex-direction: column;
-        gap: 20px;
-        margin-top: 40px; /* Фиксированный отступ 40px от контента сверху (вместо auto) */
+        gap: var(--space-s);
+        margin-top: var(--space-l); /* Фиксированный отступ 40px от контента сверху (вместо auto) */
     }
 
     .hero__description {
@@ -143,9 +144,9 @@
     }
 
     /* Skills Track */
-    .skills-track.aa {
+    .skills-track.left {
         /* Плавное уменьшение отступа: 40px (на 970px) -> 20px (на 360px) */
-        margin-bottom: clamp(20px, 8.2px + 3.28vw, 40px);
+        margin-bottom: var(--space-l);
     }
 
     /* About (устарело, но для совместимости с HTML классом) */
@@ -164,7 +165,7 @@
     .works__grid {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: var(--space-l);
     }
     
     .work-card.large .work-card__title,
@@ -236,8 +237,8 @@
     .footer {
         height: auto;
         min-height: 0;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: var(--space-s);
+        padding-bottom: var(--space-s);
     }
 
     .footer__line {
@@ -249,7 +250,7 @@
     
     .footer__info {
         flex-direction: column;
-        gap: 20px;
+        gap: var(--space-s);
         padding-top: 0; /* Убираем верхний padding */
     }
     
@@ -273,7 +274,7 @@
     /* Ссылки в футере всегда показывают иконку, но текст обычный */
     .footer__contacts .menu-item {
         font-variation-settings: normal; /* Сбрасываем жирность */
-        font-weight: 350; /* Обычный вес, как везде */
+        font-weight: var(--label-s-font-weight); /* Обычный вес, как везде */
     }
 
     /* На мобилке стрелки всегда видны - повышаем специфичность */
@@ -286,7 +287,7 @@
     .footer__line hr {
         width: 100vw;
         /* Уменьшаем вертикальные отступы до 20px, горизонтальные -24px (под padding контейнера) */
-        margin: 20px -24px;
+        margin: var(--space-s) -24px;
     }
     
     /* Сброс анимаций и hover эффектов */
@@ -308,7 +309,7 @@
         width: 100%;
         height: 100vh;
         background-color: var(--background-color, #F5F1F0); /* Фон из переменной с фоллбеком */
-        z-index: 2000; /* Высокий Z-index */
+        z-index: 1000; /* Высокий Z-index */
         
         /* Анимация через transform */
         transform: translate3d(100%, 0, 0);
@@ -328,7 +329,7 @@
         transition: transform 0.8s cubic-bezier(0.6, 0, 0.37, 1), visibility 0s linear 0s;
     }
 
-    .menu-overlay__content {
+    .wrapper__mobile-menu {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -336,9 +337,9 @@
         padding-top: clamp(80px, 70.56px + 2.62vw, 96px);
     }
 
-    .menu-overlay__sections {
+    .mobile-menu__links {
         /* Вертикальные отступы: 40px -> 20px */
-        padding: clamp(20px, 8.2px + 3.28vw, 40px) 24px;
+        padding: var(--space-l) 24px;
         display: flex;
         flex-direction: column;
         /* Gap между блоками: 12px на 970px, плавно уменьшается до 8px на 360px */
@@ -347,7 +348,7 @@
 
     .menu-overlay__link {
         font-family: 'Onest', sans-serif;
-        font-weight: 350;
+        font-weight: var(--heading-h1-font-weight);
         text-decoration: none;
         color: var(--text-color);
         /* Адаптивный шрифт: 80px на 970px -> 40px на 360px */
@@ -362,42 +363,53 @@
         margin-left: 0;
     }
 
-    .menu-overlay__contacts {
+    .mobile-menu__contacts {
         background-color: var(--text-color, #000000); /* Инверсия фона + фоллбек */
         color: var(--background-color, #F5F1F0); /* Инверсия текста + фоллбек */
         /* Вертикальные отступы: 40px -> 20px */
-        padding: clamp(20px, 8.2px + 3.28vw, 40px) 24px;
+        padding: var(--space-l) 24px;
         /* Отступ сверху: 40px -> 20px */
-        margin-top: clamp(20px, 8.2px + 3.28vw, 40px);
+        margin-top: var(--space-l);
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: var(--space-3xs);
         height: auto; /* Высота по контенту */
         flex: 0 0 auto; /* Не растягиваем */
     }
 
-    .menu-overlay__contact {
-        font-size: var(--body-s-size);
-        line-height: 22px;
-        font-weight: 350;
-        text-decoration: none;
-        color: inherit;
+.menu-overlay__contact {
+    font-size: var(--body-s-size);
+    line-height: 22px;
+    font-weight: var(--label-s-font-weight);
+    text-decoration: none;
+    color: inherit;
+}
+
+    /* Unified Hero in Responsive */
+    .hero {
+        padding: var(--space-l) 0;
+        padding-top: calc(var(--space-l) + var(--header-height, 80px)); /* Отступ для мобильной шапки */
     }
 
-    /* Works Page - Плавное уменьшение паддингов */
-    .works-hero {
-        padding: clamp(24px, 4.12px + 5.15vw, 40px) 0;
+    .main-hero {
+        /* Высота секции - весь экран минус высота sticky хедера (через переменную JS) */
+        /* Фоллбек: 80px (примерная высота мобильной шапки) */
+        min-height: 100dvh;
+        padding-top: calc(var(--space-m) + var(--header-height, 80px));
+        padding-bottom: var(--space-m);
     }
-    
-    .works-list {
-        padding: clamp(24px, 4.12px + 5.15vw, 40px) 0;
-    }
-    
-    .works-hero__top {
+
+    .hero__content {
         flex-direction: column;
         align-items: flex-start;
-        gap: clamp(12px, 2.06px + 2.58vw, 20px);
+        gap: var(--space-l);
     }
+
+    .works-list {
+        padding: var(--space-l) 0;
+    }
+    
+    /* .works-hero__top removed */
     
     /* Скрываем кота на мобильном */
     .works-hero__image {
@@ -407,7 +419,7 @@
     .works-hero__tabs {
         flex-direction: column;
         align-items: flex-start;
-        gap: clamp(12px, 2.06px + 2.58vw, 20px);
+        gap: var(--space-s);
     }
     
     /* Плавное уменьшение шрифтов в табах */
@@ -431,10 +443,16 @@
 
     /* Карточка работы */
     .works-item {
+        display: flex; /* Явно задаем flex для мобильных */
         flex-direction: column;
-        padding: clamp(24px, 4.12px + 5.15vw, 40px) 0;
+        padding: var(--space-l) 0;
         border-bottom: 1px solid var(--outline-color);
-        gap: clamp(12px, 2.06px + 2.58vw, 20px);
+        gap: var(--space-s);
+    }
+
+    /* Восстанавливаем flex для is-visible на мобильных */
+    .works-list .works-item.is-visible {
+        display: flex;
     }
 
     .works-item__image-container {
@@ -457,7 +475,7 @@
     .works-item__subtitle {
         --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
         line-height: clamp(20px, 0.74px + 4.97vw, 22px);
-        font-weight: 300;
+        font-weight: var(--body-s-font-weight);
     }
 
     /* Скрываем мету и стрелку */
@@ -473,20 +491,12 @@
 
     /* About Me Page */
     .about-me {
-        padding-top: 80px;
+        /* padding-top: 80px; убран */
     }
 
-    .about-me__hero {
-        padding: clamp(20px, 8.2px + 3.28vw, 40px) 0;
-    }
+    /* .about-me__hero and content replaced by .hero */
 
-    .about-me__hero-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-
-    .about-me__title {
+    .hero__title {
         font-size: var(--heading-h1-size);
         line-height: var(--heading-h1-line-height);
     }
@@ -496,7 +506,14 @@
     }
 
     .about-me__text {
-        padding: clamp(20px, 8.2px + 3.28vw, 40px) 0;
+        padding: var(--space-l) 0;
+    }
+
+    /* Отключаем Grid для контейнеров на странице About */
+    .about-me .container-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-l);
     }
 
     .about-me__text-content {
@@ -506,28 +523,29 @@
     .about-me__text-content p {
         --body-m-size: clamp(16px, 14.82px + 0.33vw, 18px);
         line-height: 1.3;
-        font-weight: 300;
+        font-weight: var(--body-s-font-weight);
     }
 
     .about-me__info-text {
         --body-m-size: clamp(16px, 14.82px + 0.33vw, 18px);
         line-height: 1.3;
-        font-weight: 300;
+        font-weight: var(--body-s-font-weight);
     }
 
     .about-me__info {
-        padding: clamp(20px, 8.2px + 3.28vw, 40px) 0;
+        padding: var(--space-l) 0;
     }
 
     .about-me__info-content {
+        display: flex; /* Восстанавливаем flex-контейнер вместо contents */
         flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
+        width: 100%;
+        gap: var(--space-m);
     }
 
     .about-me__info-blocks {
-        max-width: 100%;
-        gap: 24px;
+        width: 100%;
+        gap: var(--space-m);
     }
 
     .about-me__info-block {

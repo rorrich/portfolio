@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио — Работы</title>
-    <link rel="stylesheet" href="css/styles.css?v=37">
+    <link rel="stylesheet" href="css/styles.css?v=38">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-            <div class="header__content">
+            <div class="header__container">
                 <div class="header__logo">
                     <a href="index.html" class="logo-picture">
                         <svg width="56" height="47" aria-hidden="true" focusable="false">
@@ -48,20 +48,18 @@
 
     <main class="works-page-content">
         <!-- Hero + Tabs Section -->
-        <section class="works-hero">
-            <div class="container">
-                <div class="works-hero__content">
-                    <div class="works-hero__top">
-                        <div class="works-hero__title-box">
-                            <h1 class="works-hero__title">работы</h1>
-                            <span class="works-hero__count">[3]</span>
-                        </div>
-                        <div class="works-hero__image">
-                            <img src="images/cat_working.svg" alt="Cat working">
-                        </div>
-                    </div>
-                    
-                    <div class="works-hero__tabs">
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__title-group">
+                    <h1 class="hero__title">работы</h1>
+                    <span class="hero__count">[3]</span>
+                </div>
+                <div class="works-hero__image">
+                    <img src="images/cat_working.svg" alt="Cat working">
+                </div>
+            </div>
+            <div class="works-hero__tabs">
                         <div class="works-tabs__buttons">
                             <button class="works-tab active" data-filter="all"><span>Все</span></button>
                             <button class="works-tab" data-filter="sites"><span>Сайты</span></button>
@@ -75,10 +73,9 @@
                             </div>
                             <span>заплатили</span>
                         </div>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <!-- Works List -->
         <section class="works-list">
@@ -223,13 +220,14 @@
 
     <!-- Мобильное меню -->
     <div id="menu-overlay" class="menu-overlay">
-        <div class="menu-overlay__content">
-            <div class="menu-overlay__sections">
+        <div class="wrapper__mobile-menu">
+            <div class="mobile-menu__links">
+                <a href="index.html" class="menu-overlay__link">главная</a>
                 <a href="about.html" class="menu-overlay__link">who я</a>
                 <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
             </div>
             
-            <div class="menu-overlay__contacts">
+            <div class="mobile-menu__contacts">
                 <a href="#" class="menu-overlay__contact">telegram</a>
                 <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
             </div>

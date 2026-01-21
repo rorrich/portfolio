@@ -21,13 +21,23 @@ body {
     color: var(--text-color);
     font-size: var(--body-s-size);
     line-height: var(--body-s-line-height);
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0 24px; /* Внутренний отступ теперь 24px */
     width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--grid-margin); /* Используем переменную сетки */
+    box-sizing: border-box;
+}
+
+.container-grid {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--grid-margin);
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    column-gap: var(--grid-gutter);
 }
 
 a {

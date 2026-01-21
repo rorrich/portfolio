@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="header">
-        <div class="header__content">
+        <div class="header__container">
             <div class="header__logo">
                 <a href="index.html" class="logo-picture">
                     <svg width="56" height="47" aria-hidden="true" focusable="false">
@@ -48,10 +48,10 @@
 
     <main class="about-me">
         <!-- Секция с заголовком "who я" и SVG -->
-        <section class="about-me__hero">
-            <div class="container">
-                <div class="about-me__hero-content">
-                    <h1 class="about-me__title">who я</h1>
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                    <h1 class="hero__title">who я</h1>
                     <div class="about-me__cat">
                         <img src="images/cat_huh.svg" alt="Кот" width="215" height="280">
                     </div>
@@ -61,7 +61,7 @@
 
         <!-- Секция с текстом обо мне -->
         <section class="about-me__text">
-            <div class="container">
+            <div class="container-grid">
                 <div class="about-me__text-content">
                     <p>Меня зовут Алина. Мне 24. Дизайном я занимаюсь с 2023 года но учусь и развиваюсь до сих пор. Для меня развитие — это не только про карьеру, но и про жизнь в целом. Сейчас я создаю дизайны сайтов и приложений. Мне интересно не просто рисовать красивые интерфейсы, а делать их удобными и продуманными.</p>
                     <p>Кроме интерфейсов, мне любопытны смежные области: логотипы, графика, айдентика, иллюстрации. Сейчас я изучаю их и постепенно добавляю в свой арсенал. В планах — освоить front-end  и 3D-моделирование. А в свободное время играю в компьютерные игры и рисую.</p>
@@ -71,7 +71,7 @@
 
         <!-- Секция с информацией и картинкой -->
         <section class="about-me__info">
-            <div class="container">
+            <div class="container-grid">
                 <div class="about-me__info-content">
                     <div class="about-me__info-blocks">
                         <div class="about-me__info-block">
@@ -142,13 +142,14 @@
 
     <!-- Мобильное меню -->
     <div id="menu-overlay" class="menu-overlay">
-        <div class="menu-overlay__content">
-            <div class="menu-overlay__sections">
+        <div class="wrapper__mobile-menu">
+            <div class="mobile-menu__links">
+                <a href="index.html" class="menu-overlay__link">главная</a>
                 <a href="about.html" class="menu-overlay__link">who я</a>
                 <a href="works.html" class="menu-overlay__link">работы<span class="menu-overlay__number">[3]</span></a>
             </div>
             
-            <div class="menu-overlay__contacts">
+            <div class="mobile-menu__contacts">
                 <a href="#" class="menu-overlay__contact">telegram</a>
                 <a href="mailto:shirono.kaji@gmail.com" class="menu-overlay__contact">shirono.kaji@gmail.com</a>
             </div>

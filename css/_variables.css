@@ -22,7 +22,7 @@
     
     /* H2: 48px -> 160px */
     --heading-h2-size: clamp(3rem, 0.969rem + 9.03vw, 10rem);
-    --heading-h2-line-height: clamp(3.75rem, 1.0125rem + 12.17vw, 13.228rem);
+    --heading-h2-line-height: clamp(3.75rem, 1.0125rem + 12.17vw, 12.228rem);
     --heading-h2-font-weight: 400;
     
     /* H3: 40px -> 60px */
@@ -33,7 +33,7 @@
     /* H4: 32px -> 40px */
     --heading-h4-size: clamp(2rem, 1.25vw + 1.742rem, 2.5rem);
     --heading-h4-line-height: 1.275;
-    --heading-h4-font-weight: 350;
+    --heading-h4-font-weight: 400;
     
     /* Body M: 18px -> 20px */
     --body-m-size: clamp(1.125rem, 1rem + 0.21vw, 1.25rem);
@@ -48,6 +48,41 @@
     --label-s-size: clamp(0.875rem, 0.21vw + 0.873rem, 1rem);
     --label-s-line-height: 1.3;
     --label-s-font-weight: 350;
+
+    /* --- 1. PRIMITIVES (Sizes) --- */
+    /* 4px (Mobile: 2px) */
+    --size-4: clamp(0.125rem, 0.08vw + 0.07rem, 0.25rem);
+    /* 8px (Mobile: 4px) */
+    --size-8: clamp(0.25rem, 0.26vw + 0.14rem, 0.5rem);
+    /* 12px (Mobile: 8px) */
+    --size-12: clamp(0.5rem, 0.26vw + 0.39rem, 0.75rem);
+    /* 20px (Mobile: 12px) */
+    --size-20: clamp(0.75rem, 0.51vw + 0.63rem, 1.25rem);
+    /* 24px (Mobile: 16px) */
+    --size-24: clamp(1rem, 0.51vw + 0.8rem, 1.5rem);
+    /* 40px (Mobile: 20px) */
+    --size-40: clamp(1.25rem, 1.28vw + 0.96rem, 2.5rem);
+    /* 60px (Mobile: 30px) */
+    --size-60: clamp(1.875rem, 1.92vw + 1.15rem, 3.75rem);
+    /* 80px (Mobile: 40px) */
+    --size-80: clamp(2.5rem, 2.56vw + 1.92rem, 5rem);
+
+    /* --- 2. SEMANTICS --- */
+    
+    /* Grid System */
+    --grid-margin: var(--size-24);
+    --grid-gutter: var(--size-20);
+    --grid-columns: 12;
+
+    /* Spacing System */
+    --space-3xs: var(--size-4);
+    --space-2xs: var(--size-8);
+    --space-xs: var(--size-12);
+    --space-s: var(--size-20);
+    --space-m: var(--size-24);
+    --space-l: var(--size-40);
+    --space-xl: var(--size-60);
+    --space-2xl: var(--size-80);
 }
 
 /* Темная тема */

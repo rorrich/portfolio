@@ -337,4 +337,20 @@ document.addEventListener('DOMContentLoaded', function() {
             filterWorks();
         });
     }
+
+    // --- Sticky Header + First Screen Height Logic ---
+    function updateHeaderHeight() {
+        const header = document.querySelector('.header');
+        if (header) {
+            const height = header.offsetHeight;
+            // Set CSS variable on root for global access
+            document.documentElement.style.setProperty('--header-height', `${height}px`);
+        }
+    }
+
+    // Update on load
+    updateHeaderHeight();
+
+    // Update on resize
+    window.addEventListener('resize', updateHeaderHeight);
 });

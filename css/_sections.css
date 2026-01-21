@@ -1,21 +1,24 @@
 /* Hero Section */
-.hero {
-    /* Высота секции - весь экран минус шапка */
-    min-height: calc(100vh - 96px);
+.main-hero {
+    /* Высота секции - весь экран минус высота sticky хедера (через переменную JS) */
+    /* Фоллбек: 100px */
+    min-height: 100dvh;
+    padding-top: calc(var(--space-m) + var(--header-height, 100px)); /* Добавляем отступ для fixed header */
     display: flex;
     flex-direction: column;
-    padding: 40px 0 40px; /* Уменьшил нижний отступ до 40px */
-    margin-top: 96px;
+    padding-bottom: var(--space-m);
+    /* margin-top убран */
     box-sizing: border-box;
 }
 
-.hero .container {
+.main-hero .container {
     display: flex;
     flex-direction: column;
     flex: 1;
+    height: 100%;
 }
 
-.hero__content {
+.main-hero__content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start; /* Предотвращаем растягивание колонок по высоте */
@@ -24,20 +27,12 @@
     font-size: var(--heading-h2-size);
 }
 
-.hero__title-group {
+.main-hero__title-group {
     flex: 1;
 }
 
-.hero__title {
-    width: fit-content; /* hug content */
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.hero__title h1 {
-    font-size: 1em;
+.main-hero__title-group h1 {
+    font-size: var(--heading-h2-size);
     font-weight: var(--heading-h2-font-weight);
     line-height: var(--heading-h2-line-height);
     width: fit-content; /* hug content */
@@ -50,13 +45,6 @@
     height: auto; /* Высота определяется контентом */
 }
 
-.hero__arrow-wrapper {
-    width: auto;
-    height: auto; /* Убираем фиксированную высоту */
-    display: flex;
-    align-items: center; /* Центрируем стрелку внутри контейнера */
-    padding-bottom: 0; /* Убираем позиционирование через padding */
-}
 
 .hero__arrow {
     width: 0.375em; /* 60px / 160px = 0.375em */
@@ -75,7 +63,7 @@
 }
 
 .hero__typing {
-    font-size: 1em;
+    font-size: var(--heading-h2-size);
     font-weight: var(--heading-h2-font-weight);
     line-height: var(--heading-h2-line-height);
     display: flex;
@@ -111,7 +99,7 @@
     font-size: var(--body-s-size);
     letter-spacing: 0.32px;
     line-height: 22px;
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
     height: 211px;
     display: flex;
     flex-direction: column;
@@ -127,10 +115,11 @@
 /* picture-container удален */
 
 .hero__cat {
-    width: 21vw; /* Сжимается быстрее, чем текст */
-    max-width: 2.5em; /* Ограничение для больших экранов (как раньше) */
+    width: 23.7vw; /* 455px на 1920px */
+    max-width: 2.85em; /* Ограничение для больших экранов */
     height: auto;
-    margin-top: 0.125em; /* 20px */
+    /* margin-top: 0.125em; убран для центрирования */
+    align-self: center; /* Центрируем по вертикали */
     position: relative;
     display: flex;
     align-items: center;
@@ -148,18 +137,19 @@
 /* Hero Bottom Block (Description + Links) */
 .hero__bottom {
     margin-top: auto; /* Прижимаем к низу */
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    column-gap: var(--grid-gutter);
     width: 100%;
-    flex-direction: row-reverse; /* Описание справа, контакты слева */
+    align-items: end; /* Выравниваем элементы по нижнему краю */
 }
 
 .hero__description {
-    width: 445px;
+    grid-column: 10 / span 3; /* 3 правые колонки */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-m);
 }
 
 .about__text {
@@ -169,79 +159,67 @@
 }
 
 .contacts {
+    grid-column: 1 / span 3; /* Слева (3 колонки для запаса) */
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-3xs);
 }
 
 /* Skills Animation */
 .skills-animation {
-    padding: 40px 0;
-    overflow: hidden; /* Скрываем вылезающие за пределы экрана полосы */
+    padding: var(--space-2xl) 0;
+    overflow: hidden;
 }
 
 .skills-animation .container {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .skills-track {
+    display: flex;
+    width: 110vw; /* Шире экрана для поворота */
+    left: -5vw;
     position: relative;
-    width: 110vw; /* Шире экрана, чтобы скрыть края при повороте */
-    left: -5vw; /* Центрируем относительно экрана */
     overflow: hidden;
-    background-color: var(--text-color); /* solid stripe */
-    margin-bottom: 20px; /* gap between aa and bb */
-    transform-origin: center center; /* вращаем от центра */
+    background-color: var(--text-color);
+    margin-bottom: var(--space-s);
+    user-select: none;
+    padding: var(--space-xs) 0;
 }
 
-.skills-track__inner {
-    display: inline-flex;
-    align-items: center;
-    /* Адаптивный отступ: 16px -> 32px */
-    gap: clamp(16px, 12.3px + 1.03vw, 32px);
-    white-space: nowrap;
-    padding: 12px 0;
-}
-
-.skills-track.aa { 
+.skills-track.left { 
     transform: rotate(2deg);
-    margin-bottom: 60px; /* больше отступ для PC версии */
+    margin-bottom: var(--space-xl);
 }
 
-.skills-track.bb {
-    top: 20px;
-}
-.skills-track.aa .skills-track__inner { animation: moveLeftRight 50s linear infinite; }
-.skills-track.bb .skills-track__inner { animation: moveRightLeft 50s linear infinite; }
-
-@keyframes moveLeftRight {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+.skills-track.right {
+    /* transform: rotate(-2deg); removed */
 }
 
-@keyframes moveRightLeft {
-    0% {
-        transform: translateX(-50%);
-    }
-    50% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+.marquee-group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 100%;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+.skills-track.right .marquee-group {
+    animation-direction: reverse;
 }
 
 .skill-tag {
     border-radius: 100px;
-    padding: 8px 24px;
+    padding: var(--space-2xs) var(--space-m);
     white-space: nowrap;
     font-size: var(--body-m-size);
     line-height: var(--body-m-line-height);
@@ -255,16 +233,16 @@
 }
 
 .skill-arrow {
-    margin: 0 8px;
+    margin: 0 var(--space-2xs);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .skill-arrow svg {
-    /* Адаптивный размер: 12px -> 20px */
-    width: clamp(12px, 10.15px + 0.51vw, 20px);
-    height: clamp(12px, 10.15px + 0.51vw, 20px);
+    /* Адаптивный размер: 12px (0.75rem) -> 20px (1.25rem) */
+    width: clamp(0.75rem, 10.15px + 0.51vw, 1.25rem);
+    height: clamp(0.75rem, 10.15px + 0.51vw, 1.25rem);
     color: var(--background-color);
 }
 
@@ -274,18 +252,17 @@
 
 /* Works Section */
 .works {
-    /* Адаптивный padding: от 20px (на 360px) до 60px (на 1920px) */
-    padding-top: clamp(20px, 10.7px + 2.56vw, 60px);
-    padding-bottom: clamp(20px, 10.7px + 2.56vw, 60px);
+    padding: var(--space-l) 0;
 }
 
 .works__title {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 60px;
+    margin-bottom: var(--space-xl);
     position: relative;
-    height: 212px;
+    height: auto;
+    gap: var(--space-xs);
 }
 
 .works__title h2 {
@@ -296,6 +273,7 @@
     z-index: 1;
     width: auto;
     text-align: center;
+    flex: 0 0 auto;
 }
 
 .works__title-short-desc {
@@ -306,305 +284,72 @@
     flex-direction: column;
     font-weight: var(--body-s-font-weight);
     justify-content: flex-end;
-    padding-bottom: 44px;
-    width: 130px;
+    padding-bottom: var(--space-l);
+    flex: 1;
     position: relative;
     z-index: 2;
     /* font-weight: 350; - удаляем дубликат */
 }
 
 .works__title-short-desc.left {
+    align-items: flex-end;
     text-align: right;
-    margin-right: 12px;
-    margin-left: 40px;
+    margin: 0;
 }
 
 .works__title-short-desc.right {
+    align-items: flex-start;
     text-align: left;
-    margin-left: 12px;
-    margin-right: 40px;
+    margin: 0;
 }
 
 .works__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    column-gap: var(--grid-gutter);
+    row-gap: var(--space-xl);
 }
 
-/* 6.1 Work Card */
-.work-card {
-    position: relative;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
+/* Force elements to new rows */
+.works__grid > :nth-child(1) { grid-row: 1; }
+.works__grid > :nth-child(2) { grid-row: 2; }
+.works__grid > :nth-child(3) { grid-row: 3; }
+.works__grid > :nth-child(4) { grid-row: 4; }
+.works__grid > :nth-child(5) { grid-row: 5; }
 
-.work-card.large {
-    width: 910px;
-    align-self: flex-start;
-}
-
-.work-card.medium {
-    width: 755px;
-    align-self: flex-end;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.work-card.small {
-    width: 600px;
-    align-self: flex-start;
-}
-
-.work-card__hover-effect {
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: calc(100% + 40px);
-    height: calc(100% + 40px);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.work-card:hover .work-card__hover-effect {
-    opacity: 1;
-}
-
-.corner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-}
-
-.corner-1 {
-    top: 0;
-    left: 0;
-}
-
-.corner-1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 16px;
-    background-color: currentColor;
-}
-
-.corner-1::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 16px;
-    height: 1px;
-    background-color: currentColor;
-}
-
-.corner-2 {
-    top: 0;
-    right: 0;
-}
-
-.corner-2::before {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 1px;
-    height: 16px;
-    background-color: currentColor;
-}
-
-.corner-2::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 16px;
-    height: 1px;
-    background-color: currentColor;
-}
-
-.corner-3 {
-    bottom: 0;
-    left: 0;
-}
-
-.corner-3::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 1px;
-    height: 16px;
-    background-color: currentColor;
-}
-
-.corner-3::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 16px;
-    height: 1px;
-    background-color: currentColor;
-}
-
-.corner-4 {
-    bottom: 0;
-    right: 0;
-}
-
-.corner-4::before {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 1px;
-    height: 16px;
-    background-color: currentColor;
-}
-
-.corner-4::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 16px;
-    height: 1px;
-    background-color: currentColor;
-}
-
-.work-card__content {
-    position: relative;
-    z-index: 2;
-}
-
-.work-card__picture {
-    /* фон убран, изображение покрывает контейнер */
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.work-card.large .work-card__picture {
-    height: auto;
-}
-
-.work-card.medium .work-card__picture {
-    height: auto;
-}
-
-.work-card.small .work-card__picture {
-    height: auto;
-}
-
-/* Изображение для medium/small карточек: обложка и лёгкий зум при наведении */
-.work-card__picture img.zoom-cover,
-.work-card__picture picture {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    transform: scale(1);
-    transition: transform 0.3s ease-out;
-}
-
-.work-card.small:hover .work-card__picture img.zoom-cover,
-.work-card.medium:hover .work-card__picture img.zoom-cover,
-.work-card.large:hover .work-card__picture img.zoom-cover,
-.work-card.small:hover .work-card__picture picture,
-.work-card.medium:hover .work-card__picture picture,
-.work-card.large:hover .work-card__picture picture {
-    transform: scale(1.06);
-}
-
-.work-card__description {
-    padding: 12px 2px;
-}
-
-.work-card__details {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 2px;
-}
-
-.work-card__type {
-    color: var(--secondary-text-color); /* Используем переменную темы */
-    font-size: var(--body-s-size);
-    letter-spacing: 0.32px;
-    font-weight: 300;
-}
-
-.work-card__year {
-    font-size: var(--body-s-size);
-    letter-spacing: 0.32px;
-    font-weight: 300;
-}
-
-.work-card.large .work-card__title,
-.work-card.medium .work-card__title,
-.work-card.small .work-card__title {
-    font-size: var(--heading-h4-size);
-    font-weight: var(--heading-h4-font-weight);
-    line-height: var(--heading-h4-line-height);
-}
+/* .work-card moved to _components.css */
 
 /* --- Works Page Styles --- */
 
 .works-page-content {
-    margin-top: 96px;
+    /* margin-top: 96px; убран для sticky header */
 }
 
-.works-hero {
-    padding: clamp(24px, 1.67vw + 7.92px, 40px) 0; /* Плавно от 24px до 40px */
-    border-bottom: 1px solid var(--outline-color);
-}
+/* .hero and .hero__content moved to _components.css */
 
-.works-hero__content {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(24px, 1.67vw + 7.92px, 40px); /* Плавно от 24px до 40px */
-}
+/* .works-hero__top removed */
 
-.works-hero__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.works-hero__title-box {
+.hero__title-group {
     display: flex;
     align-items: center;
     gap: 0;
     line-height: 1;
 }
 
-.works-hero__title {
-    font-size: var(--heading-h1-size);
-    font-weight: 400;
-    line-height: var(--heading-h1-line-height);
-    letter-spacing: -0.02em;
-}
+/* .works-hero__title replaced by .hero__title in _components.css */
 
-.works-hero__count {
+.hero__count {
     font-size: var(--heading-h3-size);
-    font-weight: 400;
+    font-weight: var(--heading-h3-font-weight);
     margin-left: 0;
     align-self: flex-start;
     margin-top: 0.2em;
 }
 
 .works-hero__image {
-    width: clamp(200px, 23vw, 441px);
+    width: clamp(12.5rem, 23vw, 27.56rem); /* Перевели в rem для масштабирования на 4K */
     height: auto;
-        display: flex;
+    display: flex;
     justify-content: flex-end;
 }
 
@@ -616,33 +361,34 @@
 /* Tabs */
 .works-hero__tabs {
     display: flex;
-    gap: clamp(24px, 2.08vw + 15.92px, 40px); /* Плавно от 24px до 40px */
+    gap: var(--space-l); /* Плавно от 24px до 40px -> var(--space-l) */
     align-items: center;
+    margin-top: var(--space-l);
 }
 
 .works-tabs__buttons {
     display: flex;
-    gap: 8px;
+    gap: var(--space-2xs);
 }
 
 .works-tab {
-    padding: 8px 20px;
+    padding: var(--space-2xs) var(--space-s);
     border-radius: 100px;
     border: 1px solid var(--outline-color);
     background: transparent;
     color: var(--text-color);
     font-size: var(--body-s-size);
-    line-height: clamp(20px, 0.29vw + 19.72px, 22px); /* Плавно от 20px до 22px */
+    line-height: var(--body-s-line-height); /* Плавно от 20px до 22px -> var */
     cursor: pointer;
     font-family: 'Onest', sans-serif;
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    height: 40px;
+    height: auto;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: lowercase;
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
 }
 
 .works-tab span {
@@ -668,21 +414,21 @@
 .works-tabs__checkbox {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2xs);
     font-size: var(--body-s-size);
-    line-height: clamp(20px, 0.29vw + 19.72px, 22px); /* Плавно от 20px до 22px */
+    line-height: var(--body-s-line-height); /* Плавно от 20px до 22px -> var */
     cursor: pointer;
     text-transform: lowercase;
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
 }
 
 .custom-checkbox {
-    width: 20px;
-    height: 20px;
+    width: var(--space-s);
+    height: var(--space-s);
     border: 1px solid var(--outline-color);
-    border-radius: 4px;
+    border-radius: var(--space-3xs);
     transition: all 0.3s ease;
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
@@ -693,9 +439,9 @@
 }
 
 .custom-checkbox svg {
-        display: none;
-    width: 12px;
-    height: 12px;
+    display: none;
+    width: var(--space-xs);
+    height: var(--space-xs);
     color: var(--background-color);
 }
 
@@ -752,7 +498,7 @@ body.menu-open {
 }
 
 .works-list .works-item.is-visible {
-    display: flex;
+    display: grid; /* Grid layout for desktop */
     opacity: 1;
     transform: translateY(0);
 }
@@ -766,13 +512,14 @@ body.menu-open {
 
 /* Works List (New Layout) */
 .works-list {
-    padding: 40px 0;
+    padding: var(--space-l) 0;
 }
 
 .works-item {
-    display: flex;
-    gap: clamp(12px, 0.83vw + 3.96px, 20px); /* Плавно от 12px до 20px */
-    padding: clamp(24px, 1.67vw + 7.92px, 40px) 0; /* Плавно от 24px до 40px */
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    column-gap: var(--grid-gutter);
+    padding: var(--space-l) 0; /* Плавно от 24px до 40px -> var(--space-l) */
     border-bottom: 1px solid var(--outline-color);
     transition: opacity 0.3s ease, transform 0.3s ease;
     text-decoration: none;
@@ -801,8 +548,9 @@ body.menu-open {
 }
 
 .works-item__image-container {
-    /* Фиксированные пропорции 755x600, адаптивная ширина */
-    width: clamp(300px, 39.32vw, 755px);
+    /* Изображение занимает 5 колонок */
+    grid-column: 1 / span 5;
+    width: 100%;
     aspect-ratio: 755 / 600; /* Сохраняем пропорции 755:600 */
     flex-shrink: 0;
     background-color: #7f7f7f; /* Fallback */
@@ -822,7 +570,7 @@ body.menu-open {
 }
 
 .works-item__info {
-    flex: 1;
+    grid-column: 6 / -1; /* Остальное место */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -837,7 +585,7 @@ body.menu-open {
 
 .works-item__title {
     font-size: var(--heading-h3-size);
-    font-weight: 400;
+    font-weight: var(--heading-h3-font-weight);
     line-height: var(--heading-h3-line-height);
     margin-bottom: 0;
 }
@@ -847,7 +595,7 @@ body.menu-open {
     font-weight: var(--body-s-font-weight);
     color: var(--secondary-text-color);
     line-height: var(--body-s-line-height);
-    padding-left: 4px;
+    padding-left: var(--space-3xs);
 }
 
 .works-item__details {
@@ -860,7 +608,7 @@ body.menu-open {
 .works-item__meta-group {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--space-s);
     width: 556px;
 }
 
@@ -897,21 +645,21 @@ body.menu-open {
     transform: translateX(0);
 }
 
-/* Responsive adjustments for < 970px */
+    /* Responsive adjustments for < 970px */
 @media (max-width: 970px) {
     /* Плавное уменьшение паддингов */
     .works-hero {
-        padding: clamp(24px, 4.12px + 5.15vw, 40px) 0;
+        padding: var(--space-l) 0;
     }
     
     .works-list {
-        padding: clamp(24px, 4.12px + 5.15vw, 40px) 0;
+        padding: var(--space-l) 0;
     }
     
     .works-hero__top {
         flex-direction: column;
         align-items: flex-start;
-        gap: clamp(12px, 2.06px + 2.58vw, 20px);
+        gap: var(--space-s);
     }
     
     /* Скрываем кота на мобильном */
@@ -922,7 +670,7 @@ body.menu-open {
     .works-hero__tabs {
         flex-direction: column;
         align-items: flex-start;
-        gap: clamp(12px, 2.06px + 2.58vw, 20px);
+        gap: var(--space-s);
     }
     
     /* Плавное уменьшение шрифтов в табах */
@@ -944,12 +692,45 @@ body.menu-open {
         flex-wrap: wrap;
     }
 
+    /* Сброс грида для мобильных */
+    .works__grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-l);
+    }
+
+    .work-card.large,
+    .work-card.medium,
+    .work-card.small {
+        width: 100%;
+        grid-column: auto;
+    }
+
     /* Карточка работы */
     .works-item {
+        display: flex; /* Flex layout for mobile */
         flex-direction: column;
-        padding: clamp(24px, 4.12px + 5.15vw, 40px) 0;
+        padding: var(--space-l) 0;
         border-bottom: 1px solid var(--outline-color);
-        gap: clamp(12px, 2.06px + 2.58vw, 20px);
+        gap: var(--space-s);
+    }
+
+    /* Override is-visible display for mobile */
+    .works-list .works-item.is-visible {
+        display: flex;
+    }
+
+    /* Адаптив для Hero Bottom */
+    .hero__bottom {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-l);
+    }
+
+    .hero__description,
+    .contacts {
+        grid-column: auto;
+        width: 100%;
     }
 
     .works-item__image-container {
@@ -972,7 +753,7 @@ body.menu-open {
     .works-item__subtitle {
         --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
         line-height: clamp(20px, 0.74px + 4.97vw, 22px);
-        font-weight: 300;
+        font-weight: var(--body-s-font-weight);
     }
 
     /* Скрываем мету и стрелку */
@@ -989,35 +770,21 @@ body.menu-open {
 
 /* About Me Page Styles */
 .about-me {
-    padding-top: 96px; /* Отступ для фиксированного header */
+    /* padding-top: 96px; убран для sticky header */
 }
 
-.about-me__hero {
-    border-bottom: 1px solid var(--outline-color, #CBCBD0);
-    padding: 40px 0;
+.about-me .container-grid {
+    align-items: end;
 }
 
-.about-me__hero-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
+/* .about-me__hero and .about-me__hero-content replaced by .hero */
 
-.about-me__title {
-    font-size: var(--heading-h1-size);
-    font-weight: var(--heading-h1-font-weight);
-    line-height: var(--heading-h1-line-height);
-    letter-spacing: -0.02em;
-    text-transform: lowercase;
-    color: var(--text-color);
-    margin: 0;
-}
+/* .about-me__title replaced by .hero__title in _components.css */
 
 .about-me__cat {
     flex-shrink: 0;
-    width: 215px;
-    height: 280px;
+    width: 13.44rem; /* 215px -> rem для масштабирования */
+    height: 17.5rem; /* 280px -> rem для масштабирования */
 }
 
 .about-me__cat img {
@@ -1027,11 +794,12 @@ body.menu-open {
 }
 
 .about-me__text {
-    padding: 40px 0;
+    padding: var(--space-l) 0;
 }
 
 .about-me__text-content {
-    max-width: 445px;
+    grid-column: 1 / span 3; /* 3 колонки слева */
+    max-width: none;
 }
 
 .about-me__text-content p {
@@ -1039,7 +807,7 @@ body.menu-open {
     line-height: var(--body-m-line-height);
     font-weight: var(--body-m-font-weight);
     color: var(--text-color);
-    margin-bottom: 24px;
+    margin-bottom: var(--space-m);
 }
 
 .about-me__text-content p:last-child {
@@ -1047,21 +815,19 @@ body.menu-open {
 }
 
 .about-me__info {
-    padding: 40px 0;
+    padding: var(--space-l) 0;
 }
 
 .about-me__info-content {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 40px;
+    display: contents; /* Дети становятся элементами грида */
 }
 
 .about-me__info-blocks {
+    grid-column: 1 / span 2; /* 2 колонки слева */
     display: flex;
     flex-direction: column;
     gap: 36px;
-    max-width: 290px;
+    max-width: none;
 }
 
 .about-me__info-block {
@@ -1073,7 +839,7 @@ body.menu-open {
 .about-me__info-label {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--space-3xs);
     margin-bottom: 0;
 }
 
@@ -1081,8 +847,8 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 12px;
-    height: 12px;
+    width: 0.75em;
+    height: 0.75em;
     flex-shrink: 0;
     opacity: 1;
     transform: none;
@@ -1090,8 +856,8 @@ body.menu-open {
 }
 
 .about-me__info-label .element-anim svg {
-    width: 12px;
-    height: 12px;
+    width: 100%;
+    height: 100%;
     display: block;
     transform: rotate(90deg);
 }
@@ -1125,24 +891,25 @@ body.menu-open {
 }
 
 .about-me__image-block {
+    grid-column: 9 / span 4; /* 4 колонки справа */
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-xs);
     flex-shrink: 0;
 }
 
 .about-me__image-label {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--space-3xs);
 }
 
 .about-me__image-label .element-anim {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 12px;
-    height: 12px;
+    width: 0.75em;
+    height: 0.75em;
     flex-shrink: 0;
     opacity: 1;
     transform: none;
@@ -1150,8 +917,8 @@ body.menu-open {
 }
 
 .about-me__image-label .element-anim svg {
-    width: 12px;
-    height: 12px;
+    width: 100%;
+    height: 100%;
     display: block;
     transform: rotate(90deg);
 }
@@ -1166,7 +933,7 @@ body.menu-open {
 }
 
 .about-me__image-placeholder {
-    width: 600px;
+    width: 100%;
     height: 700px;
     background-color: #cdcdcd;
     flex-shrink: 0;

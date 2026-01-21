@@ -63,14 +63,11 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
    3. LAYOUT COMPONENTS
    ========================================= */
 
-.case-container {
-    padding: 0 24px;
-    width: 100%;
-    box-sizing: border-box;
-}
+
+/* .case-container removed - unified with .container in _base.css */
 
 .case-section {
-    padding: 80px 0;
+    padding: var(--space-2xl) 0;
     width: 100%;
     background-color: #FFFFFF; /* Default Light Theme */
     color: var(--text-color);
@@ -102,13 +99,13 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 
 .case-meta__label {
     font-size: var(--body-s-size);
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
     opacity: 0.6;
 }
 
 .case-meta__value {
     font-size: var(--body-m-size);
-    font-weight: 300;
+    font-weight: var(--body-m-font-weight);
 }
 
 .work-section-title,
@@ -133,8 +130,17 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 .text-split__body li {
     font-size: var(--body-m-size);
     line-height: var(--body-m-line-height);
-    margin-bottom: 24px;
-    font-weight: 300;
+    margin-bottom: var(--space-m);
+    font-weight: var(--body-m-font-weight);
+}
+
+.work-main-text > *:last-child,
+.text-stack__body > *:last-child,
+.text-split__body > *:last-child,
+.work-main-text li:last-child,
+.text-stack__body li:last-child,
+.text-split__body li:last-child {
+    margin-bottom: 0;
 }
 
 .text-split__head {
@@ -142,7 +148,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     display: block;
     margin: 0;
     text-transform: lowercase;
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
     opacity: 0.6;
 }
 
@@ -153,9 +159,9 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 /* --- Text Split (2 Columns: Label/Title + Content) --- */
 .text-split {
     display: flex;
-    gap: 20px;
+    gap: var(--space-s);
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: var(--space-l);
 }
 
 .text-split__head,
@@ -163,11 +169,11 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     flex: 1;
 }
 
-@media (max-width: 970px) {
+    @media (max-width: 970px) {
     .text-split {
         flex-direction: column;
         gap: 16px;
-        margin-bottom: 40px;
+        margin-bottom: var(--space-l);
     }
 }
 
@@ -176,8 +182,8 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 .text-stack {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: var(--space-m);
+    margin-bottom: var(--space-l);
     width: 50%; /* Keeps the layout similar to the left column of a grid */
     box-sizing: border-box;
 }
@@ -203,7 +209,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 .image-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: var(--space-s);
     width: 100%;
 }
 
@@ -217,7 +223,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 .image-stack {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: var(--space-2xl);
     width: 100%;
     align-items: center;
 }
@@ -253,9 +259,9 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     position: relative;
     display: flex;
     align-items: flex-end;
-    margin-top: -96px;
+    /* margin-top: -96px; Removed for overlay header */
     padding-top: 96px;
-    padding-bottom: 24px;
+    padding-bottom: var(--space-m);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -266,29 +272,29 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 40px;
+    gap: var(--space-l);
     width: 100%;
-    padding: 0 24px;
+    padding: 0 var(--grid-margin);
     box-sizing: border-box;
 }
 
 .case-hero__meta {
     display: flex;
-    gap: 60px;
+    gap: var(--space-xl);
 }
 
 /* Typography for Hero */
 .case-hero__title {
     font-size: var(--heading-h3-size);
     font-weight: var(--heading-h3-font-weight);
-    line-height: 1;
-    margin-bottom: 4px;
+    line-height: var(--heading-h3-line-height);
+    margin-bottom: var(--space-3xs);
 }
 
 .case-hero__subtitle {
     font-size: var(--body-m-size);
-    line-height: 1.3;
-    font-weight: 300;
+    line-height: var(--body-m-line-height);
+    font-weight: var(--body-m-font-weight);
 }
 
 /* =========================================
@@ -309,11 +315,11 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     .case-hero__content {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: var(--space-s);
     }
     .case-hero__meta {
         flex-direction: column;
-        gap: 20px;
+        gap: var(--space-s);
     }
 }
 
@@ -340,8 +346,8 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 
 .dc-card__label {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: var(--space-s);
+    left: var(--space-s);
     font-size: var(--body-s-size);
     color: #ffffff;
     text-transform: lowercase;
@@ -352,14 +358,14 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 .dc-before-after {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-2xs);
 }
 
 .dc-before-after__label {
     font-size: var(--body-s-size);
     color: #ffffff;
     text-transform: lowercase;
-    font-weight: 300;
+    font-weight: var(--body-s-font-weight);
 }
 
 .dc-list {
@@ -368,7 +374,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 }
 
 .dc-list li {
-    margin-bottom: 12px;
+    margin-bottom: var(--space-xs);
 }
 
 /* Project-specific footer overrides */

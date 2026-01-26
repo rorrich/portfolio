@@ -315,11 +315,10 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     .case-hero__content {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-s);
+        gap: var(--space-xl);
     }
     .case-hero__meta {
-        flex-direction: column;
-        gap: var(--space-s);
+        gap: var(--space-xl);
     }
 }
 

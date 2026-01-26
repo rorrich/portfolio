@@ -70,25 +70,25 @@
 
     <main>
         <!-- Промо блок -->
-        <section class="case-hero" style="background-image: url('images/roast_main.avif');">
+        <section class="case-hero" style="background-image: url('images/roast_main.avif');" data-id="roast">
             <div class="case-hero__content">
                 <div class="case-hero__main-info">
-                    <h3 class="case-hero__title">Roast</h3>
-                    <p class="case-hero__subtitle">оптовый сайт по продаже кофе, чая и кофейных акссусаров</p>
+                    <h3 class="case-hero__title" data-field="title">Roast</h3>
+                    <p class="case-hero__subtitle" data-field="descriptionFull">оптовый сайт по продаже кофе, чая и кофейных аксессуаров</p>
                 </div>
                 
                 <div class="case-hero__meta">
                     <div class="case-meta-item">
                         <span class="case-meta__label">индустрия</span>
-                        <span class="case-meta__value">интернет-магазин</span>
+                        <span class="case-meta__value" data-field="industry">интернет-магазин</span>
                     </div>
                     <div class="case-meta-item">
                         <span class="case-meta__label">дата</span>
-                        <span class="case-meta__value">август 2025</span>
+                        <span class="case-meta__value" data-field="dateFull">август 2025</span>
                     </div>
                     <div class="case-meta-item">
-                        <span class="case-meta__label">тип</span>
-                        <span class="case-meta__value">сайт</span>
+                        <span class="case-meta__label">сайт</span>
+                        <span class="case-meta__value" data-field="websiteLabel">в разработке</span>
                     </div>
                 </div>
             </div>
@@ -198,6 +198,7 @@
     </footer>
 
     <!-- Скрипт для работы меню -->
+    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <!-- Скрипт для динамического изменения цвета шапки -->
     <script>

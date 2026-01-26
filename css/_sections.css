@@ -195,9 +195,7 @@
     margin-bottom: var(--space-xl);
 }
 
-.skills-track.right {
-    /* transform: rotate(-2deg); removed */
-}
+/* .skills-track.right - transform removed */
 
 .marquee-group {
     flex-shrink: 0;
@@ -321,9 +319,7 @@
 
 /* --- Works Page Styles --- */
 
-.works-page-content {
-    /* margin-top: 96px; убран для sticky header */
-}
+/* .works-page-content - margin-top убран для sticky header */
 
 /* .hero and .hero__content moved to _components.css */
 
@@ -769,9 +765,7 @@ body.menu-open {
 }
 
 /* About Me Page Styles */
-.about-me {
-    /* padding-top: 96px; убран для sticky header */
-}
+/* .about-me - padding-top убран для sticky header */
 
 .about-me .container-grid {
     align-items: end;

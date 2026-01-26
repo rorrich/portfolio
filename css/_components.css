@@ -104,11 +104,6 @@
     font-size: var(--label-s-size);
 }
 
-/* Толщина шрифта для [3] в меню */
-.menu-item span:last-child {
-    font-weight: 400;
-}
-
 .menu-item--wide{
     width: auto;
     min-width: fit-content;

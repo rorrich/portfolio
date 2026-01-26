@@ -246,33 +246,8 @@
                 </div>
 
                 <div class="works__grid">
-                    <!-- Карточка работы 1 - Doctor Coffee -->
-                    <a href="dr_coffee.html" class="work-card large">
-                        <div class="work-card__hover-effect">
-                            <div class="corner corner-1"></div>
-                            <div class="corner corner-2"></div>
-                            <div class="corner corner-3"></div>
-                            <div class="corner corner-4"></div>
-                        </div>
-                        <div class="work-card__content">
-                            <div class="work-card__picture">
-                                <picture>
-                                    <source type="image/webp" srcset="images/picture_d.coffee.webp">
-                                    <img class="zoom-cover" src="images/picture_d.coffee.webp" alt="Doctor Coffee" loading="lazy" decoding="async">
-                                </picture>
-                            </div>
-                            <div class="work-card__description">
-                                <div class="work-card__details">
-                                    <span class="work-card__type">редизайн сайта по ремонту кофемашин</span>
-                                    <span class="work-card__year">2024</span>
-                                </div>
-                                <h3 class="work-card__title">Doctor Coffee</h3>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Карточка работы 2 - Roast -->
-                    <a href="roast.html" class="work-card medium">
+                    <!-- Карточка работы 1 - Roast -->
+                    <a href="roast.html" class="work-card large" data-id="roast">
                         <div class="work-card__hover-effect">
                             <div class="corner corner-1"></div>
                             <div class="corner corner-2"></div>
@@ -288,16 +263,41 @@
                             </div>
                             <div class="work-card__description">
                                 <div class="work-card__details">
-                                    <span class="work-card__type">оптовый сайт по продаже кофе и чая</span>
-                                    <span class="work-card__year">2024</span>
+                                    <span class="work-card__type" data-field="descriptionShort">оптовый сайт по продаже кофе и чая</span>
+                                    <span class="work-card__year" data-field="dateShort">2025</span>
                                 </div>
-                                <h3 class="work-card__title">Roast</h3>
+                                <h3 class="work-card__title" data-field="title">Roast</h3>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Карточка работы 2 - Doctor Coffee -->
+                    <a href="dr_coffee.html" class="work-card medium" data-id="dr_coffee">
+                        <div class="work-card__hover-effect">
+                            <div class="corner corner-1"></div>
+                            <div class="corner corner-2"></div>
+                            <div class="corner corner-3"></div>
+                            <div class="corner corner-4"></div>
+                        </div>
+                        <div class="work-card__content">
+                            <div class="work-card__picture">
+                                <picture>
+                                    <source type="image/webp" srcset="images/picture_d.coffee.webp">
+                                    <img class="zoom-cover" src="images/picture_d.coffee.webp" alt="Doctor Coffee" loading="lazy" decoding="async">
+                                </picture>
+                            </div>
+                            <div class="work-card__description">
+                                <div class="work-card__details">
+                                    <span class="work-card__type" data-field="descriptionShort">редизайн сайта по ремонту кофемашин</span>
+                                    <span class="work-card__year" data-field="dateShort">2025</span>
+                                </div>
+                                <h3 class="work-card__title" data-field="title">Doctor Coffee</h3>
                             </div>
                         </div>
                     </a>
 
                     <!-- Карточка работы 3 - Cleanner -->
-                    <a href="cleanner.html" class="work-card small">
+                    <a href="cleanner.html" class="work-card small" data-id="cleanner">
                         <div class="work-card__hover-effect">
                             <div class="corner corner-1"></div>
                             <div class="corner corner-2"></div>
@@ -313,10 +313,10 @@
                             </div>
                             <div class="work-card__description">
                                 <div class="work-card__details">
-                                    <span class="work-card__type">мобильное приложения для робота пылесоса</span>
-                                    <span class="work-card__year">2024</span>
+                                    <span class="work-card__type" data-field="descriptionShort">приложение для робота пылесоса</span>
+                                    <span class="work-card__year" data-field="dateShort">2024</span>
                                 </div>
-                                <h3 class="work-card__title">Cleanner</h3>
+                                <h3 class="work-card__title" data-field="title">Cleanner</h3>
                             </div>
                         </div>
                     </a>
@@ -375,6 +375,7 @@
         </div>
     </div>
 
+    <script src="js/data.js"></script>
     <script src="js/main.js?v=8"></script>
 </body>
 </html>

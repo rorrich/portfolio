@@ -5,14 +5,6 @@
         max-width: 100vw;
     }
     
-    /* Мобильные версии токенов заголовков */
-    :root {
-        --heading-h3-size: clamp(20px, 5.15px + 3.86vw, 40px);
-        --heading-h3-line-height: clamp(26px, 6.7px + 5.02vw, 52px);
-        --heading-h4-size: clamp(20px, 8.19px + 3.28vw, 40px);
-        --heading-h4-line-height: 1.2;
-    }
-    
     /* Увеличенный шрифт (+20%) и плавное уменьшение (12vw) */
     .main-hero {
         --heading-h2-size: clamp(40px, 12vw, 120px);
@@ -24,7 +16,7 @@
     }
     
     .container {
-        padding: 0 24px; /* Фиксированный отступ 24px */
+        padding: 0 var(--grid-margin);
         max-width: 100%;
         width: 100%;
     }
@@ -71,12 +63,6 @@
         --label-s-size: clamp(12px, 10.82px + 0.328vw, 14px);
         /* Размеры подтянутся через em от font-size, заданные в базовом классе */
         /* border наследуется из базового класса */
-    }
-    
-    /* Label S для шапки и подвала в мобильной версии */
-    .header .menu-item,
-    .footer__contacts .menu-item {
-        --label-s-size: clamp(12px, 10.82px + 0.328vw, 14px);
     }
     
     /* Меню скрыто, показываем бургер */
@@ -205,6 +191,7 @@
         min-height: 0;
         /* Плавное уменьшение нижнего отступа: 60px -> 20px */
         margin-bottom: clamp(20px, -3.6px + 6.55vw, 60px);
+        justify-content: center;
     }
     
     .works__title-short-desc.left,
@@ -249,7 +236,6 @@
     }
     
     .footer__info {
-        flex-direction: column;
         gap: var(--space-s);
         padding-top: 0; /* Убираем верхний padding */
     }
@@ -259,7 +245,6 @@
     }
     
     .footer__description {
-        width: 100%;
         order: 2;
         font-size: var(--body-s-size);
         line-height: 1.4;
@@ -267,8 +252,6 @@
     
     .footer__contacts {
         order: 1;
-        align-self: flex-start;
-        width: 100%; /* На всякий случай */
     }
 
     /* Ссылки в футере всегда показывают иконку, но текст обычный */
@@ -338,22 +321,19 @@
     }
 
     .mobile-menu__links {
-        /* Вертикальные отступы: 40px -> 20px */
-        padding: var(--space-l) 24px;
+        padding: 0 var(--grid-margin);
         display: flex;
         flex-direction: column;
-        /* Gap между блоками: 12px на 970px, плавно уменьшается до 8px на 360px */
-        gap: clamp(8px, 5.64px + 0.66vw, 12px);
+        gap: var(--space-3xs);
     }
 
-    .menu-overlay__link {
+    .mobile-menu__links .menu-overlay__link {
         font-family: 'Onest', sans-serif;
-        font-weight: var(--heading-h1-font-weight);
+        font-size: var(--heading-h2-size);
+        line-height: var(--heading-h2-line-height);
+        font-weight: var(--heading-h2-font-weight);
         text-decoration: none;
         color: var(--text-color);
-        /* Адаптивный шрифт: 80px на 970px -> 40px на 360px */
-        font-size: clamp(40px, 16.39px + 6.56vw, 80px);
-        line-height: 1.1;
     }
 
     .menu-overlay__number {
@@ -366,15 +346,11 @@
     .mobile-menu__contacts {
         background-color: var(--text-color, #000000); /* Инверсия фона + фоллбек */
         color: var(--background-color, #F5F1F0); /* Инверсия текста + фоллбек */
-        /* Вертикальные отступы: 40px -> 20px */
-        padding: var(--space-l) 24px;
-        /* Отступ сверху: 40px -> 20px */
-        margin-top: var(--space-l);
+        padding: var(--space-l) var(--grid-margin);
+        margin-top: auto; /* Прижимаем к низу */
         display: flex;
         flex-direction: column;
         gap: var(--space-3xs);
-        height: auto; /* Высота по контенту */
-        flex: 0 0 auto; /* Не растягиваем */
     }
 
 .menu-overlay__contact {
@@ -392,9 +368,6 @@
     }
 
     .main-hero {
-        /* Высота секции - весь экран минус высота sticky хедера (через переменную JS) */
-        /* Фоллбек: 80px (примерная высота мобильной шапки) */
-        min-height: 100dvh;
         padding-top: calc(var(--space-m) + var(--header-height, 80px));
         padding-bottom: var(--space-m);
     }

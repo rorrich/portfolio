@@ -22,37 +22,90 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Смена цветовой схемы при клике на кнопку "какой ты сегодня"
-    const colorChanger = document.querySelector('.header__color-changer');
     const themes = ['light', 'dark', 'blue', 'green', 'soft'];
-    let currentThemeIndex = 0;
+    const THEME_STORAGE_KEY = 'portfolio-theme';
     
-    // Определяем начальную тему из data-theme или используем 'light'
-    const initialTheme = document.body.getAttribute('data-theme') || 'light';
-    currentThemeIndex = themes.indexOf(initialTheme) >= 0 ? themes.indexOf(initialTheme) : 0;
-    
-    colorChanger.addEventListener('click', function() {
-        // Отключаем анимации на время смены темы
-        document.body.classList.add('no-transition');
-
-        // Переключаем на следующую тему
-        currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-        const newTheme = themes[currentThemeIndex];
-        
-        // Устанавливаем тему через data-theme атрибут
-        // CSS переменные автоматически применятся через селекторы body[data-theme="..."]
-        if (newTheme === 'light') {
+    // Функция для применения темы
+    function applyTheme(theme) {
+        if (theme === 'light') {
             document.body.removeAttribute('data-theme');
         } else {
-            document.body.setAttribute('data-theme', newTheme);
+            document.body.setAttribute('data-theme', theme);
         }
+    }
+    
+    // Функция для сохранения темы в localStorage
+    function saveTheme(theme) {
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+        } catch (e) {
+            console.warn('Не удалось сохранить тему в localStorage:', e);
+        }
+    }
+    
+    // Функция для проверки, является ли страница страницей работы
+    function isWorkPage() {
+        const bodyClass = document.body.className;
+        // Проверяем классы body, которые указывают на страницы работ
+        const workPageClasses = ['roast-page', 'dr-coffee-page', 'cleanner-page'];
+        return workPageClasses.some(className => bodyClass.includes(className));
+    }
+    
+    // Функция для загрузки темы из localStorage
+    function loadTheme() {
+        // На страницах работ всегда используем дефолтную тему
+        if (isWorkPage()) {
+            return 'light';
+        }
+        
+        try {
+            const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            if (savedTheme && themes.includes(savedTheme)) {
+                return savedTheme;
+            }
+        } catch (e) {
+            console.warn('Не удалось загрузить тему из localStorage:', e);
+        }
+        return 'light'; // Дефолтная тема
+    }
+    
+    // Применяем сохраненную тему сразу при загрузке страницы
+    const savedTheme = loadTheme();
+    applyTheme(savedTheme);
+    
+    // Обработчик кнопки переключения темы (если она есть на странице)
+    const colorChanger = document.querySelector('.header__color-changer');
+    
+    if (colorChanger) {
+        // На страницах работ кнопка переключения темы не работает
+        if (!isWorkPage()) {
+            // Определяем текущий индекс темы на основе сохраненной темы
+            let currentThemeIndex = themes.indexOf(savedTheme);
+            if (currentThemeIndex < 0) {
+                currentThemeIndex = 0;
+            }
+            
+            colorChanger.addEventListener('click', function() {
+                // Отключаем анимации на время смены темы
+                document.body.classList.add('no-transition');
 
-        // Включаем анимации обратно после небольшой задержки
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                document.body.classList.remove('no-transition');
+                // Переключаем на следующую тему
+                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                const newTheme = themes[currentThemeIndex];
+                
+                // Применяем и сохраняем новую тему
+                applyTheme(newTheme);
+                saveTheme(newTheme);
+
+                // Включаем анимации обратно после небольшой задержки
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        document.body.classList.remove('no-transition');
+                    });
+                });
             });
-        });
-    });
+        }
+    }
     
     // Анимация элемента при наведении на пункты меню
     const menuItems = document.querySelectorAll('.menu-item');
@@ -353,4 +406,88 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update on resize
     window.addEventListener('resize', updateHeaderHeight);
+
+    // --- Заполнение данных проектов из единого источника ---
+    function fillProjectData() {
+        // Проверяем, что данные проектов загружены
+        if (typeof projectsData === 'undefined') {
+            console.warn('projectsData не загружен. Убедитесь, что data.js подключен перед main.js');
+            return;
+        }
+
+        // Находим все элементы с data-id (контейнеры проектов)
+        const projectContainers = document.querySelectorAll('[data-id]');
+        
+        projectContainers.forEach(container => {
+            const projectId = container.getAttribute('data-id');
+            const projectData = projectsData[projectId];
+            
+            if (!projectData) {
+                console.warn(`Данные для проекта "${projectId}" не найдены в projectsData`);
+                return;
+            }
+            
+            // Находим все элементы с data-field внутри контейнера
+            const fieldElements = container.querySelectorAll('[data-field]');
+            
+            fieldElements.forEach(element => {
+                const fieldName = element.getAttribute('data-field');
+                
+                // Специальная обработка для websiteLabel
+                if (fieldName === 'websiteLabel') {
+                    const websiteUrl = projectData.websiteUrl;
+                    const websiteLabel = projectData.websiteLabel;
+                    
+                    if (websiteLabel !== undefined) {
+                        // Если websiteUrl задан — создаем/обновляем ссылку
+                        if (websiteUrl && websiteUrl !== null) {
+                            // Если элемент уже ссылка, обновляем href и текст
+                            if (element.tagName === 'A') {
+                                element.href = websiteUrl;
+                                element.textContent = websiteLabel;
+                            } else {
+                                // Если элемент не ссылка, заменяем на ссылку
+                                const link = document.createElement('a');
+                                link.href = websiteUrl;
+                                link.textContent = websiteLabel;
+                                link.className = element.className;
+                                element.parentNode.replaceChild(link, element);
+                            }
+                        } else {
+                            // Если websiteUrl пустой/null — создаем/обновляем span
+                            if (element.tagName === 'A') {
+                                // Если элемент ссылка, заменяем на span
+                                const span = document.createElement('span');
+                                span.textContent = websiteLabel;
+                                span.className = element.className;
+                                element.parentNode.replaceChild(span, element);
+                            } else {
+                                // Если элемент уже span/div, просто обновляем текст
+                                element.textContent = websiteLabel;
+                            }
+                        }
+                    }
+                    return; // Пропускаем обычную обработку для websiteLabel
+                }
+                
+                // Обычная обработка для остальных полей
+                const fieldValue = projectData[fieldName];
+                
+                if (fieldValue !== undefined) {
+                    // Заполняем элемент данными
+                    // Если это input или textarea, используем value, иначе textContent
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = fieldValue;
+                    } else {
+                        element.textContent = fieldValue;
+                    }
+                } else {
+                    console.warn(`Поле "${fieldName}" не найдено в данных проекта "${projectId}"`);
+                }
+            });
+        });
+    }
+
+    // Заполняем данные проектов при загрузке страницы
+    fillProjectData();
 });

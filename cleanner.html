@@ -70,25 +70,25 @@
 
     <main>
         <!-- Промо блок -->
-        <section class="case-hero" style="background-image: url('images/cleanner_main.avif');">
+        <section class="case-hero" style="background-image: url('images/cleanner_main.avif');" data-id="cleanner">
             <div class="case-hero__content">
                 <div class="case-hero__main-info">
-                    <h3 class="case-hero__title">Cleanner</h3>
-                    <p class="case-hero__subtitle">мобильное приложения для робота пылесоса</p>
+                    <h3 class="case-hero__title" data-field="title">Cleanner</h3>
+                    <p class="case-hero__subtitle" data-field="descriptionFull">мобильное приложение для робота пылесоса</p>
                 </div>
                 
                 <div class="case-hero__meta">
                     <div class="case-meta-item">
                         <span class="case-meta__label">индустрия</span>
-                        <span class="case-meta__value">смарт-техника</span>
+                        <span class="case-meta__value" data-field="industry">смарт-техника</span>
                     </div>
                     <div class="case-meta-item">
                         <span class="case-meta__label">дата</span>
-                        <span class="case-meta__value">декабрь 2024</span>
+                        <span class="case-meta__value" data-field="dateFull">декабрь 2024</span>
                     </div>
                     <div class="case-meta-item">
                         <span class="case-meta__label">сайт</span>
-                        <span class="case-meta__value">¯\_(ツ)_/¯</span>
+                        <span class="case-meta__value" data-field="websiteLabel">¯\_(ツ)_/¯</span>
                     </div>
                 </div>
             </div>
@@ -197,6 +197,7 @@
     </footer>
 
     <!-- Скрипт для работы меню -->
+    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <!-- Скрипт для динамического изменения цвета шапки -->
     <script>

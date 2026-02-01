@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Текущий год в футере
+    const year = new Date().getFullYear();
+    document.querySelectorAll('.footer__description').forEach(function(el) {
+        el.textContent = '©' + year + ' rorrich';
+    });
+
     // Анимация появления элементов при скролле
     const fadeInElements = document.querySelectorAll('.work-card, .about__text');
     

@@ -28,6 +28,6 @@ const projectsData = {
         dateFull: "январь 2025",
         dateShort: "2025",
         websiteUrl: "https://doctorcoffee.by/",
-        websiteLabel: "посетить сайт"
+        websiteLabel: "doctorcoffee.by"
     }
 };

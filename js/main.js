@@ -439,18 +439,37 @@ document.addEventListener('DOMContentLoaded', function() {
                     const websiteLabel = projectData.websiteLabel;
                     
                     if (websiteLabel !== undefined) {
-                        // Если websiteUrl задан — создаем/обновляем ссылку
+                        // Если websiteUrl задан — создаем/обновляем ссылку со стрелкой (как у menu-item)
                         if (websiteUrl && websiteUrl !== null) {
-                            // Если элемент уже ссылка, обновляем href и текст
+                            const setLinkContent = (linkEl) => {
+                                linkEl.href = websiteUrl;
+                                linkEl.target = '_blank';
+                                linkEl.rel = 'noopener noreferrer';
+                                linkEl.textContent = '';
+                                const anim = document.createElement('div');
+                                anim.className = 'element-anim';
+                                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                                svg.setAttribute('width', '12');
+                                svg.setAttribute('height', '9');
+                                svg.setAttribute('viewBox', '0 0 13 10');
+                                svg.setAttribute('fill', 'none');
+                                svg.setAttribute('aria-hidden', 'true');
+                                svg.setAttribute('focusable', 'false');
+                                const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+                                use.setAttribute('href', 'images/sprite.svg#icon-arrow-right');
+                                svg.appendChild(use);
+                                anim.appendChild(svg);
+                                const span = document.createElement('span');
+                                span.textContent = websiteLabel;
+                                linkEl.appendChild(anim);
+                                linkEl.appendChild(span);
+                            };
                             if (element.tagName === 'A') {
-                                element.href = websiteUrl;
-                                element.textContent = websiteLabel;
+                                setLinkContent(element);
                             } else {
-                                // Если элемент не ссылка, заменяем на ссылку
                                 const link = document.createElement('a');
-                                link.href = websiteUrl;
-                                link.textContent = websiteLabel;
                                 link.className = element.className;
+                                setLinkContent(link);
                                 element.parentNode.replaceChild(link, element);
                             }
                         } else {

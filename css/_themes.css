@@ -35,11 +35,6 @@ body[data-theme="soft"] .header__burger img {
     display: none;
 }
 
-/* Обновляем Header border */
-.header {
-    border-bottom: 1px solid var(--outline-color);
-}
-
 /* Удаляем старые специфичные стили границ хедера, так как теперь есть переменная */
 body[data-theme="dark"] .header,
 body[data-theme="green"] .header,

@@ -5,8 +5,7 @@
    - Заголовки H3: var(--heading-h3-size), var(--heading-h3-line-height) - works-item__title
    - Заголовки H4: var(--heading-h4-size), var(--heading-h4-line-height) - work-card__title
    - Типографика Body M: var(--body-m-size) - основной текст описаний
-   - Типографика Body S: var(--body-s-size) - мелкий текст, метки, детали (без hover)
-   - Типографика Label S: var(--label-s-size) - метки в шапке/подвале (с hover эффектом)
+   - Типографика Body S: var(--body-s-size) - мелкий текст, метки, детали
    Добавляйте новые темы, переопределяя эти переменные, без ввода новых ключей. */
 :root {
     --background-color: #F5F1F0;
@@ -40,18 +39,14 @@
     --body-m-line-height: 1.3;
     --body-m-font-weight: 400;
     
-    /* Body S & Label S: 14px -> 16px */
+    /* Body S: 14px -> 16px */
     --body-s-size: clamp(0.875rem, 0.21vw + 0.873rem, 1rem);
     --body-s-line-height: 1.4; /* ~22px */
     --body-s-font-weight: 400;
-    
-    --label-s-size: clamp(0.875rem, 0.21vw + 0.873rem, 1rem);
-    --label-s-line-height: 1.3;
-    --label-s-font-weight: 400;
 
     /* --- 1. PRIMITIVES (Sizes) --- */
-    /* 4px (Mobile: 2px) */
-    --size-4: clamp(0.125rem, 0.08vw + 0.07rem, 0.25rem);
+    /* 4px - фиксированное значение */
+    --size-4: 0.25rem;
     /* 8px (Mobile: 4px) */
     --size-8: clamp(0.25rem, 0.26vw + 0.14rem, 0.5rem);
     /* 12px (Mobile: 8px) */

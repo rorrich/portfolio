@@ -14,9 +14,20 @@ body[class$="-page"] .header {
     border-bottom: none;
 }
 
-/* Hide theme toggle on all project pages */
-body[class$="-page"] .header__color-changer {
+/* Hide theme toggle on all project pages - everywhere */
+body[class$="-page"] .header__color-changer,
+body[class$="-page"] .menu-overlay .header__color-changer,
+body[class$="-page"] .header .header__color-changer,
+body.roast-page .header__color-changer,
+body.dr-coffee-page .header__color-changer,
+body.cleanner-page .header__color-changer,
+body.roast-page.menu-open .header__color-changer,
+body.dr-coffee-page.menu-open .header__color-changer,
+body.cleanner-page.menu-open .header__color-changer {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* =========================================
@@ -47,6 +58,11 @@ body[class$="-page"] .header__menu .menu-item .element-anim svg {
     fill: currentColor;
 }
 
+/* Бургер белый по умолчанию (для темных фонов) */
+body[class$="-page"] .header__burger img {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
 /* Light Header - Black (for light backgrounds) */
 body[class$="-page"] .header.header--light .header__menu .menu-item,
 body[class$="-page"] .header.header--light .header__menu .menu-item span,
@@ -57,6 +73,11 @@ body[class$="-page"] .header.header--light .header__logo svg {
 
 body[class$="-page"] .header.header--light .header__menu .menu-item .element-anim svg {
     fill: currentColor;
+}
+
+/* Бургер черный для светлого хедера */
+body[class$="-page"] .header.header--light .header__burger img {
+    filter: brightness(0) saturate(100%) invert(0%);
 }
 
 /* =========================================
@@ -106,6 +127,31 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
 .case-meta__value {
     font-size: var(--body-m-size);
     font-weight: var(--body-m-font-weight);
+}
+
+/* Ссылка «сайт»: стрелка при наведении, как у .menu-item */
+a.case-meta__value {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: #F5491F;
+}
+
+a.case-meta__value .element-anim {
+    position: absolute;
+    left: -1em;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateX(-8px);
+}
+
+a.case-meta__value:hover .element-anim {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+a.case-meta__value span {
+    border-bottom: 1px solid;
 }
 
 .work-section-title,
@@ -161,7 +207,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     display: flex;
     gap: var(--space-s);
     width: 100%;
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--space-xl);
 }
 
 .text-split__head,
@@ -173,7 +219,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     .text-split {
         flex-direction: column;
         gap: 16px;
-        margin-bottom: var(--space-l);
+        margin-bottom: var(--space-xl);
     }
 }
 
@@ -183,7 +229,7 @@ body[class$="-page"] .header.header--light .header__menu .menu-item .element-ani
     display: flex;
     flex-direction: column;
     gap: var(--space-m);
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--space-xl);
     width: 50%; /* Keeps the layout similar to the left column of a grid */
     box-sizing: border-box;
 }

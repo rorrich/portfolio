@@ -7,6 +7,16 @@
 
 html {
     font-size: 16px; /* Базовый размер для экранов < 1920px */
+    /* Скрываем вертикальную полосу прокрутки, сохраняя возможность скролла */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+}
+
+/* Скрываем скроллбар для WebKit браузеров (Chrome, Safari) */
+html::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 @media (min-width: 1920px) {
@@ -22,6 +32,16 @@ body {
     font-size: var(--body-s-size);
     line-height: var(--body-s-line-height);
     font-weight: var(--body-s-font-weight);
+    /* Скрываем вертикальную полосу прокрутки, сохраняя возможность скролла */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+}
+
+/* Скрываем скроллбар для WebKit браузеров (Chrome, Safari) */
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .container {

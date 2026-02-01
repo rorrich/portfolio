@@ -193,6 +193,7 @@
 .skills-track.left { 
     transform: rotate(2deg);
     margin-bottom: var(--space-xl);
+    outline: 1px solid transparent; /* Хак для сглаживания краев повернутого блока в Safari */
 }
 
 /* .skills-track.right - transform removed */
@@ -250,7 +251,7 @@
 
 /* Works Section */
 .works {
-    padding: var(--space-l) 0;
+    padding: var(--space-m) 0;
 }
 
 .works__title {
@@ -926,11 +927,18 @@ body.menu-open {
     font-weight: var(--body-s-font-weight);
 }
 
-.about-me__image-placeholder {
+.about-me__image {
     width: 100%;
-    height: 700px;
+    /* height убрана для сохранения пропорций изображения */
     background-color: #cdcdcd;
     flex-shrink: 0;
+}
+
+.about-me__image img {
+    width: 100%;
+    height: auto; /* Высота пересчитывается автоматически от ширины */
+    display: block;
+    aspect-ratio: auto; /* Сохраняет исходное соотношение сторон изображения */
 }
 
 /* Theme colors for about-me page */

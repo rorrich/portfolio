@@ -7,8 +7,6 @@
     
     /* Увеличенный шрифт (+20%) и плавное уменьшение (12vw) */
     .main-hero {
-        --heading-h2-size: clamp(40px, 12vw, 120px);
-        --heading-h2-line-height: clamp(50px, 16vw, 160px);
         padding-top: var(--space-m);
         padding-bottom: var(--space-m);
         min-height: auto; /* Сбрасываем высоту на весь экран */
@@ -59,8 +57,6 @@
         /* transform: translateX(-50%); убрано */
         justify-self: center;
         grid-column: 2;
-        /* Плавный размер шрифта: от 12px до 14px (медленное сжатие) */
-        --label-s-size: clamp(12px, 10.82px + 0.328vw, 14px);
         /* Размеры подтянутся через em от font-size, заданные в базовом классе */
         /* border наследуется из базового класса */
     }
@@ -139,8 +135,6 @@
     .about__text {
         width: 100%;
         margin-left: 0;
-        /* Мобилка: от 16px (на 360px) до 18px (на 970px) */
-        --body-m-size: clamp(16px, 14.82px + 0.33vw, 18px);
     }
     
     .contacts {
@@ -151,7 +145,7 @@
     .works__grid {
         display: flex;
         flex-direction: column;
-        gap: var(--space-l);
+        gap: var(--space-xl);
     }
     
     .work-card.large .work-card__title,
@@ -164,10 +158,6 @@
 
     .work-card__details, 
     .work-card__type, 
-    .work-card__year {
-        /* От 14px (360px) до 16px (970px) */
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
-    }
     
     .work-card.large,
     .work-card.medium,
@@ -257,7 +247,7 @@
     /* Ссылки в футере всегда показывают иконку, но текст обычный */
     .footer__contacts .menu-item {
         font-variation-settings: normal; /* Сбрасываем жирность */
-        font-weight: var(--label-s-font-weight); /* Обычный вес, как везде */
+        font-weight: var(--body-s-font-weight); /* Обычный вес, как везде */
     }
 
     /* На мобилке стрелки всегда видны - повышаем специфичность */
@@ -271,6 +261,7 @@
         width: 100vw;
         /* Уменьшаем вертикальные отступы до 20px, горизонтальные -24px (под padding контейнера) */
         margin: var(--space-s) -24px;
+        margin-left: 0;
     }
     
     /* Сброс анимаций и hover эффектов */
@@ -285,39 +276,145 @@
     /* --- МОБИЛЬНОЕ МЕНЮ (Оверлей) --- */
     
     /* Оверлей меню */
+    /* =========================================
+       ДВУХФАЗНАЯ АНИМАЦИЯ МЕНЮ
+       Применяется на ВСЕХ страницах (главная, about, works, кейсы)
+       ========================================= */
+    
+    /* Keyframes для нижней полоски фона - быстрое появление снизу */
+    @keyframes menu-bottom-appear {
+        from {
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+        to {
+            opacity: 1;
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+    }
+    
+    /* Keyframes для скрытия нижней полоски */
+    @keyframes menu-bottom-hide {
+        from {
+            opacity: 1;
+            transform: scaleY(1);
+            transform-origin: bottom;
+        }
+        to {
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+    }
+    
+    /* Keyframes для выезда меню справа */
+    @keyframes menu-slide-in {
+        from {
+            transform: translate3d(100%, 0, 0);
+        }
+        to {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    
+    /* Keyframes для скрытия меню вправо */
+    @keyframes menu-slide-out {
+        from {
+            transform: translate3d(0, 0, 0);
+        }
+        to {
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+
     .menu-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
-        background-color: var(--background-color, #F5F1F0); /* Фон из переменной с фоллбеком */
-        z-index: 1000; /* Высокий Z-index */
+        height: 100dvh; /* Dynamic Viewport Height для учета адресной строки на iOS */
+        background-color: var(--background-color, #F5F1F0); /* Фон меню */
+        z-index: 1000;
         
-        /* Анимация через transform */
+        /* Начальное состояние: меню скрыто справа */
         transform: translate3d(100%, 0, 0);
-        /* При закрытии: transform 0.8s, visibility меняется через 0.8s */
-        transition: transform 0.8s cubic-bezier(0.6, 0, 0.37, 1), visibility 0s linear 0.8s;
         visibility: hidden;
         
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        
+        /* Анимация не запускается по умолчанию */
+        animation: none;
+    }
+    
+    /* Нижняя полоска фона через псевдоэлемент */
+    /* Заполняет только нижнюю область, где не доходит меню (Home Indicator + отступ) */
+    .menu-overlay::before {
+        content: '';
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /* Высота: Home Indicator + отступ для контактов */
+        height: calc(env(safe-area-inset-bottom, 0px) + clamp(60px, 5vw, 80px));
+        background-color: var(--background-color, #F5F1F0); /* Динамический цвет при смене темы */
+        z-index: 999; /* Под меню (z-index: 1000), но поверх всех остальных элементов */
+        
+        /* Начальное состояние: скрыта */
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        
+        /* Анимация не запускается по умолчанию */
+        animation: none;
     }
 
+    /* =========================================
+       СОСТОЯНИЕ: МЕНЮ ОТКРЫТО (active)
+       ========================================= */
     .menu-overlay.active {
-        transform: translate3d(0, 0, 0);
         visibility: visible;
-        /* При открытии: transform 0.8s, visibility меняется сразу */
-        transition: transform 0.8s cubic-bezier(0.6, 0, 0.37, 1), visibility 0s linear 0s;
+        
+        /* Фаза 2: Меню выезжает справа с задержкой 0.2s после начала анимации фона */
+        /* Задержка должна быть больше длительности анимации полосы (0.15s) */
+        animation: menu-slide-in 0.5s cubic-bezier(0.6, 0, 0.37, 1) 0.2s forwards;
+    }
+    
+    .menu-overlay.active::before {
+        /* Фаза 1: Нижняя полоска появляется быстро снизу (delay: 0) */
+        /* Анимирует ТОЛЬКО opacity и scaleY, НЕ height */
+        /* Длительность 0.15s, чтобы меню успело начать выезжать после её появления */
+        animation: menu-bottom-appear 0.15s ease-out 0s forwards;
+    }
+    
+    /* =========================================
+       СОСТОЯНИЕ: МЕНЮ ЗАКРЫВАЕТСЯ (удаление active)
+       ========================================= */
+    /* Когда класс active удаляется, меню уезжает вправо */
+    .menu-overlay:not(.active) {
+        animation: menu-slide-out 0.4s cubic-bezier(0.6, 0, 0.37, 1) forwards;
+    }
+    
+    .menu-overlay:not(.active)::before {
+        /* Нижняя полоска быстро скрывается */
+        animation: menu-bottom-hide 0.2s ease-out forwards;
     }
 
     .wrapper__mobile-menu {
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 100dvh; /* Dynamic Viewport Height для учета адресной строки на iOS */
+        justify-content: space-between; /* Разносим ссылки и контакты по вертикали */
         /* Плавный отступ сверху: 96px -> 80px */
         padding-top: clamp(80px, 70.56px + 2.62vw, 96px);
+        /* Отступ снизу для контактов (нижняя полоска покрывает эту область) */
+        padding-bottom: env(safe-area-inset-bottom);
+        /* Высота и отступы меняются мгновенно, без анимации */
+        transition: none;
+        z-index: 1000;
     }
 
     .mobile-menu__links {
@@ -347,7 +444,6 @@
         background-color: var(--text-color, #000000); /* Инверсия фона + фоллбек */
         color: var(--background-color, #F5F1F0); /* Инверсия текста + фоллбек */
         padding: var(--space-l) var(--grid-margin);
-        margin-top: auto; /* Прижимаем к низу */
         display: flex;
         flex-direction: column;
         gap: var(--space-3xs);
@@ -356,7 +452,7 @@
 .menu-overlay__contact {
     font-size: var(--body-s-size);
     line-height: 22px;
-    font-weight: var(--label-s-font-weight);
+    font-weight: var(--body-s-font-weight);
     text-decoration: none;
     color: inherit;
 }
@@ -397,16 +493,11 @@
     
     /* Плавное уменьшение шрифтов в табах */
     .works-tab {
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
         line-height: clamp(20px, 2.94px + 4.41vw, 24px);
     }
     
-    .works-tabs__checkbox {
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
-    }
     
     .works-tabs__checkbox span {
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
         line-height: clamp(20px, 2.94px + 4.41vw, 24px);
     }
 
@@ -446,7 +537,6 @@
     }
     
     .works-item__subtitle {
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
         line-height: clamp(20px, 0.74px + 4.97vw, 22px);
         font-weight: var(--body-s-font-weight);
     }
@@ -494,13 +584,11 @@
     }
 
     .about-me__text-content p {
-        --body-m-size: clamp(16px, 14.82px + 0.33vw, 18px);
         line-height: 1.3;
         font-weight: var(--body-s-font-weight);
     }
 
     .about-me__info-text {
-        --body-m-size: clamp(16px, 14.82px + 0.33vw, 18px);
         line-height: 1.3;
         font-weight: var(--body-s-font-weight);
     }
@@ -513,7 +601,7 @@
         display: flex; /* Восстанавливаем flex-контейнер вместо contents */
         flex-direction: column;
         width: 100%;
-        gap: var(--space-m);
+        gap: var(--space-xl);
     }
 
     .about-me__info-blocks {
@@ -530,9 +618,16 @@
         gap: clamp(4px, 2.06px + 0.52vw, 12px);
     }
 
-    .about-me__image-placeholder {
+    .about-me__image {
         width: 100%;
-        height: clamp(400px, 36.36vw, 700px);
+        /* height убрана для сохранения пропорций изображения */
         max-width: 600px;
+    }
+    
+    .about-me__image img {
+        width: 100%;
+        height: auto; /* Высота пересчитывается автоматически от ширины */
+        display: block;
+        aspect-ratio: auto; /* Сохраняет исходное соотношение сторон изображения */
     }
 }

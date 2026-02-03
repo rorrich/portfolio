@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Функция для сохранения темы в localStorage
+    // Функция для сохранения темы в sessionStorage (только на время сессии вкладки)
     function saveTheme(theme) {
         try {
-            localStorage.setItem(THEME_STORAGE_KEY, theme);
+            sessionStorage.setItem(THEME_STORAGE_KEY, theme);
         } catch (e) {
-            console.warn('Не удалось сохранить тему в localStorage:', e);
+            console.warn('Не удалось сохранить тему:', e);
         }
     }
     
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return workPageClasses.some(className => bodyClass.includes(className));
     }
     
-    // Функция для загрузки темы из localStorage
+    // Функция для загрузки темы из sessionStorage (при закрытии вкладки тема сбрасывается)
     function loadTheme() {
         // На страницах работ всегда используем дефолтную тему
         if (isWorkPage()) {
@@ -65,12 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         try {
-            const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            const savedTheme = sessionStorage.getItem(THEME_STORAGE_KEY);
             if (savedTheme && themes.includes(savedTheme)) {
                 return savedTheme;
             }
         } catch (e) {
-            console.warn('Не удалось загрузить тему из localStorage:', e);
+            console.warn('Не удалось загрузить тему:', e);
         }
         return 'light'; // Дефолтная тема
     }
@@ -90,26 +90,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if (currentThemeIndex < 0) {
                 currentThemeIndex = 0;
             }
-            
-            colorChanger.addEventListener('click', function() {
-                // Отключаем анимации на время смены темы
-                document.body.classList.add('no-transition');
+    
+    colorChanger.addEventListener('click', function() {
+        // Отключаем анимации на время смены темы
+        document.body.classList.add('no-transition');
 
-                // Переключаем на следующую тему
-                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-                const newTheme = themes[currentThemeIndex];
-                
+        // Переключаем на следующую тему
+        currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+        const newTheme = themes[currentThemeIndex];
+        
                 // Применяем и сохраняем новую тему
                 applyTheme(newTheme);
                 saveTheme(newTheme);
 
-                // Включаем анимации обратно после небольшой задержки
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        document.body.classList.remove('no-transition');
-                    });
-                });
+        // Включаем анимации обратно после небольшой задержки
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                document.body.classList.remove('no-transition');
             });
+        });
+    });
         }
     }
     
@@ -515,4 +515,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Заполняем данные проектов при загрузке страницы
     fillProjectData();
-});
+}); 

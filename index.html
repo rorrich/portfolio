@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио</title>
-    <link rel="stylesheet" href="css/styles.css?v=36">
+    <!-- Шрифты: предзагрузка, чтобы браузер качал их сразу, не дожидаясь парсинга CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" as="style">
+    <link rel="stylesheet" href="css/styles.css?v=36">
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -66,7 +68,7 @@
                         </div>
                     </div>
                     <div class="hero__cat">
-                        <img src="images/cat_02.svg" alt="Кот с удочкой" width="307" height="248">
+                        <img src="images/cat_02.svg" alt="Кот с удочкой" width="307" height="248" loading="eager" fetchpriority="high">
                     </div>
                 </div>
 

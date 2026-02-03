@@ -250,11 +250,9 @@
         font-weight: var(--body-s-font-weight); /* Обычный вес, как везде */
     }
 
-    /* На мобилке стрелки всегда видны - повышаем специфичность */
-    .footer__contacts .menu-item .element-anim,
-    .footer__contacts .menu-item:hover .element-anim {
-        opacity: 1;
-        transform: translateX(0);
+    /* На мобилке стрелки в футере скрыты */
+    .footer__contacts .element-anim {
+        display: none;
     }
     
     .footer__line hr {

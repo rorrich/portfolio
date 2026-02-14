@@ -26,7 +26,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-    font-family: 'Onest', sans-serif;
+    font-family: 'Manrope', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     font-size: var(--body-s-size);

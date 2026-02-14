@@ -25,7 +25,7 @@
 - HTML5
 - CSS3 (flexbox, grid, анимации)
 - JavaScript (без фреймворков)
-- Шрифт Onest от Google Fonts
+- Шрифт Manrope от Google Fonts
 
 ## Запуск проекта
 

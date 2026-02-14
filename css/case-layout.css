@@ -364,7 +364,13 @@ a.case-meta__value span {
         gap: var(--space-xl);
     }
     .case-hero__meta {
-        gap: var(--space-xl);
+        display: none !important; /* Скрываем мету на мобилке */
+    }
+
+    .case-hero__subtitle {
+        font-size: var(--body-s-size);
+        line-height: var(--body-s-line-height);
+        font-weight: var(--body-s-font-weight);
     }
 }
 

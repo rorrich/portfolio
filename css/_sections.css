@@ -42,7 +42,7 @@
     display: flex;
     align-items: center; /* Центрируем стрелку и текст по вертикали */
     gap: 0.125em; /* Отступы между элементами */
-    height: auto; /* Высота определяется контентом */
+    min-height: calc(var(--heading-h2-size) * var(--heading-h2-line-height)); /* Высота одной строки H2 — не схлопывается при стирании текста */
 }
 
 
@@ -54,6 +54,7 @@
     align-items: center;
     justify-content: center;
     font-size: inherit; /* Наследуем размер от hero__content */
+    margin-top: var(--space-s); /* Чуть ниже для визуального центра с текстом */
 }
 
 .hero__arrow svg {
@@ -68,7 +69,7 @@
     line-height: var(--heading-h2-line-height);
     display: flex;
     align-items: center;
-    min-height: var(--heading-h2-line-height); /* Предотвращаем прыжки при удалении текста */
+    min-height: calc(var(--heading-h2-size) * var(--heading-h2-line-height)); /* Предотвращаем прыжки при удалении текста */
 }
 
 .cursor {
@@ -145,7 +146,7 @@
 }
 
 .hero__description {
-    grid-column: 10 / span 3; /* 3 правые колонки */
+    grid-column: 9 / span 4;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -187,7 +188,7 @@
     background-color: var(--text-color);
     margin-bottom: var(--space-s);
     user-select: none;
-    padding: var(--space-xs) 0;
+    padding: var(--space-xs) var(--space-s);
 }
 
 .skills-track.left { 
@@ -227,7 +228,7 @@
     background: transparent;
     background-color: transparent;
     color: var(--background-color);
-    font-family: 'Onest', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: var(--body-m-font-weight);
 }
 
@@ -258,7 +259,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-2xl);
     position: relative;
     height: auto;
     gap: var(--space-xs);
@@ -306,7 +307,6 @@
     display: grid;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     column-gap: var(--grid-gutter);
-    row-gap: var(--space-xl);
 }
 
 /* Force elements to new rows */
@@ -346,7 +346,7 @@
 .works-hero__image {
     width: clamp(12.5rem, 23vw, 27.56rem); /* Перевели в rem для масштабирования на 4K */
     height: auto;
-    display: flex;
+        display: flex;
     justify-content: flex-end;
 }
 
@@ -377,7 +377,7 @@
     font-size: var(--body-s-size);
     line-height: var(--body-s-line-height); /* Плавно от 20px до 22px -> var */
     cursor: pointer;
-    font-family: 'Onest', sans-serif;
+    font-family: 'Manrope', sans-serif;
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     height: auto;
     box-sizing: border-box;
@@ -425,7 +425,7 @@
     border: 1px solid var(--outline-color);
     border-radius: var(--space-3xs);
     transition: all 0.3s ease;
-    display: flex;
+        display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
@@ -436,7 +436,7 @@
 }
 
 .custom-checkbox svg {
-    display: none;
+        display: none;
     width: var(--space-xs);
     height: var(--space-xs);
     color: var(--background-color);
@@ -552,6 +552,7 @@ body.menu-open {
     flex-shrink: 0;
     background-color: #7f7f7f; /* Fallback */
     overflow: hidden;
+    border-radius: var(--space-l);
 }
 
 .works-item__image-container img {
@@ -559,11 +560,14 @@ body.menu-open {
     height: 100%;
     object-fit: cover; /* Заполняет контейнер, сохраняя пропорции */
     display: block;
-    transition: transform 0.4s cubic-bezier(0.2, 0, 0.37, 1);
+    transform: translateZ(0) scale(1);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .works-item:hover .works-item__image-container img {
-    transform: scale(1.06);
+    transform: translateZ(0) scale(1.07);
 }
 
 .works-item__info {
@@ -593,6 +597,10 @@ body.menu-open {
     color: var(--secondary-text-color);
     line-height: var(--body-s-line-height);
     padding-left: var(--space-3xs);
+}
+
+.works-item__subtitle--short {
+    display: none; /* На десктопе показываем только полное описание */
 }
 
 .works-item__details {
@@ -642,7 +650,7 @@ body.menu-open {
     transform: translateX(0);
 }
 
-    /* Responsive adjustments for < 970px */
+/* Responsive adjustments for < 970px */
 @media (max-width: 970px) {
     /* Плавное уменьшение паддингов */
     .works-hero {
@@ -670,10 +678,11 @@ body.menu-open {
         gap: var(--space-s);
     }
     
-    /* Плавное уменьшение шрифтов в табах */
+    /* Шрифт табов — body-s */
     .works-tab {
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
-        line-height: clamp(20px, 2.94px + 4.41vw, 24px);
+        font-size: var(--body-s-size);
+        line-height: var(--body-s-line-height);
+        font-weight: var(--body-s-font-weight);
     }
     
     .works-tabs__checkbox {
@@ -703,19 +712,7 @@ body.menu-open {
         grid-column: auto;
     }
 
-    /* Карточка работы */
-    .works-item {
-        display: flex; /* Flex layout for mobile */
-        flex-direction: column;
-        padding: var(--space-l) 0;
-        border-bottom: 1px solid var(--outline-color);
-        gap: var(--space-s);
-    }
-
-    /* Override is-visible display for mobile */
-    .works-list .works-item.is-visible {
-        display: flex;
-    }
+    /* Карточка работы на мобилке — стили в _responsive.css (как на главной) */
 
     /* Адаптив для Hero Bottom */
     .hero__bottom {
@@ -728,40 +725,6 @@ body.menu-open {
     .contacts {
         grid-column: auto;
         width: 100%;
-    }
-
-    .works-item__image-container {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 755 / 600; /* Сохраняем пропорции */
-    }
-
-    .works-item__info {
-        padding-left: 0;
-        gap: clamp(12px, 2.06px + 2.58vw, 24px);
-    }
-
-    /* Плавное уменьшение шрифтов */
-    .works-item__title {
-        font-size: var(--heading-h3-size);
-        line-height: var(--heading-h3-line-height);
-    }
-    
-    .works-item__subtitle {
-        --body-s-size: clamp(14px, 12.82px + 0.328vw, 16px);
-        line-height: clamp(20px, 0.74px + 4.97vw, 22px);
-        font-weight: var(--body-s-font-weight);
-    }
-
-    /* Скрываем мету и стрелку */
-    .works-item__meta-group,
-    .works-item__link {
-        display: none;
-    }
-    
-    /* Убираем нижний отступ у заголовка/подзаголовка если нужно */
-    .works-item__details {
-        display: none; /* Можно скрыть весь контейнер деталей, так как внутри пусто */
     }
 }
 
@@ -793,7 +756,7 @@ body.menu-open {
 }
 
 .about-me__text-content {
-    grid-column: 1 / span 3; /* 3 колонки слева */
+    grid-column: 1 / span 4;
     max-width: none;
 }
 
@@ -818,7 +781,7 @@ body.menu-open {
 }
 
 .about-me__info-blocks {
-    grid-column: 1 / span 2; /* 2 колонки слева */
+    grid-column: 1 / span 3;
     display: flex;
     flex-direction: column;
     gap: var(--space-l);
@@ -940,6 +903,8 @@ body.menu-open {
     /* height убрана для сохранения пропорций изображения */
     background-color: #cdcdcd;
     flex-shrink: 0;
+    border-radius: var(--space-l);
+    overflow: hidden;
 }
 
 .about-me__image img {

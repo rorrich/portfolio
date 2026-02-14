@@ -145,7 +145,7 @@
     .works__grid {
         display: flex;
         flex-direction: column;
-        gap: var(--space-xl);
+        gap: var(--space-2xl);
     }
     
     .work-card.large .work-card__title,
@@ -154,6 +154,10 @@
     .work-card__title {
         font-size: var(--heading-h4-size);
         line-height: var(--heading-h4-line-height);
+    }
+
+    .work-card__year {
+        display: none; /* На главной в мобилке год не показываем */
     }
 
     .work-card__details, 
@@ -179,9 +183,8 @@
         gap: 0;
         height: auto; /* Высота по контенту */
         min-height: 0;
-        /* Плавное уменьшение нижнего отступа: 60px -> 20px */
-        margin-bottom: clamp(20px, -3.6px + 6.55vw, 60px);
-        justify-content: center;
+        margin-bottom: var(--space-2xl);
+        justify-content: flex-start;
     }
     
     .works__title-short-desc.left,
@@ -423,7 +426,7 @@
     }
 
     .mobile-menu__links .menu-overlay__link {
-        font-family: 'Onest', sans-serif;
+        font-family: 'Manrope', sans-serif;
         font-size: var(--heading-h2-size);
         line-height: var(--heading-h2-line-height);
         font-weight: var(--heading-h2-font-weight);
@@ -459,6 +462,7 @@
     .hero {
         padding: var(--space-l) 0;
         padding-top: calc(var(--space-l) + var(--header-height, 80px)); /* Отступ для мобильной шапки */
+        border-bottom: none;
     }
 
     .main-hero {
@@ -466,10 +470,19 @@
         padding-bottom: var(--space-m);
     }
 
+    .main-hero .container {
+        gap: var(--space-xl);
+    }
+
     .hero__content {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-l);
+    }
+
+    /* Кейс-страницы (roast, dr_coffee, cleanner): скрываем мету в hero на мобилке */
+    .case-hero__meta {
+        display: none !important;
     }
 
     .works-list {
@@ -489,12 +502,13 @@
         gap: var(--space-s);
     }
     
-    /* Плавное уменьшение шрифтов в табах */
+    /* Шрифт табов — body-s */
     .works-tab {
-        line-height: clamp(20px, 2.94px + 4.41vw, 24px);
+        font-size: var(--body-s-size);
+        line-height: var(--body-s-line-height);
+        font-weight: var(--body-s-font-weight);
     }
-    
-    
+
     .works-tabs__checkbox span {
         line-height: clamp(20px, 2.94px + 4.41vw, 24px);
     }
@@ -503,18 +517,24 @@
         flex-wrap: wrap;
     }
 
-    /* Карточка работы */
+    /* Карточка работы: как на главной — картинка сверху, описание снизу */
     .works-item {
-        display: flex; /* Явно задаем flex для мобильных */
+        display: flex;
         flex-direction: column;
-        padding: var(--space-l) 0;
-        border-bottom: 1px solid var(--outline-color);
-        gap: var(--space-s);
+        padding: 0;
+        border-bottom: none;
+        gap: 0;
     }
 
     /* Восстанавливаем flex для is-visible на мобильных */
     .works-list .works-item.is-visible {
         display: flex;
+    }
+
+    .works-list .container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2xl);
     }
 
     .works-item__image-container {
@@ -524,19 +544,44 @@
     }
 
     .works-item__info {
+        padding: var(--space-xs) 2px 0;
+        gap: 0;
         padding-left: 0;
-        gap: clamp(12px, 2.06px + 2.58vw, 24px);
     }
 
-    /* Плавное уменьшение шрифтов */
-    .works-item__title {
-        font-size: var(--heading-h3-size);
-        line-height: var(--heading-h3-line-height);
+    .works-item__header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
     }
-    
+
+    .works-item__title {
+        order: 2;
+        font-size: var(--heading-h4-size);
+        line-height: var(--heading-h4-line-height);
+        font-weight: var(--heading-h4-font-weight);
+        margin: 0;
+    }
+
+    .works-item__subtitle--full {
+        display: none; /* На мобилке в карточке показываем только descriptionShort */
+    }
+
+    .works-item__subtitle--short {
+        display: block;
+        order: 1;
+    }
+
     .works-item__subtitle {
-        line-height: clamp(20px, 0.74px + 4.97vw, 22px);
+        order: 1;
+        font-size: var(--body-s-size);
+        line-height: var(--body-s-line-height);
         font-weight: var(--body-s-font-weight);
+        color: var(--secondary-text-color);
+        letter-spacing: 0.32px;
+        padding-left: 0;
+        margin-bottom: 2px;
     }
 
     /* Скрываем мету и стрелку */
@@ -544,10 +589,9 @@
     .works-item__link {
         display: none;
     }
-    
-    /* Убираем нижний отступ у заголовка/подзаголовка если нужно */
+
     .works-item__details {
-        display: none; /* Можно скрыть весь контейнер деталей, так как внутри пусто */
+        display: none;
     }
 
     /* About Me Page */
@@ -582,8 +626,8 @@
     }
 
     .about-me__text-content p {
-        line-height: 1.3;
-        font-weight: var(--body-s-font-weight);
+        line-height: var(--body-m-line-height);
+        font-weight: var(--body-m-font-weight);
     }
 
     .about-me__info-text {
@@ -599,12 +643,12 @@
         display: flex; /* Восстанавливаем flex-контейнер вместо contents */
         flex-direction: column;
         width: 100%;
-        gap: var(--space-xl);
+        gap: var(--space-2xl);
     }
 
     .about-me__info-blocks {
         width: 100%;
-        gap: var(--space-m);
+        gap: var(--space-xl);
     }
 
     .about-me__info-block {
@@ -620,6 +664,8 @@
         width: 100%;
         /* height убрана для сохранения пропорций изображения */
         max-width: 600px;
+        border-radius: var(--space-l);
+        overflow: hidden;
     }
     
     .about-me__image img {
